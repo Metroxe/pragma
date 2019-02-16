@@ -8,10 +8,6 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	public render(): ReactNode {
 		return (
 			<View>
-				{/*<TabNavigator*/}
-					{/*tabOptions={["test 1", "test 2", "test 3"]}*/}
-					{/*currentPage={null}*/}
-				{/*/>*/}
 				<Text>Test Screen 1</Text>
 			</View>
 		);
