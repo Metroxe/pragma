@@ -12,14 +12,15 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
-			width: "100%",
-			alignItems: "center",
-			justifyContent: "center",
 			display: "flex",
+			flexDirection: "row",
 		},
-
+		imageContainer: {
+			flex: 1,
+			justifyContent: "center",
+			alignItems: "center"
+		},
 		textContainer: {
-			width: "100%",
 			alignItems: "center",
 			justifyContent: "center",
 			textAlign: "center",
@@ -33,17 +34,17 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 
 
 	private static createImageElement(element: any, index: number): ReactNode {
-		console.log("element:", element);
-		console.log("index:", index);
 		return (
 			<View
 				key={"element " + index}
-				style={ImageOptionComponent.style.mainContainer}>
-				<Image
-					style={{width: 100, height: 100}}
-					source={{uri: element.image}}
-				/>
-				<Text style={ImageOptionComponent.style.textContainer}>{element.label}</Text>
+				style={ImageOptionComponent.style.imageContainer}
+			>
+
+					<Image
+						style={{width: 80, height: 80}}
+						source={{uri: element.image}}
+					/>
+					<Text style={ImageOptionComponent.style.textContainer}>{element.label}</Text>
 			</View>
 		)
 	}
@@ -51,7 +52,7 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 	public render(): ReactNode {
 		const tempElements: any = this.props.renderElement.map(ImageOptionComponent.createImageElement);
 		return (
-			<View>
+			<View style={ImageOptionComponent.style.mainContainer}>
 				{tempElements}
 			</View>
 		);
@@ -59,8 +60,13 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 	}
 }
 
+interface IRenderElement {
+	label: string;
+	image: string;
+}
+
 export interface IImageOptionComponentsProps extends IButtonWrapperProps {
-	renderElement: any;
+	renderElement: IRenderElement[];
 }
 
 export interface IImageOptionComponentsState extends IButtonWrapperState {
@@ -69,5 +75,6 @@ export interface IImageOptionComponentsState extends IButtonWrapperState {
 
 interface IStyle {
 	mainContainer: ViewStyle;
+	imageContainer: ViewStyle;
 	textContainer: TextStyle;
 }
