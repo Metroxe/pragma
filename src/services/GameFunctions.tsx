@@ -107,12 +107,20 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		await updateGameData(newGameData);
 	}
 
+	async function buildOnTile(): Promise<void> {
+		const newGameData: IGameData = getGameDataClone();
+		if (newGameData.selectedTile) {
+
+		}
+	}
+
 	return {
 		updateGameData,
 		birth,
 		incrementTime,
 		changeGridMode,
 		selectTile,
+		buildOnTile,
 	};
 }
 

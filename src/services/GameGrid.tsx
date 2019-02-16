@@ -1,5 +1,6 @@
 export enum Entity {
 	OBSTRUCTED,
+	HOSPITAL,
 }
 
 export enum GridMode {
@@ -8,12 +9,8 @@ export enum GridMode {
 	DELETE_MODE,
 }
 
-export enum BuildModeObject {
-	HOSPITAL,
-}
-
 export const sizeMap: {[key: string]: {x: number, y: number}} = {
-	[BuildModeObject.HOSPITAL]: {x: 2, y: 2},
+	[Entity.HOSPITAL]: {x: 2, y: 2},
 };
 
 export type IGrid = ITile[][];

@@ -1,11 +1,11 @@
-import defaultGrid, {BuildModeObject, GridMode, ICoordinate, IGrid} from "./GameGrid";
+import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
 
 export interface IGameData {
 	population: number;
 	time: number;
 	grid: IGrid;
 	gridMode: GridMode;
-	buildModeObject: BuildModeObject;
+	buildModeObject: Entity;
 	selectedTile?: ICoordinate;
 	childSelection?: ICoordinate[];
 }
@@ -22,7 +22,7 @@ const defaultGameData: IGameData = {
 	time: 0,
 	grid: defaultGrid,
 	gridMode: GridMode.VIEW_MODE,
-	buildModeObject: BuildModeObject.HOSPITAL,
+	buildModeObject: Entity.HOSPITAL,
 };
 
 export default defaultGameData;
