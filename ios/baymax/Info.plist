@@ -55,10 +55,10 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Anchor-Black.otf</string>
-		<string>Anchor-Bold.otf</string>
-		<string>Anchor-Medium.otf</string>
-		<string>Anchor-Semibold.otf</string>
+		<string>Anchor-Black.ttf</string>
+		<string>Anchor-Bold.ttf</string>
+		<string>Anchor-Medium.ttf</string>
+		<string>Anchor-Semibold.ttf</string>
 	</array>
 </dict>
 </plist>

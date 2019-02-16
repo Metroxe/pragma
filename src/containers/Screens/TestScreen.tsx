@@ -4,11 +4,15 @@ import {ReactNode} from "react";
 import {View} from "react-native";
 import SilverModalButton from "../../components/SilverModalButton";
 import {PopUp, PopUpPositions} from "../../components/PopUp";
+import {View, Text} from "react-native";
+import {TabNavigator} from "../../components/TabNavigator";
+import ShopItemComponent from "../../components/ShopItemComponent";
+import ShopComponentList from "../../components/ShopComponentList";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
 
 	private buttonRef: SilverModalButton;
-	private popUpRef: ReactNode = <PopUp position={PopUpPositions.TL}/>;
+	private popUpRef: ReactNode = <PopUp position={PopUpPositions.TL} innerComponent={<ShopComponentList/>}/>;
 
 	protected constructor(props: ITestScreenProps) {
 		super(props);
@@ -46,6 +50,9 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
 				{/*<Text>{this.props.gameData.time}</Text>*/}
 				{/*<Text>Test Screen 1</Text>*/}
+				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
+				{/*<Text>{this.props.gameData.time}</Text>*/}
+				{/*<ShopComponentList/>*/}
 			</View>
 		);
 	}
