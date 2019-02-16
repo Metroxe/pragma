@@ -8,7 +8,8 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	public render(): ReactNode {
 		return (
 			<View>
-				<Text>Test Screen 1</Text>
+				<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>
+				<Text>{this.props.gameData.time}</Text>
 			</View>
 		);
 	}

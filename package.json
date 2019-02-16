@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "android-dev": "react-native run-android"
   },
   "dependencies": {
     "lodash": "^4.17.11",
