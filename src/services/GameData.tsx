@@ -5,6 +5,14 @@ export interface IGameData {
 	people: number;
 	food: number;
 	metal: number;
+	disease: boolean;
+	alien: boolean;
+	radiation: boolean;
+	meteor: boolean;
+	diseaseCount: number;
+	alienCount: number;
+	radiationCount: number;
+	meteorCount: number;
 }
 
 export interface IPrice {
@@ -21,6 +29,14 @@ const defaultGameData: IGameData = {
 	people: 0,
 	food: 0,
 	metal: 0,
+	disease: false,
+	alien: false,
+	radiation: false,
+	meteor: false,
+	diseaseCount: 0,
+	alienCount: 0,
+	radiationCount: 0,
+	meteorCount: 0,
 };
 
 export default defaultGameData;
