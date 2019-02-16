@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "react": "16.6.3",
-    "react-native": "0.58.4"
+    "react-native": "0.58.4",
+    "tslint": "^5.12.1",
+    "tslint-react": "^3.6.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.5",
