@@ -150,16 +150,18 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			if (newGameData.grid[x][y].occupied === false) {
 				newGameData.grid[x][y].occupied = true;
 				newGameData.grid[x][y].entity = newGameData.buildModeObject;
-			}
-			if (newGameData.childSelection) {
-				let child: ICoordinate;
-				for (child of newGameData.childSelection) {
-					if (newGameData.grid[child.x][child.y].occupied === false) {
-						newGameData.grid[child.x][child.y].occupied = true;
-						newGameData.grid[child.x][child.y].entity = newGameData.buildModeObject;
+
+				if (newGameData.childSelection) {
+					let child: ICoordinate;
+					for (child of newGameData.childSelection) {
+						if (newGameData.grid[child.x][child.y].occupied === false) {
+							newGameData.grid[child.x][child.y].occupied = true;
+							newGameData.grid[child.x][child.y].entity = newGameData.buildModeObject;
+						}
 					}
 				}
 			}
+
 			await updateGameData(newGameData);
 		}
 	}
