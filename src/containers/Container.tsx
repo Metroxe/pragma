@@ -2,6 +2,8 @@ import * as React from "react";
 import {ReactNode} from "react";
 import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import {IContainerSet} from "./index";
+import {IGameData} from "../services/GameData";
+import {IGameFunctions} from "../services/GameFunctions";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
@@ -42,6 +44,8 @@ interface IStyle {
 
 export interface IContainerProps {
 	navigate: (page: keyof IContainerSet) => Promise<void>;
+	gameData: IGameData;
+	gameFunctions: IGameFunctions;
 }
 
 export interface IContainerState {
