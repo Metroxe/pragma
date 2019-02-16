@@ -19,7 +19,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "TestScreen",
+		currentContainer: "StartScreen",
 		gameData: defaultGameData,
 	};
 

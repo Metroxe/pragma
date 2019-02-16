@@ -6,15 +6,20 @@ import {TabNavigator} from "../../components/TabNavigator";
 
 export default class AllocatePeopleScreen extends Container<IAllocatePeopleScreenProps, IAllocatePeopleScreenState> {
 
-    public render(): ReactNode {
-        return (
-            <View style={{marginTop: 20}}>
-                <Text>
-                    allocate people
-                </Text>
-            </View>
-        );
-    }
+	constructor(props: IAllocatePeopleScreenProps) {
+		super(props);
+		this.headerTitle = "Allocate";
+	}
+
+	public render(): ReactNode {
+		return (
+			<View style={{marginTop: 20}}>
+				<Text>
+					allocate people
+				</Text>
+			</View>
+		);
+	}
 }
 
 export interface IAllocatePeopleScreenProps extends IContainerProps {
