@@ -7,6 +7,14 @@ export interface IGameFunctions {
 	updateGameData: (gameData: IGameData) => Promise<void>;
 	birth: (people: number) => Promise<void>;
 	incrementTime: () => Promise<void>;
+	causeDisease: () => Promise<void>;
+	causeAlien: () => Promise<void>;
+	causeRadiation: () => Promise<void>;
+	causeMeteor: () => Promise<void>;
+	changeHospital: () => Promise<void>;
+	changeWeapon: () => Promise<void>;
+	changeGreenHouse: () => Promise<void>;
+	changeSafeHouse: () => Promise<void>;
 }
 
 function createGameFunctions(navigator: Navigator): IGameFunctions {
@@ -21,6 +29,29 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 				gameData: _.assign({}, navigator.state.gameData, gameData),
 			}, resolve);
 		});
+	}
+
+	function createEventCause(event: "disease" | "alien" | "radiation" | "meteor"): () => Promise<void> {
+		return async (): Promise<void> => {
+			const newGameData: IGameData = getGameDataClone();
+			if (!newGameData[event]) {
+				newGameData[event + "Count"] += 1;
+				newGameData[event] = true;
+				await updateGameData(newGameData);
+			}
+		};
+	}
+
+	function changeTechnology(technology: "hospital" | "weapon" | "greenHouse" | "safeHouse", count: number): () => Promise<void> {
+		return async (): Promise<void> => {
+			const newGameData: IGameData = getGameDataClone();
+			if (count >= 0) {
+				newGameData[technology + "Count"] += count;
+			} else if (count < 0) {
+				newGameData[technology + "Count"] -= count;
+			}
+			await updateGameData(newGameData);
+		};
 	}
 
 	async function birth(newPeople: number): Promise<void> {
@@ -43,6 +74,14 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		updateGameData,
 		birth,
 		incrementTime,
+		causeDisease: createEventCause("disease"),
+		causeAlien: createEventCause("alien"),
+		causeRadiation: createEventCause("radiation"),
+		causeMeteor: createEventCause("meteor"),
+		changeHospital: changeTechnology("hospital", 1),
+		changeWeapon: changeTechnology("weapon", 1),
+		changeGreenHouse: changeTechnology("greenHouse", 1),
+		changeSafeHouse: changeTechnology("safeHouse", 1),
 	};
 }
 
