@@ -11,10 +11,6 @@ export enum GridMode {
 	DELETE_MODE,
 }
 
-export const sizeMap: {[key: string]: {x: number, y: number}} = {
-	[Entity.HOSPITAL]: {x: 2, y: 2},
-};
-
 export type IGrid = ITile[][];
 
 export interface ICoordinate {

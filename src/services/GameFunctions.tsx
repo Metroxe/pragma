@@ -2,7 +2,7 @@ import {IGameData} from "./GameData";
 import Navigator from "./Navigator";
 import * as _ from "lodash";
 import gameIncrementFunctions, {IIncrementFunction} from "./GameIncrementFunctions";
-import {Entity, GridMode, ICoordinate, sizeMap} from "./GameGrid";
+import {Entity, GridMode, ICoordinate} from "./GameGrid";
 
 export interface IGameFunctions {
 	updateGameData: (gameData: IGameData) => Promise<void>;
@@ -32,6 +32,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			navigator.setState({
 				gameData: _.assign({}, navigator.state.gameData, gameData),
 			}, resolve);
+			console.log(_.assign({}, navigator.state.gameData, gameData));
 		});
 	}
 
@@ -112,8 +113,8 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		if (newGameData.selectedTile && newGameData.buildModeObject !== undefined) {
 
 			deselectChildren();
-			const xSize: number = sizeMap[newGameData.buildModeObject].x;
-			const ySize: number = sizeMap[newGameData.buildModeObject].y;
+			const xSize: number = newGameData[newGameData.buildModeObject].size.x;
+			const ySize: number = newGameData[newGameData.buildModeObject].size.y;
 
 			// check for out of bounds
 			if (coordinate.x + xSize > newGameData.grid.length || coordinate.y + ySize > newGameData.grid[0].length) {
@@ -143,14 +144,13 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 
 	async function buildOnTile(): Promise<void> {
 		const newGameData: IGameData = getGameDataClone();
-		// changeGridMode(GridMode.BUILD_MODE);
 		if (newGameData.selectedTile) {
 			const x: number = newGameData.selectedTile.x;
 			const y: number = newGameData.selectedTile.y;
 			if (newGameData.grid[x][y].occupied === false) {
 				newGameData.grid[x][y].occupied = true;
 				newGameData.grid[x][y].entity = newGameData.buildModeObject;
-
+				newGameData[newGameData.buildModeObject].count ++;
 				if (newGameData.childSelection) {
 					let child: ICoordinate;
 					for (child of newGameData.childSelection) {
