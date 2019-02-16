@@ -13,6 +13,10 @@ export interface IGameData {
 	alienCount: number;
 	radiationCount: number;
 	meteorCount: number;
+	hospitalCount: number;
+	weaponCount: number;
+	greenHouseCount: number;
+	safeHouseCount: number;
 }
 
 export interface IPrice {
@@ -37,6 +41,10 @@ const defaultGameData: IGameData = {
 	alienCount: 0,
 	radiationCount: 0,
 	meteorCount: 0,
+	hospitalCount: 0,
+	weaponCount: 0,
+	greenHouseCount: 0,
+	safeHouseCount: 0,
 };
 
 export default defaultGameData;
