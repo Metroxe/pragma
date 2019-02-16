@@ -90,8 +90,8 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 	private determineContentHeight(): number {
 		let baseHeight: number = Dimensions.get("screen").height;
 
-		console.log("state:", this.state);
-		console.log("base height:", baseHeight);
+		// console.log("state:", this.state);
+		// console.log("base height:", baseHeight);
 
 		if (this.showHeader) {
 			baseHeight = baseHeight - Header.headerHeight;
@@ -101,7 +101,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			baseHeight = baseHeight - TabNavigator.navBarHeight;
 		}
 
-		console.log("base height 2:", baseHeight);
+		// console.log("base height 2:", baseHeight);
 
 		return baseHeight;
 	}

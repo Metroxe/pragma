@@ -4,8 +4,12 @@ import {View} from "react-native";
 import {PopUp} from "./PopUp";
 
 export default class EnhancedComponent<P extends IEnhancedComponentsProps, S extends IEnhancedComponentsState> extends React.PureComponent<P, S> {
+	public static defaultProps: IEnhancedComponentsProps = {
+
+	};
 
 	public renderPointer: () => ReactNode;
+	private currentPopUpOpacity: number = 0;
 
 	constructor(props: P) {
 		super(props);
@@ -17,18 +21,25 @@ export default class EnhancedComponent<P extends IEnhancedComponentsProps, S ext
 		this.wrapRender = this.wrapRender.bind(this);
 		this.wrapRender();
 		this.showPopUp = this.showPopUp.bind(this);
+		this.closePopUp = this.closePopUp.bind(this);
 	}
 
-	protected showPopUp(): void {
-		this.setState({popUpShown: true}, () => {
-			this.props.popUp.animateShow();
-		});
+	public showPopUp(): void {
+		if (!this.state.popUpShown && this.props.popUp) {
+			this.currentPopUpOpacity = 1.0;
+			this.setState({popUpShown: true}, () => {
+				this.currentPopUpOpacity = 1.0;
+				this.forceUpdate();
+			});
+		}
 	}
 
-	protected closePopUp(): void {
-		this.setState({popUpShown: false}, () => {
-			this.props.popUp.animateClose();
-		});
+	public closePopUp(): void {
+		if (this.state.popUpShown && this.props.popUp) {
+			this.setState({popUpShown: false}, () => {
+				this.currentPopUpOpacity = 0.0;
+			});
+		}
 	}
 
 	public wrapRender(): void {
@@ -36,6 +47,11 @@ export default class EnhancedComponent<P extends IEnhancedComponentsProps, S ext
 		this.render = (): ReactNode => {
 			return (
 				<View>
+					{this.props.popUp &&
+					<View style={{opacity: 1.0, zIndex: 100}}>
+						{this.props.popUp}
+					</View>
+					}
 					{this.renderPointer()}
 				</View>
 			);

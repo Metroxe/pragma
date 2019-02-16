@@ -1,7 +1,7 @@
 import {ReactNode} from "react";
 import * as React from "react";
 import {TouchableOpacity, View} from "react-native";
-import EnhancedComponent from "./EnhancedComponent";
+import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
 
 abstract class ButtonWrapper<P extends IButtonWrapperProps, S extends IButtonWrapperState> extends EnhancedComponent<P, S> {
 
@@ -14,7 +14,7 @@ abstract class ButtonWrapper<P extends IButtonWrapperProps, S extends IButtonWra
 
 	protected renderFunctionPointer: () => ReactNode;
 
-	constructor(props: P) {
+	protected constructor(props: P) {
 		super(props);
 
 		this.state = {
@@ -72,12 +72,12 @@ abstract class ButtonWrapper<P extends IButtonWrapperProps, S extends IButtonWra
 	}
 }
 
-export interface IButtonWrapperProps {
+export interface IButtonWrapperProps extends IEnhancedComponentsProps {
 	onAction?: (callback: () => void) => void;
 	disabled?: boolean;
 }
 
-export interface IButtonWrapperState {
+export interface IButtonWrapperState extends IEnhancedComponentsState {
 	disabled: boolean;
 	pressed: boolean;
 }
