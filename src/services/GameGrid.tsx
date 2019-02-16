@@ -14,13 +14,13 @@ export interface ITile {
 	parentNodeCoordinate?: ICoordinate;
 	isParent: boolean;
 	entity: Entity;
-	coordinate: ICoordinate,
+	coordinate: ICoordinate;
 }
 
 function createDefaultGrid(): IGrid {
 	const defaultGrid: IGrid = [];
-	const width: number = 40;
-	const height: number = 40;
+	const width: number = 5;
+	const height: number = 10;
 
 	let x: number;
 	let y: number;
