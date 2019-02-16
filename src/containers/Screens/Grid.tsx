@@ -19,6 +19,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 
 	constructor(props: IContainerProps) {
 		super(props);
+		this.headerTitle = "Map";
+
 		this.createTile = this.createTile.bind(this);
 		this.createRow = this.createRow.bind(this);
 		this.tileOnPress = this.tileOnPress.bind(this);
