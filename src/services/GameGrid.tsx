@@ -30,8 +30,8 @@ export interface ITile {
 
 function createDefaultGrid(): IGrid {
 	const defaultGrid: IGrid = [];
-	const width: number = 3;
-	const height: number = 3;
+	const width: number = 100;
+	const height: number = 5;
 
 	let x: number;
 	let y: number;

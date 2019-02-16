@@ -10,7 +10,8 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 	private static containerStyle: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		topView: {
 			backgroundColor: "white",
-			flex: 1,
+			height: "100%",
+			width: "100%",
 		},
 	});
 

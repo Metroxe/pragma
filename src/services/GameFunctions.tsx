@@ -135,7 +135,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 							});
 						}
 					}
-				}
+				} 
 			}
 		}
 
