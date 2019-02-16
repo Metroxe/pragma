@@ -2,12 +2,12 @@ import * as React from "react";
 import {ReactNode} from "react";
 import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
+import LinearGradient from "react-native-linear-gradient";
 
 export class GradientButton extends EnhancedComponent<IGradientButtonProps, IGradientButtonState> {
 
 	public static defaultProps: IGradientButtonProps = {
-		title: "HEADER",
-		bgColor: "green",
+
 	};
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -21,8 +21,8 @@ export class GradientButton extends EnhancedComponent<IGradientButtonProps, IGra
 
 	public render(): ReactNode {
 		return (
-			<LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-				<Text style={styles.buttonText}>
+			<LinearGradient colors={["#4c669f", "#3b5998", "#192f6a"]} style={GradientButton.style.linearGradient}>
+				<Text>
 					Sign in with Facebook
 				</Text>
 			</LinearGradient>
