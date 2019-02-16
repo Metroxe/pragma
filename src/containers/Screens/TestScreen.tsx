@@ -2,11 +2,13 @@ import Container, {IContainerProps, IContainerState} from "../Container";
 import {ReactNode} from "react";
 import * as React from "react";
 import {View, Text} from "react-native";
+import {TabNavigator} from "../../components/TabNavigator";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
 	public render(): ReactNode {
 		return (
 			<View>
+<<<<<<< Updated upstream
 				<Text>{this.props.gameData.time}</Text>
 				<Text>{this.props.gameData.time}</Text>
 				<Text>{this.props.gameData.time}</Text>
@@ -28,6 +30,13 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 				<Text>{this.props.gameData.time}</Text>
 				<Text>{this.props.gameData.time}</Text>
 				<Text>{this.props.gameData.time}</Text>
+=======
+				<TabNavigator
+					tabOptions={["test 1", "test 2", "test 3"]}
+					currentPage={null}
+				/>
+				<Text>Test Screen 1</Text>
+>>>>>>> Stashed changes
 			</View>
 		);
 	}
