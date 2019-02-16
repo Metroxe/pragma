@@ -9,9 +9,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
 			width: "100%",
-			// display: "flex",
 			flexDirection: "row",
-			height: 60,
 			backgroundColor: "purple",
 		},
 		individualButton: {
@@ -22,6 +20,8 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 			backgroundColor: "green",
 		}
 	});
+
+	public static navBarHeight: number = 60;
 
 	constructor(props: ITabNavigatorProps) {
 		super(props);
@@ -54,7 +54,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 		});
 
 		return (
-			<View style={TabNavigator.style.mainContainer}>
+			<View style={{...TabNavigator.style.mainContainer, height: TabNavigator.navBarHeight}}>
 				{tabOptions}
 			</View>
 		)

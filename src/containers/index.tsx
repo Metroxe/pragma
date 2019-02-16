@@ -1,4 +1,4 @@
-import TestScreen, {TestScreen2} from "./Screens/TestScreen";
+import TestScreen from "./Screens/TestScreen";
 import ShopScreen from "./Screens/ShopScreen";
 import AllocatePeopleScreen from "./Screens/AllocatePeopleScreen";
 import Grid from "./Screens/Grid";
@@ -9,7 +9,6 @@ export interface IContainerSet {
 
 const containerSet: IContainerSet = {
 	TestScreen,
-	TestScreen2,
 	ShopScreen,
 	AllocatePeopleScreen,
 	Grid,

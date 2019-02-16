@@ -60,6 +60,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 			navigate: this.navigate,
 			gameData: this.state.gameData,
 			gameFunctions: GameFunctions(this),
+			currentPage: this.state.currentContainer,
 		};
 
 		const pointer: any = containerSet[this.state.currentContainer];
