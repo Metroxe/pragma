@@ -23,6 +23,15 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		});
 	}
 
+	async function causeDisease(): Promise<void> {
+		const newGameData: IGameData = getGameDataClone();
+		if (!newGameData.disease) {
+			newGameData.diseaseCount += 1;
+			newGameData.disease = true;
+			await updateGameData(newGameData);
+		}
+	}
+
 	async function birth(newPeople: number): Promise<void> {
 		const newGameDate: IGameData = getGameDataClone();
 		newGameDate.population += newPeople;
