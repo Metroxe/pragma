@@ -6,6 +6,7 @@ import {IGameData} from "../services/GameData";
 import {IGameFunctions} from "../services/GameFunctions";
 import {IPagePackager, TabNavigator} from "../components/TabNavigator";
 import {Header} from "../components/Header";
+import LinearGradient from "react-native-linear-gradient";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
@@ -16,6 +17,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			height: Dimensions.get("screen").height,
 			width: Dimensions.get("screen").width,
 		},
+		popUpModalContainer: {},
 	});
 
 	private static pagesArray: IPagePackager[] = [
@@ -58,7 +60,24 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 					/>
 
 					<View
-						style={{height: Dimensions.get("screen").height - Header.headerHeight - TabNavigator.navBarHeight}}>
+						style={{height: Dimensions.get("screen").height - Header.headerHeight - TabNavigator.navBarHeight}}
+					>
+						{this.renderPointer()}
+					</View>
+
+					{this.state.popUpModalContent &&
+					<View style={Container.containerStyle.popUpModalContainer}>
+						{this.state.popUpModalContent}
+					</View>
+					}
+
+					<Header
+						title={Container.pagesArray[Container.pagesArray.findIndex((property: IPagePackager) => property.pageString === this.props.currentPage.toString())].displayString}
+					/>
+
+					<View
+						style={{height: Dimensions.get("screen").height - Header.headerHeight - TabNavigator.navBarHeight}}
+					>
 						{this.renderPointer()}
 					</View>
 
@@ -75,7 +94,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 
 interface IStyle {
 	topView: ViewStyle;
-
+	popUpModalContainer: ViewStyle;
 }
 
 export interface IContainerProps {
@@ -86,5 +105,5 @@ export interface IContainerProps {
 }
 
 export interface IContainerState {
-
+	popUpModalContent: ReactNode;
 }
