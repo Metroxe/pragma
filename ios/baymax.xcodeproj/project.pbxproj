@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -41,6 +40,10 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
+		14E65EC5CB62431589C2E211 /* Anchor-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4B8E886B21FE4DFDA20672F2 /* Anchor-Black.otf */; };
+		0FDE369152BE4F16839E79FF /* Anchor-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C4F5D489B63A42FD95C7A7FD /* Anchor-Bold.otf */; };
+		BF5F61E628B8432A9E6D9A3D /* Anchor-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = AB13CBAB3063435EA9A26911 /* Anchor-Medium.otf */; };
+		82EEB02C5DB04F9A8E2D7C7A /* Anchor-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6E43253329304CF69AF8330A /* Anchor-Semibold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -363,6 +366,10 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		4B8E886B21FE4DFDA20672F2 /* Anchor-Black.otf */ = {isa = PBXFileReference; name = "Anchor-Black.otf"; path = "../assets/fonts/ANCHOR-FONT/Anchor-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C4F5D489B63A42FD95C7A7FD /* Anchor-Bold.otf */ = {isa = PBXFileReference; name = "Anchor-Bold.otf"; path = "../assets/fonts/ANCHOR-FONT/Anchor-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		AB13CBAB3063435EA9A26911 /* Anchor-Medium.otf */ = {isa = PBXFileReference; name = "Anchor-Medium.otf"; path = "../assets/fonts/ANCHOR-FONT/Anchor-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6E43253329304CF69AF8330A /* Anchor-Semibold.otf */ = {isa = PBXFileReference; name = "Anchor-Semibold.otf"; path = "../assets/fonts/ANCHOR-FONT/Anchor-Semibold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -612,6 +619,7 @@
 				00E356EF1AD99517003FC87E /* baymaxTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				105DD77F851E4588B10801CC /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -637,6 +645,18 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		105DD77F851E4588B10801CC /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				4B8E886B21FE4DFDA20672F2 /* Anchor-Black.otf */,
+				C4F5D489B63A42FD95C7A7FD /* Anchor-Bold.otf */,
+				AB13CBAB3063435EA9A26911 /* Anchor-Medium.otf */,
+				6E43253329304CF69AF8330A /* Anchor-Semibold.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -719,7 +739,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1102,6 +1122,10 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				14E65EC5CB62431589C2E211 /* Anchor-Black.otf in Resources */,
+				0FDE369152BE4F16839E79FF /* Anchor-Bold.otf in Resources */,
+				BF5F61E628B8432A9E6D9A3D /* Anchor-Medium.otf in Resources */,
+				82EEB02C5DB04F9A8E2D7C7A /* Anchor-Semibold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
