@@ -2,6 +2,7 @@ export enum Entity {
 	OBSTRUCTED,
 	UNOBSTRUCTED,
 	HOSPITAL,
+	WEAPON,
 }
 
 export enum GridMode {
@@ -26,6 +27,7 @@ export interface ITile {
 	parentNodeCoordinate?: ICoordinate;
 	isParent: boolean;
 	entity: Entity;
+	gridMode: GridMode;
 	coordinate: ICoordinate;
 	selected: boolean;
 }
@@ -43,6 +45,7 @@ function createDefaultGrid(): IGrid {
 			defaultGrid[x].push({
 				occupied: false,
 				entity: Entity.OBSTRUCTED,
+				gridMode: GridMode.VIEW_MODE,
 				isParent: true,
 				coordinate: {
 					x,

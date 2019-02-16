@@ -2,7 +2,7 @@ import {IGameData} from "./GameData";
 import Navigator from "./Navigator";
 import * as _ from "lodash";
 import gameIncrementFunctions, {IIncrementFunction} from "./GameIncrementFunctions";
-import {GridMode, ICoordinate, sizeMap} from "./GameGrid";
+import {Entity, GridMode, ICoordinate, sizeMap} from "./GameGrid";
 
 export interface IGameFunctions {
 	updateGameData: (gameData: IGameData) => Promise<void>;
@@ -16,7 +16,7 @@ export interface IGameFunctions {
 	changeWeapon: () => Promise<void>;
 	changeGreenHouse: () => Promise<void>;
 	changeSafeHouse: () => Promise<void>;
-	buildOnTile: () => Promise<void>;
+	buildOnTile: (entity: Entity) => Promise<void>;
 	changeGridMode: (gridMode: GridMode) => Promise<void>;
 	selectTile: (coordinate: ICoordinate) => Promise<void>;
 }
@@ -49,11 +49,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 	function changeTechnology(technology: "hospital" | "weapon" | "greenHouse" | "safeHouse", count: number): () => Promise<void> {
 		return async (): Promise<void> => {
 			const newGameData: IGameData = getGameDataClone();
-			if (count >= 0) {
-				newGameData[technology + "Count"] += count;
-			} else if (count < 0) {
-				newGameData[technology + "Count"] -= count;
-			}
+			newGameData[technology + "Count"] += count;
 			await updateGameData(newGameData);
 		};
 	}
@@ -64,7 +60,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		await updateGameData(newGameDate);
 	}
 
-	async function incrementTime(): Promise<void> {
+ async function incrementTime(): Promise<void> {
 		let newGameData: IGameData = getGameDataClone();
 		newGameData.time += 1;
 		let func: IIncrementFunction;
@@ -74,13 +70,13 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		await updateGameData(newGameData);
 	}
 
-	async function changeGridMode(gridMode: GridMode): Promise<void> {
+ async function changeGridMode(gridMode: GridMode): Promise<void> {
 		const newGameDate: IGameData = getGameDataClone();
 		newGameDate.gridMode = gridMode;
 		await updateGameData(newGameDate);
 	}
 
-	async function selectTile(coordinate: ICoordinate): Promise<void> {
+ async function selectTile(coordinate: ICoordinate): Promise<void> {
 		const newGameData: IGameData = getGameDataClone();
 
 		function deselectChildren(): void {
@@ -143,23 +139,30 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		await updateGameData(newGameData);
 	}
 
-	async function buildOnTile(): Promise<void> {
+ async function buildOnTile(): Promise<void> {
 		const newGameData: IGameData = getGameDataClone();
+		// changeGridMode(GridMode.BUILD_MODE);
 		if (newGameData.selectedTile) {
 			const x: number = newGameData.selectedTile.x;
 			const y: number = newGameData.selectedTile.y;
-			newGameData.grid[x][y].entity = newGameData.buildModeObject;
+			if (newGameData.grid[x][y].occupied === false) {
+				newGameData.grid[x][y].occupied = true;
+				newGameData.grid[x][y].entity = newGameData.buildModeObject;
+			}
 			if (newGameData.childSelection) {
 				let child: ICoordinate;
 				for (child of newGameData.childSelection) {
-					newGameData.grid[child.x][child.y].entity = newGameData.buildModeObject;
+					if (newGameData.grid[child.x][child.y].occupied === false ) {
+						newGameData.grid[child.x][child.y].occupied = true;
+						newGameData.grid[child.x][child.y].entity = newGameData.buildModeObject;
+					}
 				}
 			}
 			await updateGameData(newGameData);
 		}
 	}
 
-	return {
+ return {
 		updateGameData,
 		birth,
 		incrementTime,
