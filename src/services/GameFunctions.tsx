@@ -7,6 +7,10 @@ export interface IGameFunctions {
 	updateGameData: (gameData: IGameData) => Promise<void>;
 	birth: (people: number) => Promise<void>;
 	incrementTime: () => Promise<void>;
+	causeDisease: () => Promise<void>;
+	causeAlien: () => Promise<void>;
+	causeRadiation: () => Promise<void>;
+	causeMeteor: () => Promise<void>;
 }
 
 function createGameFunctions(navigator: Navigator): IGameFunctions {
@@ -23,13 +27,15 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		});
 	}
 
-	async function causeDisease(): Promise<void> {
-		const newGameData: IGameData = getGameDataClone();
-		if (!newGameData.disease) {
-			newGameData.diseaseCount += 1;
-			newGameData.disease = true;
-			await updateGameData(newGameData);
-		}
+	function createEventCause(event: "disease" | "alien" | "radiation" | "meteor"): () => Promise<void> {
+		return async (): Promise<void> => {
+			const newGameData: IGameData = getGameDataClone();
+			if (!newGameData[event]) {
+				newGameData[event + "Count"] += 1;
+				newGameData[event] = true;
+				await updateGameData(newGameData);
+			}
+		};
 	}
 
 	async function birth(newPeople: number): Promise<void> {
@@ -52,6 +58,10 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		updateGameData,
 		birth,
 		incrementTime,
+		causeDisease: createEventCause("disease"),
+		causeAlien: createEventCause("alien"),
+		causeRadiation: createEventCause("radiation"),
+		causeMeteor: createEventCause("meteor"),
 	};
 }
 
