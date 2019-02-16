@@ -2,11 +2,14 @@ import {IGameData} from "./GameData";
 import Navigator from "./Navigator";
 import * as _ from "lodash";
 import gameIncrementFunctions, {IIncrementFunction} from "./GameIncrementFunctions";
+import {GridMode, ICoordinate, sizeMap} from "./GameGrid";
 
 export interface IGameFunctions {
 	updateGameData: (gameData: IGameData) => Promise<void>;
 	birth: (people: number) => Promise<void>;
 	incrementTime: () => Promise<void>;
+	changeGridMode: (gridMode: GridMode) => Promise<void>;
+	selectTile: (coordinate: ICoordinate) => Promise<void>;
 }
 
 function createGameFunctions(navigator: Navigator): IGameFunctions {
@@ -39,10 +42,77 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		await updateGameData(newGameData);
 	}
 
+	async function changeGridMode(gridMode: GridMode): Promise<void> {
+		const newGameDate: IGameData = getGameDataClone();
+		newGameDate.gridMode = gridMode;
+		await updateGameData(newGameDate);
+	}
+
+	async function selectTile(coordinate: ICoordinate): Promise<void> {
+		const newGameData: IGameData = getGameDataClone();
+
+		function deselectChildren(): void {
+			if (newGameData.childSelection) {
+				let child: ICoordinate;
+				for (child of newGameData.childSelection) {
+					newGameData.grid[child.x][child.y].isParent = true;
+					newGameData.grid[child.x][child.y].parentNodeCoordinate = undefined;
+				}
+			}
+		}
+
+		if (newGameData.selectedTile) {
+			newGameData.grid[newGameData.selectedTile.x][newGameData.selectedTile.y].selected = false;
+			deselectChildren();
+		}
+
+		if (newGameData.selectedTile && newGameData.selectedTile.x === coordinate.x && newGameData.selectedTile.y === coordinate.y) {
+			newGameData.grid[coordinate.x][coordinate.y].selected = false;
+			newGameData.selectedTile = undefined;
+			deselectChildren();
+		} else {
+			newGameData.grid[coordinate.x][coordinate.y].selected = true;
+			newGameData.selectedTile = _.cloneDeep(coordinate);
+		}
+
+		if (newGameData.selectedTile && newGameData.buildModeObject !== undefined) {
+
+			deselectChildren();
+			const xSize: number = sizeMap[newGameData.buildModeObject].x;
+			const ySize: number = sizeMap[newGameData.buildModeObject].y;
+
+			// check for out of bounds
+			if (coordinate.x + xSize > newGameData.grid.length || coordinate.y + ySize > newGameData.grid[0].length) {
+				newGameData.grid[coordinate.x][coordinate.y].selected = false;
+				newGameData.selectedTile = undefined;
+			} else {
+				newGameData.childSelection = [];
+				let x: number;
+				let y: number;
+				for (x = 0; x < xSize; x++) {
+					for (y = 0; y < ySize; y++) {
+						if (x + y !== 0) {
+							newGameData.grid[coordinate.x + x][coordinate.y + y].parentNodeCoordinate = _.cloneDeep(coordinate);
+							newGameData.grid[coordinate.x + x][coordinate.y + y].isParent = false;
+							newGameData.childSelection.push({
+								x: coordinate.x + x,
+								y: coordinate.y + y,
+							});
+						}
+					}
+				}
+			}
+		}
+
+		await updateGameData(newGameData);
+	}
+
 	return {
 		updateGameData,
 		birth,
 		incrementTime,
+		changeGridMode,
+		selectTile,
 	};
 }
 

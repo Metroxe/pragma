@@ -1,8 +1,9 @@
 import Container, {IContainerProps, IContainerState} from "../Container";
 import {ReactNode} from "react";
-import {Dimensions, ScrollView, StyleSheet, TouchableOpacity, View, ViewStyle} from "react-native";
+import {Dimensions, ScrollView, StyleSheet, TouchableOpacity, View, ViewStyle, Text} from "react-native";
 import * as React from "react";
-import {ITile} from "../../services/GameGrid";
+import {ICoordinate, ITile} from "../../services/GameGrid";
+import * as _ from "lodash";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -13,27 +14,26 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			borderWidth: 2,
 			opacity: 0.7,
 		},
+		scrollViewStyle: {
+			flex: 1,
+			flexDirection: "row",
+		},
 	});
 
 	constructor(props: IContainerProps) {
 		super(props);
 		this.state = {
 			...this.state,
-			tileHeight: Dimensions.get("window").height / props.gameData.grid[0].length,
-			tileWidth:  Dimensions.get("window").width / props.gameData.grid.length,
+			tileHeight: (Dimensions.get("screen").height) / props.gameData.grid.length,
+			tileWidth:  (Dimensions.get("screen").width) / props.gameData.grid[0].length,
 		};
 		this.createTile = this.createTile.bind(this);
-		this.createRow = this.createRow.bind(this);
-		this.tileOnPress = this.tileOnPress.bind(this);
-	}
-
-	private tileOnPress(tile: ITile): void {
-		alert(tile.coordinate.x + "," + tile.coordinate.y);
+		this.createColumn = this.createColumn.bind(this);
 	}
 
 	private createTile(tile: ITile): ReactNode {
 		const onPress: () => void = (): void => {
-			this.tileOnPress(tile);
+			this.props.gameFunctions.selectTile(tile.coordinate).then();
 		};
 
 		return (
@@ -43,18 +43,21 @@ export default class Grid extends Container<IGridProps, IGridState> {
 					{
 						width: this.state.tileWidth,
 						height: this.state.tileHeight,
+						borderColor: _.isEqual(this.props.gameData.selectedTile, tile) && "green",
 					},
 				]}
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
-			/>
+			>
+				<Text>{JSON.stringify(tile, null, 2)}</Text>
+			</TouchableOpacity>
 		);
 	}
 
-	private createRow(tileArray: ITile[]): ReactNode {
+	private createColumn(tileArray: ITile[]): ReactNode {
 		return (
 			<View
-				key={tileArray[0].coordinate.y}
+				key={tileArray[0].coordinate.x}
 			>
 				{tileArray.map(this.createTile)}
 			</View>
@@ -63,8 +66,13 @@ export default class Grid extends Container<IGridProps, IGridState> {
 
 	public render(): ReactNode {
 		return (
-			<ScrollView horizontal={true}>
-				{this.props.gameData.grid.map(this.createRow)}
+			<ScrollView>
+				<ScrollView
+					horizontal={true}
+					style={Grid.style.scrollViewStyle}
+				>
+					{this.props.gameData.grid.map(this.createColumn)}
+				</ScrollView>
 			</ScrollView>
 		);
 	}
@@ -72,6 +80,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 
 interface IStyle {
 	tileStyle: ViewStyle;
+	scrollViewStyle: ViewStyle;
 }
 
 export interface IGridProps extends IContainerProps {
@@ -81,4 +90,5 @@ export interface IGridProps extends IContainerProps {
 export interface IGridState extends IContainerState {
 	tileHeight: number;
 	tileWidth: number;
+	selectedTile?: ICoordinate;
 }
