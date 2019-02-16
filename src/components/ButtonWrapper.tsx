@@ -3,7 +3,6 @@ import * as React from "react";
 import {TouchableOpacity, View} from "react-native";
 import EnhancedComponent from "./EnhancedComponent";
 
-
 abstract class ButtonWrapper<P extends IButtonWrapperProps, S extends IButtonWrapperState> extends EnhancedComponent<P, S> {
 
 	public static defaultProps: IButtonWrapperProps = {
