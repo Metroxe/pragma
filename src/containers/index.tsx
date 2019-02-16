@@ -1,4 +1,5 @@
-import TestScreen, {TestScreen2} from "./Screens/TestScreen";
+import TestScreen from "./Screens/TestScreen";
+import Grid from "./Screens/Grid";
 
 export interface IContainerSet {
 	[key: string]: any;
@@ -6,7 +7,7 @@ export interface IContainerSet {
 
 const containerSet: IContainerSet = {
 	TestScreen,
-	TestScreen2,
+	Grid,
 };
 
 export default containerSet;

@@ -1,6 +1,10 @@
+import {IGrid} from "./GameGrid";
+import defaultGrid from "./GameGrid";
+
 export interface IGameData {
 	population: number;
 	time: number;
+	grid: IGrid;
 }
 
 export interface IPrice {
@@ -13,6 +17,7 @@ export interface IPrice {
 const defaultGameData: IGameData = {
 	population: 100,
 	time: 0,
+	grid: defaultGrid,
 };
 
 export default defaultGameData;
