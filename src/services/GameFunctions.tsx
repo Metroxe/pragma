@@ -41,6 +41,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			}
 		};
 	}
+
 	function changeTechnology(technology: "hospital" | "weapon" | "greenHouse" | "safeHouse", count: number): () => Promise<void> {
 		return async (): Promise<void> => {
 			const newGameData: IGameData = getGameDataClone();
