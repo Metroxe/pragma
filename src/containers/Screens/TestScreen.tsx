@@ -8,35 +8,11 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	public render(): ReactNode {
 		return (
 			<View>
-<<<<<<< Updated upstream
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-				<Text>{this.props.gameData.time}</Text>
-=======
-				<TabNavigator
-					tabOptions={["test 1", "test 2", "test 3"]}
-					currentPage={null}
-				/>
+				{/*<TabNavigator*/}
+					{/*tabOptions={["test 1", "test 2", "test 3"]}*/}
+					{/*currentPage={null}*/}
+				{/*/>*/}
 				<Text>Test Screen 1</Text>
->>>>>>> Stashed changes
 			</View>
 		);
 	}

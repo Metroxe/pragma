@@ -1,4 +1,6 @@
 import TestScreen, {TestScreen2} from "./Screens/TestScreen";
+import ShopScreen from "./Screens/ShopScreen";
+import AllocatePeopleScreen from "./Screens/AllocatePeopleScreen";
 
 export interface IContainerSet {
 	[key: string]: any;
@@ -7,6 +9,8 @@ export interface IContainerSet {
 const containerSet: IContainerSet = {
 	TestScreen,
 	TestScreen2,
+	ShopScreen,
+	AllocatePeopleScreen,
 };
 
 export default containerSet;

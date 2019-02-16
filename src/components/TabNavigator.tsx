@@ -2,42 +2,73 @@ import * as React from "react";
 import {ReactNode} from "react";
 import {StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
+import {IContainerSet} from "../containers";
 
 export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
-		MainContainer: {
+		mainContainer: {
 			width: "100%",
-			display: "flex",
+			// display: "flex",
 			flexDirection: "row",
+			height: 60,
+			backgroundColor: "purple",
 		},
+		individualButton: {
+			flex: 1,
+			alignItems: "center",
+			justifyContent: "center",
+			height: "100%",
+			backgroundColor: "green",
+		}
 	});
 
 	constructor(props: ITabNavigatorProps) {
 		super(props);
-		this.test = this.test.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
-	private test(): void {
-		alert("hello");
+	private handleClick(newPage: string): () => void {
+
+		const that: TabNavigator = this;
+
+		return (): void => {
+
+		// alert("hello");
+			that.props.navigate(newPage).then();
+		}
 	}
 
 	public render(): ReactNode {
-		const tabOptions: any = this.props.tabOptions.map((arr, index) => {
+		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index) => {
 			return (
-				<TouchableOpacity key={"tabOption" + index} onPress={this.test} style={{flex: 1, height: 100, backgroundColor: "blue"}}><Text>{arr}</Text></TouchableOpacity>
-				)});
+				<TouchableOpacity
+					key={"tabOption" + index}
+					onPress={this.handleClick(item.pageString)}
+					style={TabNavigator.style.individualButton}
+					activeOpacity={0.75}
+				>
+					<Text>{item.displayString}</Text>
+				</TouchableOpacity>
+			);
+		});
+
 		return (
-			<View style={TabNavigator.style.MainContainer}>
+			<View style={TabNavigator.style.mainContainer}>
 				{tabOptions}
 			</View>
 		)
 	}
 }
 
+export interface IPagePackager {
+	pageString: string;
+	displayString: string;
+}
+
 export interface ITabNavigatorProps extends IEnhancedComponentsProps {
-	tabOptions: any[];
-	currentPage: () => Promise<string>;
+	tabOptions: IPagePackager[];
+	navigate: (page: keyof IContainerSet) => Promise<void>;
 
 }
 
@@ -46,5 +77,6 @@ export interface ITabNavigatorState extends IEnhancedComponentsProps {
 }
 
 interface IStyle {
-	MainContainer: ViewStyle;
+	mainContainer: ViewStyle;
+	individualButton: ViewStyle;
 }
