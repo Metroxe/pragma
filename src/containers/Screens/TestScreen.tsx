@@ -10,7 +10,9 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 		return (
 			<View>
 				<Text>Test Screen 1</Text>
-				<ImageOptionComponent/>
+				<ImageOptionComponent
+					renderElement={[{label: "something", image: "https://facebook.github.io/react-native/docs/assets/favicon.png"},{label: "something", image: "https://facebook.github.io/react-native/docs/assets/favicon.png"}]}
+				/>
 			</View>
 		);
 	}

@@ -59,7 +59,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 					}
 
 					<Header
-						title={Container.pagesArray[Container.pagesArray.findIndex((property: IPagePackager) => property.pageString === this.props.currentPage.toString())].displayString}
+						title={"Spencer Will Replace Me Later!"}
 					/>
 
 					<View

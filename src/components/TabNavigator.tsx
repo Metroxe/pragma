@@ -41,6 +41,12 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 
 	public render(): ReactNode {
 		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index) => {
+
+			let displayString: string = "";
+			if (item && item.displayString) {
+				displayString = item.displayString;
+			}
+
 			return (
 				<TouchableOpacity
 					key={"tabOption" + index}
@@ -48,7 +54,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 					style={TabNavigator.style.individualButton}
 					activeOpacity={0.75}
 				>
-					<Text>{item.displayString}</Text>
+					<Text>{displayString}</Text>
 				</TouchableOpacity>
 			);
 		});
