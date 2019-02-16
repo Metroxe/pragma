@@ -1,3 +1,6 @@
+import {IGrid} from "./GameGrid";
+import defaultGrid from "./GameGrid";
+
 export interface IGameData {
 	population: number;
 	time: number;
@@ -30,6 +33,7 @@ export interface IGameData {
 	MinePrice: IPrice;
 	SmeltingPrice: IPrice;
 	FactoryPrice: IPrice;
+	grid: IGrid;
 }
 
 export interface IPrice {
@@ -136,6 +140,7 @@ const defaultGameData: IGameData = {
 		food: 0,
 		metal: 0,
 	},
+	grid: defaultGrid,
 };
 
 export default defaultGameData;
