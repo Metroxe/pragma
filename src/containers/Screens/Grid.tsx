@@ -33,7 +33,10 @@ export default class Grid extends Container<IGridProps, IGridState> {
 
 	private createTile(tile: ITile): ReactNode {
 		const onPress: () => void = (): void => {
-			this.props.gameFunctions.selectTile(tile.coordinate).then();
+			const that: Grid = this;
+			this.props.gameFunctions.selectTile(tile.coordinate).then(
+				that.props.gameFunctions.buildOnTile,
+			);
 		};
 
 		return (

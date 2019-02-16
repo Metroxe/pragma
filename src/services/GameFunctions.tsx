@@ -16,6 +16,7 @@ export interface IGameFunctions {
 	changeWeapon: () => Promise<void>;
 	changeGreenHouse: () => Promise<void>;
 	changeSafeHouse: () => Promise<void>;
+	buildOnTile: () => Promise<void>;
 	changeGridMode: (gridMode: GridMode) => Promise<void>;
 	selectTile: (coordinate: ICoordinate) => Promise<void>;
 }
@@ -92,6 +93,10 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			}
 		}
 
+		function undo(): void {
+
+		}
+
 		if (newGameData.selectedTile) {
 			newGameData.grid[newGameData.selectedTile.x][newGameData.selectedTile.y].selected = false;
 			deselectChildren();
@@ -141,7 +146,16 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 	async function buildOnTile(): Promise<void> {
 		const newGameData: IGameData = getGameDataClone();
 		if (newGameData.selectedTile) {
-
+			const x: number = newGameData.selectedTile.x;
+			const y: number = newGameData.selectedTile.y;
+			newGameData.grid[x][y].entity = newGameData.buildModeObject;
+			if (newGameData.childSelection) {
+				let child: ICoordinate;
+				for (child of newGameData.childSelection) {
+					newGameData.grid[child.x][child.y].entity = newGameData.buildModeObject;
+				}
+			}
+			await updateGameData(newGameData);
 		}
 	}
 

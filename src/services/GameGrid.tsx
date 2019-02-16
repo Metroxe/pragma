@@ -1,5 +1,6 @@
 export enum Entity {
 	OBSTRUCTED,
+	UNOBSTRUCTED,
 	HOSPITAL,
 }
 
