@@ -11,6 +11,10 @@ export interface IGameFunctions {
 	causeAlien: () => Promise<void>;
 	causeRadiation: () => Promise<void>;
 	causeMeteor: () => Promise<void>;
+	changeHospital: () => Promise<void>;
+	changeWeapon: () => Promise<void>;
+	changeGreenHouse: () => Promise<void>;
+	changeSafeHouse: () => Promise<void>;
 }
 
 function createGameFunctions(navigator: Navigator): IGameFunctions {
@@ -35,6 +39,17 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 				newGameData[event] = true;
 				await updateGameData(newGameData);
 			}
+		};
+	}
+	function changeTechnology(technology: "hospital" | "weapon" | "greenHouse" | "safeHouse", count: number): () => Promise<void> {
+		return async (): Promise<void> => {
+			const newGameData: IGameData = getGameDataClone();
+			if (count >= 0) {
+				newGameData[technology + "Count"] += count;
+			} else if (count < 0) {
+				newGameData[technology + "Count"] -= count;
+			}
+			await updateGameData(newGameData);
 		};
 	}
 
@@ -62,6 +77,10 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		causeAlien: createEventCause("alien"),
 		causeRadiation: createEventCause("radiation"),
 		causeMeteor: createEventCause("meteor"),
+		changeHospital: changeTechnology("hospital", 1),
+		changeWeapon: changeTechnology("weapon", 1),
+		changeGreenHouse: changeTechnology("greenHouse", 1),
+		changeSafeHouse: changeTechnology("safeHouse", 1),
 	};
 }
 
