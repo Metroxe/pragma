@@ -83,8 +83,10 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			if (newGameData.childSelection) {
 				let child: ICoordinate;
 				for (child of newGameData.childSelection) {
-					newGameData.grid[child.x][child.y].isParent = true;
-					newGameData.grid[child.x][child.y].parentNodeCoordinate = undefined;
+					if (!newGameData.grid[child.x][child.y].occupied) {
+						newGameData.grid[child.x][child.y].isParent = true;
+						newGameData.grid[child.x][child.y].parentNodeCoordinate = undefined;
+					}
 				}
 			}
 		}
