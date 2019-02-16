@@ -8,8 +8,8 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 	public static defaultProps: IShopItemComponentProps = {
 		itemTitle: "Title",
 		itemDescription: "Description",
-		pragmaPrice: 0,
-		metalPrice: 0,
+		pragmaPrice: 69,
+		metalPrice: 420,
 	};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -24,14 +24,17 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 			textAlign: "center",
 			fontSize: 28,
 			color: "#111228",
+			fontFamily: "Anchor",
 		},
 		descriptionContainer: {
 
 		},
 		descriptionStyle: {
 			textAlign: "center",
-			fontSize: 14,
+			fontSize: 18,
 			color: "#111228",
+			fontFamily: "Anchor",
+
 		},
 		costContainer: {
 			marginTop: 10,
@@ -43,9 +46,13 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 		currencyIconContainer: {
 			flex: 5,
 			height: 45,
+			alignItems: "center",
+			justifyContent: "center",
 		},
 		currencyCostTextContainer: {
 			flex: 5,
+			alignItems: "flex-end",
+			justifyContent: "center",
 		},
 		currencyImageStyle: {
 			height: "100%",
@@ -54,6 +61,7 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 		currencyCostText: {
 			fontSize: 32,
 			color: "#B1336B",
+			fontFamily: "Anchor",
 		},
 	});
 

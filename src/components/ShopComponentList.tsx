@@ -45,7 +45,7 @@ export default class ShopComponentList extends EnhancedComponent<IShopComponentL
 	}
 
 	public render(): ReactNode {
-		const prices: ReactNode = this.createListOfPrices([1, 2, 3, 4, 5]);
+		const prices: ReactNode = this.createListOfPrices([1, 2, 3, 4, 5, 1, 2, 3, 4, 5]);
 
 		return (
 			<ScrollView>
