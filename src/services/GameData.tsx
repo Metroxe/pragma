@@ -1,4 +1,5 @@
 import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
+import {SoundEffect} from "./sound";
 
 export interface IGameData {
 	previousDay: any;
@@ -31,6 +32,7 @@ export interface IGameData {
 	[Entity.VAULT]: IEntityTracking;
 	[Entity.WINDMILL]: IEntityTracking;
 	[Entity.REACTOR]: IEntityTracking;
+	music: SoundEffect;
 }
 
 export interface IPrice {
@@ -78,6 +80,7 @@ const defaultGameData: IGameData = {
 	alienCount: 0,
 	radiationCount: 0,
 	meteorCount: 0,
+	music: undefined,
 } as IGameData;
 
 // TODO make default values for random buildings. if any are missed, this loop will assign the missed buildings with default values

@@ -46,6 +46,10 @@
 		7909B1512219422400650E7F /* hammerConstruction.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14C2219422400650E7F /* hammerConstruction.wav */; };
 		7909B1522219422400650E7F /* selectClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14D2219422400650E7F /* selectClick.wav */; };
 		7909B1532219422400650E7F /* successfulHarvest.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14E2219422400650E7F /* successfulHarvest.wav */; };
+		798017E32219EE5200AC36C8 /* BGMedium.wav in Resources */ = {isa = PBXBuildFile; fileRef = 798017B82219EE5100AC36C8 /* BGMedium.wav */; };
+		798017E42219EE5200AC36C8 /* BGSlow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 798017E12219EE5100AC36C8 /* BGSlow.wav */; };
+		798017E52219EE5200AC36C8 /* BGFast.wav in Resources */ = {isa = PBXBuildFile; fileRef = 798017E22219EE5200AC36C8 /* BGFast.wav */; };
+		798017E62219EFDC00AC36C8 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7909B1492219418A00650E7F /* libRNSound.a */; };
 		7FD1F871B9CD4C559F02A497 /* Anchor-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DA9CB676804BAAAF797D25 /* Anchor-Black.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -399,6 +403,9 @@
 		7909B14C2219422400650E7F /* hammerConstruction.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = hammerConstruction.wav; path = ../sound/hammerConstruction.wav; sourceTree = "<group>"; };
 		7909B14D2219422400650E7F /* selectClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = selectClick.wav; path = ../sound/selectClick.wav; sourceTree = "<group>"; };
 		7909B14E2219422400650E7F /* successfulHarvest.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = successfulHarvest.wav; path = ../sound/successfulHarvest.wav; sourceTree = "<group>"; };
+		798017B82219EE5100AC36C8 /* BGMedium.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = BGMedium.wav; path = ../sound/BGMedium.wav; sourceTree = "<group>"; };
+		798017E12219EE5100AC36C8 /* BGSlow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = BGSlow.wav; path = ../sound/BGSlow.wav; sourceTree = "<group>"; };
+		798017E22219EE5200AC36C8 /* BGFast.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = BGFast.wav; path = ../sound/BGFast.wav; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		851426C3323541D2B7330074 /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		A49BC45A173B4AD39DFC4572 /* Anchor-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Anchor-Medium.ttf"; path = "../assets/fonts/Anchor-Medium.ttf"; sourceTree = "<group>"; };
@@ -423,6 +430,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				798017E62219EFDC00AC36C8 /* libRNSound.a in Frameworks */,
 				485819C6221886A900C89105 /* libBVLinearGradient.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -682,6 +690,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				798017E22219EE5200AC36C8 /* BGFast.wav */,
+				798017B82219EE5100AC36C8 /* BGMedium.wav */,
+				798017E12219EE5100AC36C8 /* BGSlow.wav */,
 				7909B14B2219422400650E7F /* gameOver.wav */,
 				7909B14C2219422400650E7F /* hammerConstruction.wav */,
 				7909B14D2219422400650E7F /* selectClick.wav */,
@@ -1227,10 +1238,13 @@
 			files = (
 				7909B14F2219422400650E7F /* winSound.wav in Resources */,
 				7909B1502219422400650E7F /* gameOver.wav in Resources */,
+				798017E32219EE5200AC36C8 /* BGMedium.wav in Resources */,
 				7909B1512219422400650E7F /* hammerConstruction.wav in Resources */,
 				7909B1522219422400650E7F /* selectClick.wav in Resources */,
+				798017E52219EE5200AC36C8 /* BGFast.wav in Resources */,
 				7909B1532219422400650E7F /* successfulHarvest.wav in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				798017E42219EE5200AC36C8 /* BGSlow.wav in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				7FD1F871B9CD4C559F02A497 /* Anchor-Black.ttf in Resources */,
 				E2995259AD144D239C1AC49E /* Anchor-Bold.ttf in Resources */,
@@ -1269,7 +1283,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
