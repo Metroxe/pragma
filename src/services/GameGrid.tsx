@@ -6,6 +6,10 @@ export enum Entity {
 	HOSPITAL,
 	WINDMILL,
 	WEAPON,
+	GREENHOUSE,
+	VAULT,
+	REACTOR,
+	PYLON,
 }
 
 export enum GridMode {
