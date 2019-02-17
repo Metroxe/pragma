@@ -50,8 +50,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		super(props);
 		this.state = {
 			...this.state,
-			tileHeight: 1186 / PixelRatio.get() / 3,
-			tileWidth: 1186 / PixelRatio.get() / 3,
+			tileHeight: 1186 / PixelRatio.get() / 4,
+			tileWidth: 1186 / PixelRatio.get() / 4,
 		};
 		this.headerTitle = "Map";
 
@@ -63,7 +63,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		const onPress: () => void = (): void => {
 			const that: Grid = this;
 			this.props.gameFunctions.selectTile(tile.coordinate)
-				.then(that.props.gameFunctions.buildOnTile)
+				.then(that.props.gameFunctions.buildOnTile);
 		};
 
 		let borderColor: string = "transparent";
@@ -87,6 +87,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
+				<Text style={{color: "white"}}>{tile.coordinate.x + "," + tile.coordinate.y}</Text>
 				{
 					buildingMap[tile.entity] ? (
 						<View>
