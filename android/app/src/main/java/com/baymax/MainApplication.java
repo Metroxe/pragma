@@ -3,11 +3,8 @@ package com.baymax;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-<<<<<<< HEAD
 import com.zmxv.RNSound.RNSoundPackage;
-=======
 import com.BV.LinearGradient.LinearGradientPackage;
->>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -29,11 +26,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-<<<<<<< HEAD
-            new RNSoundPackage()
-=======
+              new RNSoundPackage(),
           new LinearGradientPackage()
->>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
       );
     }
 
