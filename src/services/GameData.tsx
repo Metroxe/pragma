@@ -52,6 +52,7 @@ export interface IEntityTracking {
 	description: string;
 	resourceGenerator: boolean;
 	entityKey: Entity;
+	image?: any;
 }
 
 export interface IIndividualLocation {
@@ -126,6 +127,7 @@ defaultGameData[Entity.HOSPITAL] = {
 	title: "Hospital",
 	description: "Prevents the spread of disease",
 	resourceGenerator: false,
+	image: require("../../assets/buildings/safety_hospital.png"),
 };
 
 defaultGameData[Entity.WEAPON] = {
@@ -145,6 +147,7 @@ defaultGameData[Entity.WEAPON] = {
 	title: "Weapon Institute",
 	description: "Defends against alien attack",
 	resourceGenerator: false,
+	image: require("../../assets/buildings/safety_weapon.png"),
 };
 
 defaultGameData[Entity.GREENHOUSE] = {
@@ -164,6 +167,7 @@ defaultGameData[Entity.GREENHOUSE] = {
 	title: "Greenhouse",
 	description: "Houses food stores",
 	resourceGenerator: false,
+	image: require("../../assets/buildings/safety_greenhouse.png"),
 };
 
 defaultGameData[Entity.VAULT] = {
@@ -183,6 +187,7 @@ defaultGameData[Entity.VAULT] = {
 	title: "VAULT",
 	description: "A place to put your resources",
 	resourceGenerator: false,
+	image: require("../../assets/buildings/safety_bank.png"),
 };
 
 defaultGameData[Entity.WINDMILL] = {
@@ -202,6 +207,7 @@ defaultGameData[Entity.WINDMILL] = {
 	title: "VAULT",
 	description: "A place to put your resources",
 	resourceGenerator: true,
+	image: require("../../assets/buildings/energy_windmill.png"),
 };
 
 defaultGameData[Entity.REACTOR] = {
@@ -221,6 +227,7 @@ defaultGameData[Entity.REACTOR] = {
 	title: "VAULT",
 	description: "A place to put your resources",
 	resourceGenerator: true,
+	image: require("../../assets/buildings/energy_nuclear.png"),
 };
 
 defaultGameData[Entity.PYLON] = {
@@ -240,6 +247,7 @@ defaultGameData[Entity.PYLON] = {
 	title: "VAULT",
 	description: "A place to put your resources",
 	resourceGenerator: true,
+	image: require("../../assets/buildings/energy_crystal.png"),
 };
 
 
@@ -260,6 +268,7 @@ defaultGameData[Entity.PYLON] = {
 	title: "VAULT",
 	description: "A place to put your resources",
 	resourceGenerator: true,
+	image: require("../../assets/buildings/safety_hospital.png"),
 };
 
 
