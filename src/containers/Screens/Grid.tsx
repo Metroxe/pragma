@@ -53,6 +53,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			tileHeight: 1186 / PixelRatio.get() / 3,
 			tileWidth: 1186 / PixelRatio.get() / 3,
 		};
+		this.headerTitle = "Map";
+
 		this.createTile = this.createTile.bind(this);
 		this.createColumn = this.createColumn.bind(this);
 	}
