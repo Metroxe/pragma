@@ -5,6 +5,7 @@ import Grid from "./Screens/Grid";
 import StartScreen from "./Screens/StartScreen";
 import TitleScreen from "./Screens/TitleScreen";
 import HowToPlayScreen from "./Screens/HowToPlayScreen";
+import CreditsScreen from "./Screens/CreditsScreen";
 
 export interface IContainerSet {
 	[key: string]: any;
@@ -18,6 +19,7 @@ const containerSet: IContainerSet = {
 	StartScreen,
 	TitleScreen,
 	HowToPlayScreen,
+	CreditsScreen,
 };
 
 export default containerSet;
