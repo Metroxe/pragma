@@ -7,7 +7,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 
 	public static defaultProps: IHeaderProps = {
 		title: "HEADER",
-		bgColor: "green",
+		bgColor: "#111228",
 	};
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -15,6 +15,9 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			width: "100%",
 			alignItems: "center",
 			justifyContent: "center",
+			// borderBottomStartRadius: 20,
+			// borderBottomEndRadius: 20,
+			backgroundColor: "transparent",
 		},
 		headerTextStyle: {
 			color: "white",
