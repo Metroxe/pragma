@@ -3,7 +3,7 @@ import * as React from "react";
 import {View, Text, TextStyle, StyleSheet, Image} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import SilverModalButton from "../SilverModalButton";
-import TitleScreen from "../../containers/Screens/TitleScreen";
+import StartScreen from "../../containers/Screens/StartScreen";
 
 export default class CreditsInitialModalContent extends EnhancedComponent<ICreditsInitialModalContentProps, ICreditsInitialModalContentState> {
 
@@ -77,6 +77,11 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 		};
 
 		this.generateCreditsReactNodes = this.generateCreditsReactNodes.bind(this);
+		this.btnCallback = this.btnCallback.bind(this);
+	}
+
+	public btnCallback(callback: () => void): void {
+		this.props.startScreen.navigateFromModal("menu")(callback);
 	}
 
 	public generateCreditsReactNodes(): ReactNode {
@@ -139,7 +144,7 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 }
 
 export interface ICreditsInitialModalContentProps extends IEnhancedComponentsProps {
-
+	startScreen: StartScreen;
 }
 
 export interface ICreditsInitialModalContentState extends IEnhancedComponentsState {

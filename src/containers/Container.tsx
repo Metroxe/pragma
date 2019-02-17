@@ -7,6 +7,7 @@ import {IGameFunctions} from "../services/GameFunctions";
 import {ISound} from "../services/sound";
 import {IPagePackager, TabNavigator} from "../components/TabNavigator";
 import {Header} from "../components/Header";
+import ResourceStats from "../components/ResourceStats";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
@@ -39,6 +40,11 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			padding: 40,
 			width: "95%",
 		},
+		resourceStats: {
+			position: "absolute",
+			left: 10,
+			top: 30,
+		},
 	});
 
 	private static pagesArray: IPagePackager[] = [
@@ -64,6 +70,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 
 	protected showHeader: boolean = true;
 	protected showNav: boolean = true;
+	protected showResources: boolean = true;
 
 	constructor(props: P) {
 		super(props);
@@ -132,6 +139,12 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 						navigate={this.props.navigate}
 						changePopUp={this.props.changePopUp}
 					/>
+					}
+
+					{this.showResources &&
+						<View style={Container.containerStyle.resourceStats}>
+							<ResourceStats gameData={this.props.gameData}/>
+						</View>
 					}
 				</View>
 			);

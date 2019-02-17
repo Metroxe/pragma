@@ -26,11 +26,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			bottom: TabNavigator.navBarHeight + 50,
 			alignSelf: "center",
 		},
-		resourceStats: {
-			position: "absolute",
-			left: 10,
-			top: 30,
-		},
 	});
 
 	public static timeIncrement: number = 1000;
@@ -38,7 +33,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "Grid",
+		currentContainer: "StartScreen",
 		gameData: defaultGameData,
 		popUpKey: undefined,
 	};
@@ -127,12 +122,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
 				{this.determinePopUp()}
-				{
-					this.state.popUpKey === undefined ?
-					<View style={Navigator.style.resourceStats}>
-						<ResourceStats gameData={this.state.gameData}/>
-					</View> : null
-				}
 			</View>
 		);
 	}

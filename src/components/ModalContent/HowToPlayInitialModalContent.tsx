@@ -3,7 +3,7 @@ import * as React from "react";
 import {View, Text, TextStyle, StyleSheet, Image} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import SilverModalButton from "../SilverModalButton";
-import TitleScreen from "../../containers/Screens/TitleScreen";
+import StartScreen from "../../containers/Screens/StartScreen";
 
 export default class HowToPlayInitialModalContent extends EnhancedComponent<IHowToPlayInitialModalContentProps, IHowToPlayInitialModalContentState> {
 
@@ -44,7 +44,7 @@ export default class HowToPlayInitialModalContent extends EnhancedComponent<IHow
 	}
 
 	public btnCallback(callback: () => void): void {
-		callback();
+		this.props.startScreen.navigateFromModal("menu")(callback);
 	}
 
 	public render(): ReactNode {
@@ -61,7 +61,7 @@ export default class HowToPlayInitialModalContent extends EnhancedComponent<IHow
 }
 
 export interface IHowToPlayInitialModalContentProps extends IEnhancedComponentsProps {
-
+	startScreen: StartScreen;
 }
 
 export interface IHowToPlayInitialModalContentState extends IEnhancedComponentsState {
