@@ -3,6 +3,7 @@ import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
 export interface IGameData {
 	population: number;
 	time: number;
+	maxTime: number;
 	grid: IGrid;
 	gridMode: GridMode;
 	buildModeObject: Entity;
@@ -48,6 +49,7 @@ export interface IIndividualLocation {
 const defaultGameData: IGameData = {
 	population: 100,
 	time: 0,
+	maxTime: 100,
 	grid: defaultGrid,
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,

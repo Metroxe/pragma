@@ -3,6 +3,7 @@ import * as React from "react";
 import {View, Text, StyleSheet, Image} from "react-native";
 import EnhancedComponents, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
 import CountDisplay from "./CountDisplay";
+import {IGameData} from "../services/GameData";
 
 export default class ResourceStats extends EnhancedComponents<IResourceStatsProps, IResourceStatsState> {
 
@@ -16,7 +17,7 @@ export default class ResourceStats extends EnhancedComponents<IResourceStatsProp
 	public static defaultProps: IResourceStatsProps = {
 	};
 
-	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
+	public static style: StyleSheet.NamedStyles<any> = StyleSheet.create<any>({
 		resourceStats: {
 			height: 164,
 			width: 130,
@@ -62,23 +63,20 @@ export default class ResourceStats extends EnhancedComponents<IResourceStatsProp
 	public render(): ReactNode {
 		return (
 			<View style={ResourceStats.style.resourceStats}>
-				<View style={ResourceStats.style.resourceStatsRow}><Text style={[ResourceStats.style.resourceStatsText, ResourceStats.style.resourceStatsLeft]}>YEARS LEFT</Text><CountDisplay style={ResourceStats.style.countDisplay} textStyle={ResourceStats.style.countDisplayText} count={100} /></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.pragma} /></View><CountDisplay count={230}/></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.food} /></View><CountDisplay count={230}/></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.people} /></View><CountDisplay count={230}/></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.metal} /></View><CountDisplay count={230}/></View>
+				<View style={ResourceStats.style.resourceStatsRow}><Text style={[ResourceStats.style.resourceStatsText, ResourceStats.style.resourceStatsLeft]}>YEARS LEFT</Text><CountDisplay style={ResourceStats.style.countDisplay} textStyle={ResourceStats.style.countDisplayText} count={this.props.gameData.maxTime - this.props.gameData.time} /></View>
+				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.pragma} /></View><CountDisplay count={this.props.gameData.pragma}/></View>
+				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.food} /></View><CountDisplay count={this.props.gameData.food}/></View>
+				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.people} /></View><CountDisplay count={this.props.gameData.people}/></View>
+				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.metal} /></View><CountDisplay count={this.props.gameData.metal}/></View>
 			</View>
 		);
 	}
 }
 
 export interface IResourceStatsProps extends IEnhancedComponentsProps {
-
+	gameData: IGameData;
 }
 
 export interface IResourceStatsState extends IEnhancedComponentsState {
 
-}
-
-interface IStyle {
 }

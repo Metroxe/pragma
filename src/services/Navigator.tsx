@@ -9,7 +9,8 @@ import makeSound, {ISound} from "./sound";
 import GoodModal from "../components/GoodModal";
 import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
-import ShopComponentList from "../components/ShopComponentList";
+import ResourceStats from "../components/ResourceStats";
+import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -23,6 +24,11 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			width: "95%",
 			bottom: TabNavigator.navBarHeight + 50,
 			alignSelf: "center",
+		},
+		resourceStats: {
+			position: "absolute",
+			left: 10,
+			top: 30,
 		},
 	});
 
@@ -106,7 +112,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 
 		switch (this.state.popUpKey) {
 			case("shop"):
-				return createPopUp(<ShopComponentList/>);
+				return createPopUp(<ShopComponentItemList/>);
 			case("allocation"):
 				return createPopUp(<View/>);
 			default:
@@ -120,6 +126,9 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
 				{this.determinePopUp()}
+				<View style={Navigator.style.resourceStats}>
+					<ResourceStats gameData={this.state.gameData}/>
+				</View>
 			</View>
 		);
 	}
@@ -128,6 +137,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 interface IStyle {
 	topView: ViewStyle;
 	goodModal: ViewStyle;
+	resourceStats: ViewStyle;
 }
 
 interface INavigatorProps {
