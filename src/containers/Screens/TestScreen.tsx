@@ -16,6 +16,8 @@ import PeopleAllocationItemList from "../../components/ShopAndPeopleAllocation/P
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
 
 	public async componentDidMount(): Promise<void> {
+		// await this.props.gameMusic[SoundEffect.BGSLOW]();
+		// await this.props.gameMusic[SoundEffect.BGFAST]();
 		// await this.props.gameMusic[SoundEffect.WIN]();
 		// await this.props.gameMusic[SoundEffect.GG]();
 		// await this.props.gameMusic[SoundEffect.CLICK]();

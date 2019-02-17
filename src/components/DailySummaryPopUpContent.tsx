@@ -1,4 +1,4 @@
-import EnhancedComponent from "./EnhancedComponent";
+import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
 import {ReactNode} from "react";
 import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import * as React from "react";
@@ -27,11 +27,11 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 		this.handleClose = this.handleClose.bind(this);
 	}
 
-	private handleClose(callback: () => void): void {
+	private handleClose(): void {
 		// TODO hook up @Raymond
-		callback();
+		// callback();
 
-		this.props.closeModal(callback);
+		this.props.closeModal();
 	}
 
 	public render(): ReactNode {
@@ -59,10 +59,10 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 }
 
 export interface IDailySummaryPopUpContentProps {
-	closeModal: (callback: () => void) => void;
+	closeModal: () => void;
 }
 
-export interface IDailySummaryPopUpContentState {
+export interface IDailySummaryPopUpContentState extends IEnhancedComponentsState {
 
 }
 

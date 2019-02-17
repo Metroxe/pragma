@@ -1,4 +1,4 @@
-import {IGameData} from "./GameData";
+import {IEntityTracking, IGameData} from "./GameData";
 import Navigator from "./Navigator";
 import * as _ from "lodash";
 import gameIncrementFunctions, {IIncrementFunction} from "./GameIncrementFunctions";
@@ -153,7 +153,11 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			if (newGameData.grid[x][y].occupied === false) {
 				newGameData.grid[x][y].occupied = true;
 				newGameData.grid[x][y].entity = newGameData.buildModeObject;
-				newGameData[newGameData.buildModeObject].count ++;
+				(newGameData[newGameData.buildModeObject] as IEntityTracking).count ++;
+				(newGameData[newGameData.buildModeObject] as IEntityTracking).individualLocations.push({
+					location: {x, y},
+					allocatedPeople: 0,
+				});
 				if (newGameData.childSelection) {
 					let child: ICoordinate;
 					for (child of newGameData.childSelection) {
@@ -164,7 +168,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 					}
 				}
 			}
-
+			newGameData.selectedTile = undefined;
 			await updateGameData(newGameData);
 		}
 	}

@@ -129,14 +129,11 @@ export interface IShopComponentItemState extends IButtonWrapperState {
 
 interface IStyle {
 	mainContainer: ViewStyle;
-
 	costContainer: ViewStyle;
 	currencyImageWithPriceContainer: ViewStyle;
 	currencyIconContainer: ViewStyle;
 	currencyCostTextContainer: ViewStyle;
-
 	currencyImageStyle: ImageStyle;
 	currencyCostText: TextStyle;
-
 	decorationLine: ViewStyle;
 }
