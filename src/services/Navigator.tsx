@@ -29,8 +29,8 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		},
 		resourceStats: {
 			position: "absolute",
-			left: 10,
-			top: 30,
+			left: 0,
+			top: 20,
 		},
 	});
 

@@ -10,7 +10,16 @@ export default class GoodModal extends React.Component<IGoodModalProps, IGoodMod
 		topView: {
 			flex: 1,
 			backgroundColor: "white",
+			borderRadius: 20,
+			paddingHorizontal: 20,
 			height: "100%",
+		},
+		shadowStyle: {
+			shadowColor: "#000",
+			shadowOffset: { width: 0, height: 20 },
+			shadowOpacity: 0.8,
+			shadowRadius: 20,
+			elevation: 1,
 		},
 	});
 
@@ -26,6 +35,7 @@ export default class GoodModal extends React.Component<IGoodModalProps, IGoodMod
 
 interface IStyle {
 	topView: ViewStyle;
+	shadowStyle: ViewStyle;
 }
 
 export interface IGoodModalProps {
