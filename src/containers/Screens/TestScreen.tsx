@@ -12,7 +12,7 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 
 	protected static image1: any = require("../../../assets/icons/menu.png");
 	protected static image2: any = require("../../../assets/icons/settings.png");
-	protected static image3: any = require("../../../assets/icons/vector.png");
+	protected static image3: any = require("../../../assets/icons/next.png");
 
 	constructor(props: ITestScreenProps) {
 		super(props);

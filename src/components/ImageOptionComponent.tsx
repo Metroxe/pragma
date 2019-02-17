@@ -25,6 +25,11 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 			textAlign: "center",
 
 		},
+		textStyle: {
+			fontFamily: "Anchor",
+			fontSize: 24,
+			textAlign: "center",
+		},
 	});
 
 	constructor(props: IImageOptionComponentsProps) {
@@ -40,9 +45,10 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 			>
 
 					<Image
-						style={{width: 69, resizeMode: "contain"}}
+						style={{width: 70, resizeMode: "contain"}}
 						source={element.image}
 					/>
+					<Text style={ImageOptionComponent.style.textStyle}>{element.label}</Text>
 			</View>
 		)
 	}
@@ -60,6 +66,7 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 
 interface IRenderElement {
 	image: string;
+	label: string;
 }
 
 export interface IImageOptionComponentsProps extends IButtonWrapperProps {
@@ -74,4 +81,5 @@ interface IStyle {
 	mainContainer: ViewStyle;
 	imageContainer: ViewStyle;
 	textContainer: TextStyle;
+	textStyle: TextStyle;
 }

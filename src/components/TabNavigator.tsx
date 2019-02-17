@@ -7,10 +7,7 @@ import {ImageOptionComponent} from "./ImageOptionComponent";
 
 export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
 
-	protected static imgArr: any[] = [{image: require("../../assets/icons/menu.png")}, {image: require("../../assets/icons/settings.png")}, {image: require("../../assets/icons/vector.png")}]
-	protected static image1: any = require("../../assets/icons/menu.png");
-	protected static image2: any = require("../../assets/icons/settings.png");
-	protected static image3: any = require("../../assets/icons/vector.png");
+	protected static imgArr: any[] = [{image: require("../../assets/icons/menu.png")}, {image: require("../../assets/icons/settings.png")}, {image: require("../../assets/icons/next.png")}]
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
@@ -27,7 +24,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 		},
 	});
 
-	public static navBarHeight: number = 120;
+	public static navBarHeight: number = 130;
 
 	constructor(props: ITabNavigatorProps) {
 		super(props);
@@ -64,7 +61,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 				>
 					<ImageOptionComponent
 						key={displayString}
-						renderElement={[{image: TabNavigator.imgArr[index].image}]}
+						renderElement={[{image: TabNavigator.imgArr[index].image, label: displayString}]}
 						onAction={null}
 					/>
 				</TouchableOpacity>
