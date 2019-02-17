@@ -15,6 +15,7 @@ import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} f
 import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "../ButtonWrapper";
 import ShopComponentItem from "./ShopComponentItem";
 import PeopleAllocationItem from "./PeopleAllocationItem";
+import TotalPeopleDisplayForAllocationModal from "../TotalPeopleDisplayForAllocationModal";
 
 export default class PeopleAllocationItemList extends EnhancedComponent<IPeopleAllocationItemListProps, IPeopleAllocationItemListState> {
 
@@ -52,6 +53,11 @@ export default class PeopleAllocationItemList extends EnhancedComponent<IPeopleA
 
 		return (
 			<ScrollView>
+
+				<View>
+					<TotalPeopleDisplayForAllocationModal/>
+				</View>
+
 				<View
 					style={{
 						width: "100%",

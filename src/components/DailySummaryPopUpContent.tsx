@@ -1,4 +1,4 @@
-import EnhancedComponent from "./EnhancedComponent";
+import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
 import {ReactNode} from "react";
 import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import * as React from "react";
@@ -58,11 +58,11 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 	}
 }
 
-export interface IDailySummaryPopUpContentProps {
+export interface IDailySummaryPopUpContentProps extends IEnhancedComponentsProps {
 	closeModal: (callback: () => void) => void;
 }
 
-export interface IDailySummaryPopUpContentState {
+export interface IDailySummaryPopUpContentState extends IEnhancedComponentsState {
 
 }
 
