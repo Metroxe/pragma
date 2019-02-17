@@ -121,7 +121,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				onPress={onPress}
 			>
 				<View>
-				{
+					{
 					tile.entity !== Entity.OBSTRUCTED && tile.entity !== Entity.UNOBSTRUCTED ? (
 						<View>
 							<Image
