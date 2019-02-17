@@ -13,6 +13,7 @@ import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
+import EndGameModalContent from "../components/EndGameModalContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -130,6 +131,10 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 					<DailySummaryPopUpContent
 						closeModal={this.changePopUp(undefined)}
 					/>,
+				);
+			case("victory"):
+				return createPopUp(
+					<EndGameModalContent/>,
 				);
 			default:
 				return <View/>;
