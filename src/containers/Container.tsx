@@ -6,7 +6,6 @@ import {IGameData} from "../services/GameData";
 import {IGameFunctions} from "../services/GameFunctions";
 import {IPagePackager, TabNavigator} from "../components/TabNavigator";
 import {Header} from "../components/Header";
-import LinearGradient from "react-native-linear-gradient";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
@@ -53,10 +52,6 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		{
 			pageString: "ShopScreen",
 			displayString: "ShopScreen",
-		},
-		{
-			pageString: "TestScreen",
-			displayString: "TestScreen",
 		},
 	];
 
@@ -115,15 +110,6 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 
 			return (
 				<View style={Container.containerStyle.topView}>
-					<Header
-						title={Container.pagesArray[Container.pagesArray.findIndex((property: IPagePackager) => property.pageString === this.props.currentPage.toString())].displayString}
-					/>
-
-					<View
-						style={{height: Dimensions.get("screen").height - Header.headerHeight - TabNavigator.navBarHeight}}
-					>
-						{this.renderPointer()}
-					</View>
 
 					{this.state.popUpModalContent &&
 					<View style={Container.containerStyle.grayOverlay}/>

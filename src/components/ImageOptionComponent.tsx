@@ -40,7 +40,7 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 			>
 
 					<Image
-						style={{width: 80}}
+						style={{width: 69, resizeMode: "contain"}}
 						source={element.image}
 					/>
 			</View>
