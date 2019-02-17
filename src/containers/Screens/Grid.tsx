@@ -1,19 +1,8 @@
 import Container, {IContainerProps, IContainerState} from "../Container";
-import {ReactNode} from "react";
-import {
-	Dimensions,
-	ScrollView,
-	StyleSheet,
-	TouchableOpacity,
-	View,
-	ViewStyle,
-	Text,
-	Image,
-	ImageStyle, PixelRatio, FlatList, ListRenderItemInfo
-} from "react-native";
 import * as React from "react";
-import {ICoordinate, ITile} from "../../services/GameGrid";
-import * as _ from "lodash";
+import {ReactNode} from "react";
+import {Image, ImageStyle, PixelRatio, ScrollView, StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native";
+import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -56,6 +45,11 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			);
 		};
 
+		let borderColor: string = "transparent";
+		if (tile.entity === Entity.UNOBSTRUCTED) {
+			borderColor = "grey";
+		}
+
 		return (
 			<TouchableOpacity
 				style={[
@@ -63,13 +57,21 @@ export default class Grid extends Container<IGridProps, IGridState> {
 					{
 						width: this.state.tileWidth,
 						height: this.state.tileHeight,
-						borderColor: _.isEqual(this.props.gameData.selectedTile, tile.coordinate) ? "green" : "grey",
+						borderColor,
 					},
 				]}
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
-				{/*<Text>{JSON.stringify(tile, null, 2)}</Text>*/}
+				<Text style={{backgroundColor: borderColor}}>{tile.coordinate.x},{tile.coordinate.y}</Text>
+				<Text style={{backgroundColor: borderColor}}>{tile.entity}</Text>
+				{
+					buildingMap[tile.entity] ?
+					<Image
+						source={require("../../assets/windmill.png")}
+						style={{height: 100, width: 100}}
+					/> : null
+				}
 			</TouchableOpacity>
 		);
 	}
@@ -93,8 +95,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				contentContainerStyle={{alignItems: "center"}}
 			>
 				<Image
-					source={require("../../../assets/grid.jpg")}
-					style={Grid.style.image}
+					source={require("../../../assets/grid.png")}
+					style={Grid.style.image as any}
 					resizeMode="stretch"
 				/>
 				{this.props.gameData.grid.map(this.createColumn)}

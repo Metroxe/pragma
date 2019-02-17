@@ -44,7 +44,7 @@ const defaultGameData: IGameData = {
 	time: 0,
 	grid: defaultGrid,
 	gridMode: GridMode.VIEW_MODE,
-	buildModeObject: Entity.HOSPITAL,
+	buildModeObject: Entity.WINDMILL,
 	pragma: 0,
 	people: 0,
 	food: 0,
