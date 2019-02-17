@@ -4,7 +4,7 @@ import * as React from "react";
 import {ReactNode} from "react";
 import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "./ButtonWrapper";
 
-export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsProps, IImageOptionComponentsState> {
+export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponentsProps, IImageOptionComponentsState> {
 
 	public static defaultProps: IImageOptionComponentsProps = {
 		renderElement: null,
@@ -69,11 +69,11 @@ interface IRenderElement {
 	label: string;
 }
 
-export interface IImageOptionComponentsProps extends IButtonWrapperProps {
+export interface IImageOptionComponentsProps extends IEnhancedComponentsProps {
 	renderElement: IRenderElement[];
 }
 
-export interface IImageOptionComponentsState extends IButtonWrapperState {
+export interface IImageOptionComponentsState extends IEnhancedComponentsState {
 
 }
 
