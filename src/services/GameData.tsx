@@ -32,6 +32,7 @@ export interface IGameData {
 	[Entity.VAULT]: IEntityTracking;
 	[Entity.WINDMILL]: IEntityTracking;
 	[Entity.REACTOR]: IEntityTracking;
+	[Entity.PYLON]: IEntityTracking;
 	music: SoundEffect;
 }
 
@@ -53,6 +54,7 @@ export interface IEntityTracking {
 	resourceGenerator: boolean;
 	entityKey: Entity;
 	image?: any;
+	outputMultiplier: number;
 }
 
 export interface IIndividualLocation {
@@ -215,6 +217,7 @@ defaultGameData[Entity.WINDMILL] = {
 	description: "Small energy generator",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/energy_windmill.png"),
+	outputMultiplier: 2,
 };
 
 defaultGameData[Entity.REACTOR] = {
@@ -236,6 +239,7 @@ defaultGameData[Entity.REACTOR] = {
 	description: "Medium energy generator",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/energy_nuclear.png"),
+	outputMultiplier: 4,
 };
 
 defaultGameData[Entity.PYLON] = {
@@ -257,6 +261,7 @@ defaultGameData[Entity.PYLON] = {
 	description: "Large energy generator",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/energy_crystal.png"),
+	outputMultiplier: 7,
 };
 
 ///////////////////////
@@ -280,6 +285,7 @@ defaultGameData[Entity.TREE] = {
 	description: "Small food source",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/food_tree.png"),
+	outputMultiplier: 5,
 };
 
 defaultGameData[Entity.ORCHARD] = {
@@ -301,6 +307,7 @@ defaultGameData[Entity.ORCHARD] = {
 	description: "Medium food source",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/food_orchard.png"),
+	outputMultiplier: 10,
 };
 
 defaultGameData[Entity.FARM] = {
@@ -322,6 +329,7 @@ defaultGameData[Entity.FARM] = {
 	description: "Large food source",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/food_farm.png"),
+	outputMultiplier: 20,
 };
 
 /////////////////////////////
@@ -345,6 +353,7 @@ defaultGameData[Entity.MINE] = {
 	description: "Small resource harvester",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/metal_mine.png"),
+	outputMultiplier: 5,
 };
 
 defaultGameData[Entity.FORGE] = {
@@ -366,6 +375,7 @@ defaultGameData[Entity.FORGE] = {
 	description: "Med. resource harvester",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/metal_smelting.png"),
+	outputMultiplier: 10,
 };
 
 defaultGameData[Entity.FACTORY] = {
@@ -387,6 +397,7 @@ defaultGameData[Entity.FACTORY] = {
 	description: "Large resource harvester",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/metal_factory.png"),
+	outputMultiplier: 20,
 };
 
 export default defaultGameData;
