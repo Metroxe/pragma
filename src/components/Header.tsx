@@ -25,6 +25,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			height: "100%",
 			flexDirection: "row",
 			justifyContent: "space-around",
+			marginVertical: 7,
 		},
 		headerTextStyle: {
 			color: "white",
