@@ -59,6 +59,7 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 			"Carolina Arai",
 			"Jerry Kou",
 			"Matt Chan",
+			"Dan Murray for the audio",
 		],
 		rightSide: [
 			"Perry Liao",
