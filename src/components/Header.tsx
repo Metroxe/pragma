@@ -19,6 +19,13 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			// borderBottomEndRadius: 20,
 			backgroundColor: "transparent",
 		},
+		headerFlexStyle: {
+			flex: 1,
+			width: "100%",
+			height: "100%",
+			flexDirection: "row",
+			justifyContent: "space-around",
+		},
 		headerTextStyle: {
 			color: "white",
 			fontWeight: "bold",
@@ -35,11 +42,21 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 
 	public render(): ReactNode {
 		return (
-			<View style={{...Header.style.mainContainer, height: Header.headerHeight, backgroundColor: this.props.bgColor}}>
+			<View
+				style={{
+					...Header.style.mainContainer,
+					height: Header.headerHeight,
+					backgroundColor: this.props.bgColor
+				}}
+			>
 				<Image style={Header.style.headerImageStyle} source={require("../../assets/images/header.png")}/>
-				<Text style={Header.style.headerTextStyle}>
-					{this.props.title}
-				</Text>
+				<View style={Header.style.headerFlexStyle}>
+					<View/>
+					<Text style={Header.style.headerTextStyle}>
+						{this.props.title}
+					</Text>
+					<Image source={require("../../assets/images/gameIcon.png")}/>
+				</View>
 			</View>
 		);
 	}
@@ -56,6 +73,7 @@ export interface IHeaderState extends IEnhancedComponentsProps {
 
 interface IStyle {
 	mainContainer: ViewStyle;
+	headerFlexStyle: ViewStyle;
 	headerTextStyle: TextStyle;
 	headerImageStyle: ViewStyle;
 }
