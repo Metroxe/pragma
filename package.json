@@ -4,11 +4,18 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "android-dev": "react-native run-android"
   },
   "dependencies": {
+    "lodash": "^4.17.11",
     "react": "16.6.3",
-    "react-native": "0.58.4"
+    "react-native": "0.58.4",
+    "react-native-sound": "^0.10.12",
+    "react-native-linear-gradient": "^2.5.3",
+    "tslint": "^5.12.1",
+    "tslint-react": "^3.6.0",
+    "ws": "3.3.2"
   },
   "devDependencies": {
     "@types/jest": "^24.0.5",
@@ -25,5 +32,10 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }
