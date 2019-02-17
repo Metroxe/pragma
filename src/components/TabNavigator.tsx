@@ -51,22 +51,22 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 						<ImageOptionComponent
 							onPress={this.props.changePopUp("shop")}
 							imageKey="shop"
-							label="shop"
+							label="Shop"
 						/>
 						<ImageOptionComponent
 							onPress={this.props.changePopUp("shop")}
-							imageKey="shop"
-							label="shop"
+							imageKey="build"
+							label="Build"
 						/>
 						<ImageOptionComponent
 							onPress={this.props.changePopUp("shop")}
-							imageKey="shop"
-							label="shop"
+							imageKey="allocate"
+							label="Allocate"
 						/>
 						<ImageOptionComponent
 							onPress={this.props.changePopUp("shop")}
-							imageKey="shop"
-							label="shop"
+							imageKey="next"
+							label="End Turn"
 						/>
 					</View>
 				</View>

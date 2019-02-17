@@ -28,8 +28,8 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		imageContainer: {
 			justifyContent: "center",
 			alignItems: "center",
-			height: 70,
-			width: 70,
+			height: 60,
+			width: 60,
 		},
 		textContainer: {
 			alignItems: "center",
@@ -39,14 +39,16 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		},
 		textStyle: {
 			fontFamily: "Anchor",
-			fontSize: 24,
+			fontSize: 15,
 			textAlign: "center",
 		},
 	});
 
 	protected static imgMap: { [key: string]: any } = {
+		build: require("../../assets/icons/build.png"),
 		shop: require("../../assets/icons/menu.png"),
-		allocate: require("../../assets/icons/settings.png"),
+		allocate: require("../../assets/icons/people.png"),
+		next: require("../../assets/icons/next.png"),
 	};
 
 	constructor(props: IImageOptionComponentsProps) {
