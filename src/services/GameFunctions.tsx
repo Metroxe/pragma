@@ -1,4 +1,4 @@
-import {IEntityTracking, IGameData} from "./GameData";
+import {IEntityTracking, IGameData, IIndividualLocation} from "./GameData";
 import Navigator from "./Navigator";
 import * as _ from "lodash";
 import gameIncrementFunctions, {IIncrementFunction} from "./GameIncrementFunctions";
@@ -20,6 +20,7 @@ export interface IGameFunctions {
 	changeGridMode: (gridMode: GridMode) => Promise<void>;
 	selectTile: (coordinate: ICoordinate) => Promise<void>;
 	changeEntitySelection: (entity: Entity) => Promise<void>;
+	changeAllocation: (people: number, loc: IIndividualLocation) => Promise<void>;
 }
 
 function createGameFunctions(navigator: Navigator): IGameFunctions {
@@ -157,6 +158,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 				(newGameData[newGameData.buildModeObject] as IEntityTracking).individualLocations.push({
 					location: {x, y},
 					allocatedPeople: 0,
+					entity: newGameData.buildModeObject,
 				});
 				if (newGameData.childSelection) {
 					let child: ICoordinate;
@@ -171,6 +173,17 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			newGameData.selectedTile = undefined;
 			await updateGameData(newGameData);
 		}
+	}
+
+	async function changeAllocation(people: number, loc: IIndividualLocation): Promise<void> {
+		const newGameData: IGameData = getGameDataClone();
+		let i: number;
+		for (i = 0;  i < (newGameData[loc.entity] as IEntityTracking).individualLocations.length; i++) {
+			if (_.isEqual((newGameData[loc.entity] as IEntityTracking).individualLocations[i], loc)) {
+				(newGameData[loc.entity] as IEntityTracking).individualLocations[i].allocatedPeople += people;
+			}
+		}
+		await updateGameData(newGameData);
 	}
 
 	return {
@@ -189,6 +202,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		changeGreenHouse: changeTechnology("greenHouse", 1),
 		changeSafeHouse: changeTechnology("safeHouse", 1),
 		changeEntitySelection,
+		changeAllocation,
 	};
 }
 

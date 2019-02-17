@@ -111,7 +111,11 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 						changePopUp={this.changePopUp}
 					/>);
 			case("allocation"):
-				return createPopUp(<PeopleAllocationItemList/>);
+				return createPopUp(<PeopleAllocationItemList
+					gameData={this.state.gameData}
+					gameFunctions={GameFunctions(this)}
+					changePopUp={this.changePopUp}
+				/>);
 			case("daySummary"):
 				return createPopUp(
 					<DailySummaryPopUpContent
