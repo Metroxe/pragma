@@ -5,11 +5,13 @@ import {IContainerProps} from "../containers/Container";
 import containerSet, {IContainerSet} from "../containers";
 import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
-import makeSound, {ISound} from "./sound";
+import makeSound, {ISound, SoundEffect} from "./sound";
 import GoodModal from "../components/GoodModal";
 import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
-import ShopComponentList from "../components/ShopComponentList";
+import ResourceStats from "../components/ResourceStats";
+import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
+import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -23,6 +25,11 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			width: "95%",
 			bottom: TabNavigator.navBarHeight + 50,
 			alignSelf: "center",
+		},
+		resourceStats: {
+			position: "absolute",
+			left: 10,
+			top: 30,
 		},
 	});
 
@@ -42,12 +49,14 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		this.navigate = this.navigate.bind(this);
 		this.intervalFunction = this.intervalFunction.bind(this);
 		this.changePopUp = this.changePopUp.bind(this);
+		console.disableYellowBox = true;
 	}
 
 	public componentDidMount(): void {
 		if (!this.interval) {
 			this.interval = setInterval(this.intervalFunction, Navigator.timeIncrement);
 		}
+
 	}
 
 	private intervalFunction(): void {
@@ -106,20 +115,30 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 
 		switch (this.state.popUpKey) {
 			case("shop"):
-				return createPopUp(<ShopComponentList/>);
+				return createPopUp(
+					<ShopComponentItemList
+						gameData={this.state.gameData}
+						gameFunctions={GameFunctions(this)}
+						changePopUp={this.changePopUp}
+					/>);
 			case("allocation"):
-				return createPopUp(<View/>);
+				return createPopUp(<PeopleAllocationItemList/>);
 			default:
 				return <View/>;
 		}
 	}
 
 	public render(): ReactNode {
-
 		return (
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
 				{this.determinePopUp()}
+				{
+					this.state.popUpKey === undefined ?
+					<View style={Navigator.style.resourceStats}>
+						<ResourceStats gameData={this.state.gameData}/>
+					</View> : null
+				}
 			</View>
 		);
 	}
@@ -128,6 +147,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 interface IStyle {
 	topView: ViewStyle;
 	goodModal: ViewStyle;
+	resourceStats: ViewStyle;
 }
 
 interface INavigatorProps {
