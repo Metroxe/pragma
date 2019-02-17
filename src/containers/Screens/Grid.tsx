@@ -16,6 +16,7 @@ import {
 import * as _ from "lodash";
 import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
 import SilverModalButton from "../../components/SilverModalButton";
+import {IEntityTracking} from "../../services/GameData";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -113,7 +114,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 					buildingMap[tile.entity] ? (
 						<View>
 							<Image
-								source={buildingMap[tile.entity]}
+								source={(this.props.gameData[tile.entity] as IEntityTracking).image}
 								style={{height: this.state.tileHeight, width: this.state.tileWidth}}
 								resizeMode="cover"
 							/>

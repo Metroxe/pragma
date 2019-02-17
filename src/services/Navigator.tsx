@@ -33,9 +33,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		},
 	});
 
-	public static timeIncrement: number = 1000;
 	public calculatingInterval: boolean = false;
-	public interval: number;
 
 	public state: INavigatorState = {
 		currentContainer: "Grid",
@@ -50,13 +48,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		this.intervalFunction = this.intervalFunction.bind(this);
 		this.changePopUp = this.changePopUp.bind(this);
 		console.disableYellowBox = true;
-	}
-
-	public componentDidMount(): void {
-		if (!this.interval) {
-			this.interval = setInterval(this.intervalFunction, Navigator.timeIncrement);
-		}
-
 	}
 
 	private intervalFunction(): void {

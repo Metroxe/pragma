@@ -26,6 +26,7 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 		const that: ShopComponentItemList = this;
 
 		const onAction: (callback: () => void) => void = (callback: () => void): void => {
+			alert(item.entityKey);
 			this.props.gameFunctions.changeEntitySelection(item.entityKey)
 				.then(() => {
 					that.props.changePopUp(undefined)(callback);
@@ -48,8 +49,9 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 					metalPrice={item.price.metal}
 					onAction={onAction}
 					canAfford={canAfford}
-					itemTitle={item.entityKey + ""}
-					itemDescription={item.entityKey + ""}
+					itemTitle={item.title}
+					itemDescription={item.description}
+					image={item.image}
 				/>
 			</View>
 		);
