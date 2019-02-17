@@ -16,7 +16,8 @@ import {
 import * as _ from "lodash";
 import {Entity, ICoordinate, ITile} from "../../services/GameGrid";
 import SilverModalButton from "../../components/SilverModalButton";
-import {IEntityTracking} from "../../services/GameData";
+import {IEntityTracking, IIndividualLocation} from "../../services/GameData";
+import makeSound, {SoundEffect} from "../../services/sound";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -74,6 +75,10 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		this.buildAction = this.buildAction.bind(this);
 	}
 
+	public async componentDidMount(): Promise<void> {
+		await makeSound()[SoundEffect.BGSLOW]();
+	}
+
 	private createTile(tile: ITile): ReactNode {
 		const onPress: () => void = (): void => {
 			this.props.gameFunctions.selectTile(tile.coordinate)
@@ -91,6 +96,13 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		} else if (tile.entity === Entity.UNOBSTRUCTED) {
 			borderColor = "grey";
 			opacity = 0.3;
+		}
+
+		let loc: IIndividualLocation;
+		for (loc of (this.props.gameData[tile.entity] as IEntityTracking).individualLocations) {
+			if (loc.location.x === tile.coordinate.x && loc.location.y === tile.coordinate.y) {
+				break;
+			}
 		}
 
 		return (
@@ -118,7 +130,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 								resizeMode="cover"
 							/>
 							<View style={[Grid.style.circle, {right: 0}]}>
-								<Text style={Grid.style.text}>10</Text>
+								<Text style={Grid.style.text}>{loc.allocatedPeople}</Text>
 							</View>
 						</View>
 						) : null

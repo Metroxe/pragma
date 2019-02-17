@@ -58,6 +58,7 @@ export interface IEntityTracking {
 export interface IIndividualLocation {
 	allocatedPeople: number;
 	location: ICoordinate;
+	entity: Entity,
 }
 
 const defaultGameData: IGameData = {
