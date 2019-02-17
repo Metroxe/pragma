@@ -25,7 +25,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			height: "100%",
 			flexDirection: "row",
 			justifyContent: "space-around",
-			marginVertical: 7,
+			marginTop: 13,
 		},
 		headerTextStyle: {
 			color: "white",
@@ -37,26 +37,50 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			position: "absolute",
 			top: 0,
 		},
+		leftRectangle: {
+			backgroundColor: "#FBAE34",
+			borderRadius: 15,
+			width: 137,
+			height: 20,
+			left: -14,
+			top: -12,
+			zIndex: 20,
+			position: "absolute",
+		},
+		rightRectangle: {
+			backgroundColor: "#B1336B",
+			borderRadius: 15,
+			width: 291,
+			height: 20,
+			left: 123,
+			top: -12,
+			zIndex: 20,
+			position: "absolute",
+		},
 	});
 
 	public static headerHeight: number = 60;
 
 	public render(): ReactNode {
 		return (
-			<View
-				style={{
-					...Header.style.mainContainer,
-					height: Header.headerHeight,
-					backgroundColor: this.props.bgColor
-				}}
-			>
-				<Image style={Header.style.headerImageStyle} source={require("../../assets/images/header.png")}/>
-				<View style={Header.style.headerFlexStyle}>
-					<View/>
-					<Text style={Header.style.headerTextStyle}>
-						{this.props.title}
-					</Text>
-					<Image source={require("../../assets/images/gameIcon.png")}/>
+			<View>
+				<View style={Header.style.leftRectangle}/>
+				<View style={Header.style.rightRectangle}/>
+				<View
+					style={{
+						...Header.style.mainContainer,
+						height: Header.headerHeight,
+						backgroundColor: this.props.bgColor
+					}}
+				>
+					<Image style={Header.style.headerImageStyle} source={require("../../assets/images/header.png")}/>
+					<View style={Header.style.headerFlexStyle}>
+						<View/>
+						<Text style={Header.style.headerTextStyle}>
+							{this.props.title}
+						</Text>
+						<Image source={require("../../assets/images/gameIcon.png")}/>
+					</View>
 				</View>
 			</View>
 		);
@@ -77,4 +101,6 @@ interface IStyle {
 	headerFlexStyle: ViewStyle;
 	headerTextStyle: TextStyle;
 	headerImageStyle: ViewStyle;
+	leftRectangle: ViewStyle;
+	rightRectangle: ViewStyle;
 }
