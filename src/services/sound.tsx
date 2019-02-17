@@ -22,21 +22,35 @@ export interface ISound {
 	[SoundEffect.BGFAST]: () => Promise<void>;
 }
 
+const soundMap: { [key: string]: Sound } = {};
+
 function makeSound(): ISound {
 	function abstractSound(soundEffect: SoundEffect): () => Promise<void> {
-				return (): Promise<void> => {
-					return new Promise((resolve: () => void): void => {
-							try {
-								const win: any = new Sound(soundEffect, Sound.MAIN_BUNDLE, (error: any): void => {
-									win.play((success: any) => {
-										resolve();
-									});
+		return (): Promise<void> => {
+			return new Promise((resolve: () => void): void => {
+					try {
+						let key: string;
+						for (key of Object.keys(soundMap)) {
+							if (key !== soundEffect) {
+								soundMap[key].stop(() => {
 								});
-							} catch (error) {
-								console.log(error);
 							}
-						},
-					);
+						}
+						const win: any = new Sound(soundEffect, Sound.MAIN_BUNDLE, (error: any): void => {
+							win.setNumberOfLoops(-1);
+
+							win.play((success: any) => {
+								resolve();
+							});
+						});
+
+						soundMap[soundEffect] = win;
+					} catch (error) {
+						console.log(error);
+					}
+
+				},
+			);
 		};
 	}
 
