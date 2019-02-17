@@ -19,7 +19,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "Grid",
+		currentContainer: "TestScreen",
 		gameData: defaultGameData,
 	};
 
@@ -60,6 +60,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 			navigate: this.navigate,
 			gameData: this.state.gameData,
 			gameFunctions: GameFunctions(this),
+			currentPage: this.state.currentContainer,
 		};
 
 		const pointer: any = containerSet[this.state.currentContainer];
