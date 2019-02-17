@@ -93,7 +93,9 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	}
 
 	private changePopUp(popUpKey: "shop" | "allocation"): (callback: () => void) => void {
+
 		const that: Navigator = this;
+
 		return (callback: () => void): void => {
 			that.setState({
 				popUpKey: that.state.popUpKey === popUpKey ? undefined : popUpKey,
@@ -111,14 +113,18 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				</View>
 			);
 		}
-
+		
 		switch (this.state.popUpKey) {
 			case("shop"):
 				return createPopUp(<ShopComponentItemList/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
 			case("daySummary"):
-				return createPopUp(<DailySummaryPopUpContent/>);
+				return createPopUp(
+					<DailySummaryPopUpContent
+						closeModal={this.changePopUp(undefined)}
+					/>,
+				);
 			default:
 				return <View/>;
 		}
