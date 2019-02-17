@@ -39,7 +39,7 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		},
 		textStyle: {
 			fontFamily: "Anchor",
-			fontSize: 15,
+			fontSize: 21,
 			textAlign: "center",
 		},
 	});

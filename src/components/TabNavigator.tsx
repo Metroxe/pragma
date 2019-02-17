@@ -35,7 +35,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 			backgroundColor: "green",
 		},
 		tabNavButtonStyle: {
-			bottom: 30,
+			bottom: 20,
 			flexDirection: "row",
 			justifyContent: "space-around",
 		},
@@ -72,7 +72,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 						<ImageOptionComponent
 							onPress={this.gameFunctionWrapper}
 							imageKey="next"
-							label="End Turn"
+							label="Next Year"
 						/>
 					</View>
 				</View>

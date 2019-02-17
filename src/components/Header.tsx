@@ -1,6 +1,16 @@
 import * as React from "react";
 import {ReactNode} from "react";
-import {Dimensions, Image, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from "react-native";
+import {
+	Dimensions,
+	Image,
+	StatusBar,
+	StyleSheet,
+	Text,
+	TextStyle,
+	TouchableOpacity,
+	View,
+	ViewStyle
+} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 
 export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
@@ -68,21 +78,22 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 	public render(): ReactNode {
 		return (
 			<View>
+				<StatusBar hidden={true} />
 				<View style={Header.style.leftRectangle}/>
 				<View style={Header.style.rightRectangle}/>
 				<View
 					style={{
 						...Header.style.mainContainer,
 						height: Header.headerHeight,
-						backgroundColor: this.props.bgColor
+						backgroundColor: this.props.bgColor,
 					}}
 				>
 					<Image style={Header.style.headerImageStyle} source={require("../../assets/images/header.png")}/>
 					<View style={Header.style.headerFlexStyle}>
 						<View/>
-						<Text style={Header.style.headerTextStyle}>
-							{this.props.title}
-						</Text>
+						{/*<Text style={Header.style.headerTextStyle}>*/}
+							{/*{this.props.title}*/}
+						{/*</Text>*/}
 						<Image style={Header.style.logoStyle} source={require("../../assets/images/pragmaLogo.png")}/>
 					</View>
 				</View>
