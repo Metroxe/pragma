@@ -1,7 +1,15 @@
 import Container, {IContainerProps, IContainerState} from "../Container";
-import {ReactNode} from "react";
 import * as React from "react";
+import {ReactNode} from "react";
+import SilverModalButton from "../../components/SilverModalButton";
+import {PopUp, PopUpPositions} from "../../components/PopUp";
 import {View, Text} from "react-native";
+import {TabNavigator} from "../../components/TabNavigator";
+import ShopItemComponent from "../../components/ShopItemComponent";
+import ShopComponentList from "../../components/ShopComponentList";
+
+import {ImageOptionComponent} from "../../components/ImageOptionComponent";
+import {SoundEffect} from "../../services/sound";
 import ResourceStats from "../../components/ResourceStats";
 import PeopleAllocationItemList from "../../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 
@@ -21,9 +29,8 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	protected static image2: any = require("../../../assets/icons/settings.png");
 	protected static image3: any = require("../../../assets/icons/next.png");
 
-	constructor(props: ITestScreenProps) {
+	protected constructor(props: ITestScreenProps) {
 		super(props);
-
 	}
 
 	private static test(callback: () => void): void {
@@ -34,12 +41,10 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	public render(): ReactNode {
 		return (
 			<View>
-				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
-				{/*<Text>{this.props.gameData.time}</Text>*/}
+				{/*<ShopComponentList/>*/}
 				<ResourceStats/>
 				<PeopleAllocationItemList/>
 			</View>
-
 		);
 	}
 }
