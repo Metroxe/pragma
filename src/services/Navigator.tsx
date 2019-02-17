@@ -5,7 +5,7 @@ import {IContainerProps} from "../containers/Container";
 import containerSet, {IContainerSet} from "../containers";
 import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
-import makeSound, {ISound} from "./sound";
+import makeSound, {ISound, SoundEffect} from "./sound";
 import GoodModal from "../components/GoodModal";
 import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
@@ -28,8 +28,8 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		},
 		resourceStats: {
 			position: "absolute",
-			left: 10,
-			top: 30,
+			left: 0,
+			top: 20,
 		},
 	});
 
@@ -56,6 +56,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		if (!this.interval) {
 			this.interval = setInterval(this.intervalFunction, Navigator.timeIncrement);
 		}
+
 	}
 
 	private intervalFunction(): void {

@@ -4,6 +4,7 @@ import {StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native"
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 import {IContainerSet} from "../containers";
 import {ImageOptionComponent} from "./ImageOptionComponent";
+import {IGameFunctions} from "../services/GameFunctions";
 
 export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
 
@@ -12,8 +13,19 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
 			width: "100%",
-			flexDirection: "row",
-			backgroundColor: "purple",
+			backgroundColor: "#111228",
+			// borderTopStartRadius: 20,
+			// borderTopEndRadius: 20,
+		},
+		secondaryContainerBottom: {
+			width: "100%",
+			height: 500,
+			backgroundColor: "#FBAE34",
+			position: "absolute",
+			zIndex: 1,
+			top: 50,
+			borderTopStartRadius: 20,
+			borderTopEndRadius: 20,
 		},
 		individualButton: {
 			flex: 1,
@@ -22,19 +34,48 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 			height: "100%",
 			backgroundColor: "green",
 		},
+		tabNavButtonStyle: {
+			bottom: 20,
+			flexDirection: "row",
+			justifyContent: "space-around",
+		},
 	});
 
 	public static navBarHeight: number = 130;
+
+	constructor(props: ITabNavigatorProps) {
+		super(props);
+		this.gameFunctionWrapper = this.gameFunctionWrapper.bind(this);
+	}
+
+
+	private gameFunctionWrapper(callback: () => void): void {
+		this.props.gameFunctions.incrementTime().then(callback);
+	}
 
 	public render(): ReactNode {
 
 		return (
 			<View style={[TabNavigator.style.mainContainer, {height: TabNavigator.navBarHeight}]}>
-				<ImageOptionComponent
-					onPress={this.props.changePopUp("shop")}
-					imageKey="shop"
-					label="shop"
-				/>
+				<View style={TabNavigator.style.secondaryContainerBottom}>
+					<View style={TabNavigator.style.tabNavButtonStyle}>
+						<ImageOptionComponent
+							onPress={this.props.changePopUp("shop")}
+							imageKey="build"
+							label="Build"
+						/>
+						<ImageOptionComponent
+							onPress={this.props.changePopUp("allocation")}
+							imageKey="allocate"
+							label="Allocate"
+						/>
+						<ImageOptionComponent
+							onPress={this.gameFunctionWrapper}
+							imageKey="next"
+							label="Next Year"
+						/>
+					</View>
+				</View>
 			</View>
 		);
 	}
@@ -49,6 +90,7 @@ export interface ITabNavigatorProps extends IEnhancedComponentsProps {
 	tabOptions: IPagePackager[];
 	navigate: (page: keyof IContainerSet) => Promise<void>;
 	changePopUp: (key: string) => (callback: () => void) => void;
+	gameFunctions?: IGameFunctions;
 }
 
 export interface ITabNavigatorState extends IEnhancedComponentsProps {
@@ -57,5 +99,7 @@ export interface ITabNavigatorState extends IEnhancedComponentsProps {
 
 interface IStyle {
 	mainContainer: ViewStyle;
+	secondaryContainerBottom: ViewStyle;
 	individualButton: ViewStyle;
+	tabNavButtonStyle: ViewStyle;
 }
