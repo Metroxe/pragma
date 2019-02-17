@@ -37,13 +37,17 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		circle: {
 			height: 30,
 			width: 30,
-			borderRadius: 30 / PixelRatio.get(),
-			backgroundColor: "red",
+			borderRadius: /*30 / PixelRatio.get()*/9999,
+			backgroundColor: "linear-gradient(90deg, rgba(22, 125, 121, 0.7) 0.05%, #167D79 100.02%)",
 			position: "absolute",
+			justifyContent: "center",
+			alignItems: "center",
 		},
 		text: {
 			color: "white",
 			fontFamily: "Anchor",
+			fontSize: 22,
+			marginTop: 2,
 		},
 		buildButton: {
 			position: "absolute",
@@ -60,6 +64,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			...this.state,
 			tileHeight: 1186 / PixelRatio.get() / 4,
 			tileWidth: 1186 / PixelRatio.get() / 4,
+			mapWidth: Image.resolveAssetSource(require("../../../assets/grid.png")).width,
 		};
 		this.headerTitle = "Map";
 
@@ -107,14 +112,14 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				{
 					buildingMap[tile.entity] ? (
 						<View>
-							<View style={Grid.style.circle}>
-								<Text style={Grid.style.text}>10</Text>
-							</View>
 							<Image
 								source={buildingMap[tile.entity]}
 								style={{height: this.state.tileHeight, width: this.state.tileWidth}}
 								resizeMode="cover"
 							/>
+							<View style={[Grid.style.circle, {right: 0}]}>
+								<Text style={Grid.style.text}>10</Text>
+							</View>
 						</View>
 						) : null
 				}
@@ -146,6 +151,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 					bounces={false}
 					style={Grid.style.scrollViewStyle}
 					contentContainerStyle={{alignItems: "center"}}
+					contentOffset={{x: this.state.mapWidth ? this.state.mapWidth / 2 : 0, y: 0}}
 				>
 					<Image
 						source={require("../../../assets/grid.png")}
@@ -186,4 +192,5 @@ export interface IGridState extends IContainerState {
 	tileHeight: number;
 	tileWidth: number;
 	selectedTile?: ICoordinate;
+	mapWidth?: number;
 }
