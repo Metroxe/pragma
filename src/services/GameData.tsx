@@ -111,6 +111,7 @@ for (item in Entity) {
 }
 
 defaultGameData[Entity.HOSPITAL] = {
+	...defaultGameData[Entity.HOSPITAL],
 	count: 0,
 	price: {
 		pragma: 15,
@@ -131,6 +132,7 @@ defaultGameData[Entity.HOSPITAL] = {
 };
 
 defaultGameData[Entity.WEAPON] = {
+	...defaultGameData[Entity.WEAPON],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -151,6 +153,7 @@ defaultGameData[Entity.WEAPON] = {
 };
 
 defaultGameData[Entity.GREENHOUSE] = {
+	...defaultGameData[Entity.GREENHOUSE],
 	count: 0,
 	price: {
 		pragma: 10,
@@ -171,6 +174,7 @@ defaultGameData[Entity.GREENHOUSE] = {
 };
 
 defaultGameData[Entity.VAULT] = {
+	...defaultGameData[Entity.VAULT],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -191,6 +195,7 @@ defaultGameData[Entity.VAULT] = {
 };
 
 defaultGameData[Entity.WINDMILL] = {
+	...defaultGameData[Entity.WINDMILL],
 	count: 0,
 	price: {
 		pragma: 20,
@@ -211,6 +216,7 @@ defaultGameData[Entity.WINDMILL] = {
 };
 
 defaultGameData[Entity.REACTOR] = {
+	...defaultGameData[Entity.REACTOR],
 	count: 0,
 	price: {
 		pragma: 30,
@@ -231,6 +237,7 @@ defaultGameData[Entity.REACTOR] = {
 };
 
 defaultGameData[Entity.PYLON] = {
+	...defaultGameData[Entity.PYLON],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -250,8 +257,8 @@ defaultGameData[Entity.PYLON] = {
 	image: require("../../assets/buildings/energy_crystal.png"),
 };
 
-
 defaultGameData[Entity.PYLON] = {
+	...defaultGameData[Entity.PYLON],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -270,7 +277,5 @@ defaultGameData[Entity.PYLON] = {
 	resourceGenerator: true,
 	image: require("../../assets/buildings/safety_hospital.png"),
 };
-
-
 
 export default defaultGameData;

@@ -164,7 +164,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 					}
 				}
 			}
-
+			newGameData.selectedTile = undefined;
 			await updateGameData(newGameData);
 		}
 	}
