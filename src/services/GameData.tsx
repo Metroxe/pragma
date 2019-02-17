@@ -39,6 +39,7 @@ export interface IEntityTracking {
 	price: IPrice;
 	size: {x: number, y: number};
 	individualLocations: IIndividualLocation[];
+	entityKey: Entity;
 }
 
 export interface IIndividualLocation {
@@ -83,6 +84,7 @@ for (item in Entity) {
 				y: 1,
 			},
 			individualLocations: [],
+			entityKey: item,
 		} as IEntityTracking;
 	}
 }

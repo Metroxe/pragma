@@ -78,9 +78,6 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 	private determineContentHeight(): number {
 		let baseHeight: number = Dimensions.get("window").height;
 
-		console.log("state:", this.state);
-		console.log("base height:", baseHeight);
-
 		if (this.showHeader) {
 			baseHeight = baseHeight - Header.headerHeight;
 		}
