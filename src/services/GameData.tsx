@@ -93,15 +93,15 @@ for (item in Entity) {
 			price: {
 				pragma: 10,
 				people: 5,
-				food: 10,
-				metal: 10,
+				food: 0,
+				metal: 0,
 			},
 			size: {
 				x: 1,
 				y: 1,
 			},
 			individualLocations: [],
-			maximumAllocatedPeople: 10,
+			maximumAllocatedPeople: 5,
 			title: "Building",
 			description: "Generic building description",
 			entityKey: item,
@@ -112,10 +112,10 @@ for (item in Entity) {
 defaultGameData[Entity.HOSPITAL] = {
 	count: 0,
 	price: {
-		pragma: 15,
-		people: 5,
-		food: 10,
-		metal: 10,
+		pragma: 60,
+		people: 0,
+		food: 0,
+		metal: 40,
 	},
 	size: {
 		x: 1,
@@ -126,15 +126,16 @@ defaultGameData[Entity.HOSPITAL] = {
 	title: "Hospital",
 	description: "Prevents the spread of disease",
 	resourceGenerator: false,
+	entityKey: Entity.HOSPITAL,
 };
 
 defaultGameData[Entity.WEAPON] = {
 	count: 0,
 	price: {
 		pragma: 40,
-		people: 5,
+		people: 0,
 		food: 0,
-		metal: 0,
+		metal: 60,
 	},
 	size: {
 		x: 1,
@@ -145,15 +146,16 @@ defaultGameData[Entity.WEAPON] = {
 	title: "Weapon Institute",
 	description: "Defends against alien attack",
 	resourceGenerator: false,
+	entityKey: Entity.WEAPON,
 };
 
 defaultGameData[Entity.GREENHOUSE] = {
 	count: 0,
 	price: {
-		pragma: 10,
-		people: 5,
-		food: 15,
-		metal: 5,
+		pragma: 50,
+		people: 0,
+		food: 0,
+		metal: 50,
 	},
 	size: {
 		x: 1,
@@ -164,6 +166,7 @@ defaultGameData[Entity.GREENHOUSE] = {
 	title: "Greenhouse",
 	description: "Houses food stores",
 	resourceGenerator: false,
+	entityKey: Entity.GREENHOUSE,
 };
 
 defaultGameData[Entity.VAULT] = {
@@ -183,13 +186,16 @@ defaultGameData[Entity.VAULT] = {
 	title: "VAULT",
 	description: "A place to put your resources",
 	resourceGenerator: false,
+	entityKey: Entity.VAULT,
 };
+
+// TODO CHANGE THE VALUES OF THE DEFAULTS
 
 defaultGameData[Entity.WINDMILL] = {
 	count: 0,
 	price: {
-		pragma: 20,
-		people: 5,
+		pragma: 10,
+		people: 0,
 		food: 0,
 		metal: 0,
 	},
@@ -198,16 +204,97 @@ defaultGameData[Entity.WINDMILL] = {
 		y: 1,
 	},
 	individualLocations: [],
-	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
+	maximumAllocatedPeople: 5,
+	title: "Windmill",
+	description: "Small energy generator",
 	resourceGenerator: true,
+	entityKey: Entity.WINDMILL,
 };
+//
+// defaultGameData[Entity.REACTOR] = {
+// 	count: 0,
+// 	price: {
+// 		pragma: 30,
+// 		people: 10,
+// 		food: 10,
+// 		metal: 10,
+// 	},
+// 	size: {
+// 		x: 1,
+// 		y: 1,
+// 	},
+// 	individualLocations: [],
+// 	maximumAllocatedPeople: 12,
+// 	title: "Reactor",
+// 	description: "Medium energy generator",
+// 	resourceGenerator: true,
+// 	entityKey: Entity.REACTOR,
+// };
+//
+// defaultGameData[Entity.PYLON] = {
+// 	count: 0,
+// 	price: {
+// 		pragma: 40,
+// 		people: 15,
+// 		food: 15,
+// 		metal: 15,
+// 	},
+// 	size: {
+// 		x: 1,
+// 		y: 1,
+// 	},
+// 	individualLocations: [],
+// 	maximumAllocatedPeople: 4,
+// 	title: "Pylon",
+// 	description: "Large energy generator",
+// 	resourceGenerator: true,
+// 	entityKey: Entity.PYLON,
+// };
 
-defaultGameData[Entity.REACTOR] = {
+defaultGameData[Entity.TREE] = {
 	count: 0,
 	price: {
-		pragma: 30,
+		pragma: 40,
+		people: 5,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 4,
+	title: "Tree",
+	description: "Small food source",
+	resourceGenerator: true,
+	entityKey: Entity.TREE,
+};
+
+defaultGameData[Entity.ORCHARD] = {
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 5,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 12,
+	title: "Orchard",
+	description: "Medium food source",
+	resourceGenerator: true,
+	entityKey: Entity.ORCHARD,
+};
+
+defaultGameData[Entity.FARM] = {
+	count: 0,
+	price: {
+		pragma: 40,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -218,12 +305,53 @@ defaultGameData[Entity.REACTOR] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
+	title: "Farm",
+	description: "Large food source",
 	resourceGenerator: true,
+	entityKey: Entity.FARM,
 };
 
-defaultGameData[Entity.PYLON] = {
+defaultGameData[Entity.MINE] = {
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 5,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 0,
+	title: "Mine",
+	description: "Small resource harvester",
+	resourceGenerator: true,
+	entityKey: Entity.MINE,
+};
+
+defaultGameData[Entity.FORGE] = {
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 5,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 0,
+	title: "Forge",
+	description: "Medium resource harvester",
+	resourceGenerator: true,
+	entityKey: Entity.FORGE,
+};
+
+defaultGameData[Entity.FACTORY] = {
 	count: 0,
 	price: {
 		pragma: 40,
@@ -238,28 +366,9 @@ defaultGameData[Entity.PYLON] = {
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
 	title: "VAULT",
-	description: "A place to put your resources",
+	description: "Large resource harvester",
 	resourceGenerator: true,
-};
-
-
-defaultGameData[Entity.PYLON] = {
-	count: 0,
-	price: {
-		pragma: 40,
-		people: 5,
-		food: 0,
-		metal: 0,
-	},
-	size: {
-		x: 1,
-		y: 1,
-	},
-	individualLocations: [],
-	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
-	resourceGenerator: true,
+	entityKey: Entity.FACTORY,
 };
 
 
