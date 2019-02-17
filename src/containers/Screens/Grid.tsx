@@ -10,7 +10,6 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		tileStyle: {
 			margin: 3,
 			borderWidth: 2,
-			opacity: 0.5,
 			height: 1,
 		},
 		scrollViewStyle: {
@@ -40,14 +39,15 @@ export default class Grid extends Container<IGridProps, IGridState> {
 	private createTile(tile: ITile): ReactNode {
 		const onPress: () => void = (): void => {
 			const that: Grid = this;
-			this.props.gameFunctions.selectTile(tile.coordinate).then(
-				that.props.gameFunctions.buildOnTile,
-			);
+			this.props.gameFunctions.selectTile(tile.coordinate)
+				.then(that.props.gameFunctions.buildOnTile)
 		};
 
 		let borderColor: string = "transparent";
+		let opacity: number = 1;
 		if (tile.entity === Entity.UNOBSTRUCTED) {
 			borderColor = "grey";
+			opacity = 0.5;
 		}
 
 		return (
@@ -57,19 +57,21 @@ export default class Grid extends Container<IGridProps, IGridState> {
 					{
 						width: this.state.tileWidth,
 						height: this.state.tileHeight,
+						opacity,
 						borderColor,
 					},
 				]}
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
-				<Text style={{backgroundColor: borderColor}}>{tile.coordinate.x},{tile.coordinate.y}</Text>
-				<Text style={{backgroundColor: borderColor}}>{tile.entity}</Text>
+				{/*<Text style={{backgroundColor: borderColor}}>{tile.coordinate.x},{tile.coordinate.y}</Text>*/}
+				{/*<Text style={{backgroundColor: borderColor}}>{tile.entity}</Text>*/}
 				{
 					buildingMap[tile.entity] ?
 					<Image
-						source={require("../../../assets/windmill.png")}
-						style={{height: 100, width: 100}}
+						source={buildingMap[tile.entity]}
+						style={{height: this.state.tileHeight, width: this.state.tileWidth}}
+						resizeMode="cover"
 					/> : null
 				}
 			</TouchableOpacity>

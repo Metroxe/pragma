@@ -92,10 +92,6 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			}
 		}
 
-		function undo(): void {
-
-		}
-
 		if (newGameData.selectedTile) {
 			newGameData.grid[newGameData.selectedTile.x][newGameData.selectedTile.y].selected = false;
 			deselectChildren();
