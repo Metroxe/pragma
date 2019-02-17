@@ -17,6 +17,7 @@ import * as _ from "lodash";
 import {Entity, ICoordinate, ITile} from "../../services/GameGrid";
 import SilverModalButton from "../../components/SilverModalButton";
 import {IEntityTracking, IIndividualLocation} from "../../services/GameData";
+import makeSound, {SoundEffect} from "../../services/sound";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -72,6 +73,10 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		this.createTile = this.createTile.bind(this);
 		this.createColumn = this.createColumn.bind(this);
 		this.buildAction = this.buildAction.bind(this);
+	}
+
+	public async componentDidMount(): Promise<void> {
+		await makeSound()[SoundEffect.BGSLOW]();
 	}
 
 	private createTile(tile: ITile): ReactNode {

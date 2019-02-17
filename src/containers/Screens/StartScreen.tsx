@@ -7,6 +7,7 @@ import TitleScreenInitialModalContent from "../../components/ModalContent/TitleS
 import Video from "react-native-video";
 import HowToPlayInitialModalContent from "../../components/ModalContent/HowToPlayInitialModalContent";
 import CreditsInitialModalContent from "../../components/ModalContent/CreditsInitialModalContent";
+import makeSound, {SoundEffect} from "../../services/sound";
 
 export default class StartScreen extends Container<IStartScreenProps, IStartScreenState> {
 
@@ -50,6 +51,10 @@ export default class StartScreen extends Container<IStartScreenProps, IStartScre
 
 	private videoError(e: any): void {
 		console.log(e);
+	}
+
+	public async componentDidMount(): Promise<void> {
+		await makeSound()[SoundEffect.BGFAST]();
 	}
 
 	public navigateFromModal(name: string): (callback?: () => void) => void {
