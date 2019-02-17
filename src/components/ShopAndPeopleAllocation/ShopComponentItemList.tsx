@@ -7,6 +7,7 @@ import {IEntityTracking, IGameData} from "../../services/GameData";
 import {Entity} from "../../services/GameGrid";
 import {IGameFunctions} from "../../services/GameFunctions";
 import * as _ from "lodash";
+import TotalUserResourcesDisplayForShop from "./TotalUserResourcesDisplayForShop";
 
 export default class ShopComponentItemList extends EnhancedComponent<IShopComponentItemListProps, IShopComponentItemListState> {
 
@@ -69,6 +70,11 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 
 		return (
 			<ScrollView>
+
+				<View>
+					<TotalUserResourcesDisplayForShop/>
+				</View>
+
 				<View
 					style={{
 						width: "100%",

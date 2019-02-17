@@ -15,7 +15,7 @@ import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} f
 import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "../ButtonWrapper";
 import ShopComponentItem from "./ShopComponentItem";
 import PeopleAllocationItem from "./PeopleAllocationItem";
-import TotalPeopleDisplayForAllocationModal from "../TotalPeopleDisplayForAllocationModal";
+import TotalPeopleDisplayForAllocationModal from "./TotalPeopleDisplayForAllocationModal";
 
 export default class PeopleAllocationItemList extends EnhancedComponent<IPeopleAllocationItemListProps, IPeopleAllocationItemListState> {
 
