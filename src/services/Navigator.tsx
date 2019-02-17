@@ -11,6 +11,7 @@ import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
 import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
+import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -114,7 +115,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			case("shop"):
 				return createPopUp(<ShopComponentItemList/>);
 			case("allocation"):
-				return createPopUp(<View/>);
+				return createPopUp(<PeopleAllocationItemList/>);
 			default:
 				return <View/>;
 		}

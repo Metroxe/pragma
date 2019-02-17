@@ -118,7 +118,6 @@ export interface IShopComponentItemProps extends IButtonWrapperProps {
 	itemDescription: string;
 	pragmaPrice: number;
 	metalPrice: number;
-
 	canAfford: boolean;
 }
 
