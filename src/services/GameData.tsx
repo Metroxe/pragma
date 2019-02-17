@@ -69,10 +69,10 @@ const defaultGameData: IGameData = {
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,
 
-	pragma: 20,
+	pragma: 50,
 	people: 10,
 	food: 50,
-	metal: 25,
+	metal: 50,
 	disease: false,
 	alien: false,
 	radiation: false,
@@ -106,6 +106,7 @@ for (item in Entity) {
 			title: "Building",
 			description: "Generic building description",
 			entityKey: item,
+			image: require("../../assets/buildings/safety_hospital.png"),
 		} as IEntityTracking;
 	}
 }

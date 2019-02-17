@@ -14,7 +14,7 @@ import {
 	ViewStyle,
 } from "react-native";
 import * as _ from "lodash";
-import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
+import {Entity, ICoordinate, ITile} from "../../services/GameGrid";
 import SilverModalButton from "../../components/SilverModalButton";
 import {IEntityTracking} from "../../services/GameData";
 
@@ -81,17 +81,16 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		};
 
 		let borderColor: string = "transparent";
-		let opacity: number = 0;
-		if (tile.entity === Entity.UNOBSTRUCTED) {
-			borderColor = "grey";
-			opacity = 0.3;
-		}
+		let opacity: number = 1;
 		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
 			borderColor = "white";
 			opacity = 1;
-		}
-		if (tile.entity !== Entity.UNOBSTRUCTED || Entity.OBSTRUCTED) {
-			opacity = 1;
+		} else if (tile.entity === Entity.OBSTRUCTED) {
+			borderColor = "transparent";
+			opacity = 0;
+		} else if (tile.entity === Entity.UNOBSTRUCTED) {
+			borderColor = "grey";
+			opacity = 0.3;
 		}
 
 		return (
@@ -111,7 +110,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			>
 				<View>
 				{
-					buildingMap[tile.entity] ? (
+					tile.entity !== Entity.OBSTRUCTED && tile.entity !== Entity.UNOBSTRUCTED ? (
 						<View>
 							<Image
 								source={(this.props.gameData[tile.entity] as IEntityTracking).image}
