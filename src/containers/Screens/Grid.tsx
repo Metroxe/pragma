@@ -68,7 +68,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				{
 					buildingMap[tile.entity] ?
 					<Image
-						source={require("../../assets/windmill.png")}
+						source={require("../../../assets/windmill.png")}
 						style={{height: 100, width: 100}}
 					/> : null
 				}
