@@ -16,7 +16,6 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 			flexDirection: "row",
 		},
 		imageContainer: {
-			flex: 1,
 			justifyContent: "center",
 			alignItems: "center"
 		},
@@ -41,16 +40,15 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 			>
 
 					<Image
-						style={{width: 80, height: 80}}
-						source={{uri: element.image}}
+						style={{width: 80}}
+						source={element.image}
 					/>
-					<Text style={ImageOptionComponent.style.textContainer}>{element.label}</Text>
 			</View>
 		)
 	}
 
 	public render(): ReactNode {
-		const tempElements: any = this.props.renderElement.map(ImageOptionComponent.createImageElement);
+		const tempElements: ReactNode[] = this.props.renderElement.map(ImageOptionComponent.createImageElement);
 		return (
 			<View style={ImageOptionComponent.style.mainContainer}>
 				{tempElements}
@@ -61,7 +59,6 @@ export class ImageOptionComponent extends ButtonWrapper<IImageOptionComponentsPr
 }
 
 interface IRenderElement {
-	label: string;
 	image: string;
 }
 
