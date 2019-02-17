@@ -52,6 +52,7 @@ export interface IEntityTracking {
 	description: string;
 	resourceGenerator: boolean;
 	entityKey: Entity;
+	image?: any;
 }
 
 export interface IIndividualLocation {
@@ -68,10 +69,10 @@ const defaultGameData: IGameData = {
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,
 
-	pragma: 20,
+	pragma: 50,
 	people: 10,
 	food: 50,
-	metal: 25,
+	metal: 50,
 	disease: false,
 	alien: false,
 	radiation: false,
@@ -105,11 +106,13 @@ for (item in Entity) {
 			title: "Building",
 			description: "Generic building description",
 			entityKey: item,
+			image: require("../../assets/buildings/safety_hospital.png"),
 		} as IEntityTracking;
 	}
 }
 
 defaultGameData[Entity.HOSPITAL] = {
+	...defaultGameData[Entity.HOSPITAL],
 	count: 0,
 	price: {
 		pragma: 60,
@@ -127,9 +130,11 @@ defaultGameData[Entity.HOSPITAL] = {
 	description: "Prevents the spread of disease",
 	resourceGenerator: false,
 	entityKey: Entity.HOSPITAL,
+	image: require("../../assets/buildings/safety_hospital.png"),
 };
 
 defaultGameData[Entity.WEAPON] = {
+	...defaultGameData[Entity.WEAPON],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -147,9 +152,11 @@ defaultGameData[Entity.WEAPON] = {
 	description: "Defends against alien attack",
 	resourceGenerator: false,
 	entityKey: Entity.WEAPON,
+	image: require("../../assets/buildings/safety_weapon.png"),
 };
 
 defaultGameData[Entity.GREENHOUSE] = {
+	...defaultGameData[Entity.GREENHOUSE],
 	count: 0,
 	price: {
 		pragma: 50,
@@ -167,9 +174,11 @@ defaultGameData[Entity.GREENHOUSE] = {
 	description: "Houses food stores",
 	resourceGenerator: false,
 	entityKey: Entity.GREENHOUSE,
+	image: require("../../assets/buildings/safety_greenhouse.png"),
 };
 
 defaultGameData[Entity.VAULT] = {
+	...defaultGameData[Entity.VAULT],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -187,11 +196,13 @@ defaultGameData[Entity.VAULT] = {
 	description: "A place to put your resources",
 	resourceGenerator: false,
 	entityKey: Entity.VAULT,
+	image: require("../../assets/buildings/safety_bank.png"),
 };
 
 // TODO CHANGE THE VALUES OF THE DEFAULTS
 
 defaultGameData[Entity.WINDMILL] = {
+	...defaultGameData[Entity.WINDMILL],
 	count: 0,
 	price: {
 		pragma: 10,
@@ -309,9 +320,11 @@ defaultGameData[Entity.FARM] = {
 	description: "Large food source",
 	resourceGenerator: true,
 	entityKey: Entity.FARM,
+	image: require("../../assets/buildings/energy_windmill.png"),
 };
 
 defaultGameData[Entity.MINE] = {
+    ...defaultGameData[Entity.MINE],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -329,9 +342,11 @@ defaultGameData[Entity.MINE] = {
 	description: "Small resource harvester",
 	resourceGenerator: true,
 	entityKey: Entity.MINE,
+	image: require("../../assets/buildings/energy_nuclear.png"),
 };
 
 defaultGameData[Entity.FORGE] = {
+	...defaultGameData[Entity.FORGE],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -349,9 +364,11 @@ defaultGameData[Entity.FORGE] = {
 	description: "Medium resource harvester",
 	resourceGenerator: true,
 	entityKey: Entity.FORGE,
+	image: require("../../assets/buildings/metal_smelting.png"),
 };
 
 defaultGameData[Entity.FACTORY] = {
+	...defaultGameData[Entity.FACTORY],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -369,8 +386,7 @@ defaultGameData[Entity.FACTORY] = {
 	description: "Large resource harvester",
 	resourceGenerator: true,
 	entityKey: Entity.FACTORY,
+	image: require("../../assets/buildings/metal_factory.png"),
 };
-
-
 
 export default defaultGameData;
