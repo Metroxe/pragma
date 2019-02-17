@@ -1,13 +1,23 @@
-import {StyleSheet, View, Text, Image, ViewStyle, TextStyle} from "react-native";
+import {
+	StyleSheet,
+	View,
+	Text,
+	Image,
+	ViewStyle,
+	TextStyle,
+	TouchableHighlight,
+} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
 import * as React from "react";
 import {ReactNode} from "react";
-import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "./ButtonWrapper";
 
 export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponentsProps, IImageOptionComponentsState> {
 
 	public static defaultProps: IImageOptionComponentsProps = {
-		renderElement: null,
+		imageKey: "shop",
+		onPress: (callback: () => void): void => {
+		},
+		label: "Shop",
 	};
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -17,7 +27,9 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		},
 		imageContainer: {
 			justifyContent: "center",
-			alignItems: "center"
+			alignItems: "center",
+			height: 70,
+			width: 70,
 		},
 		textContainer: {
 			alignItems: "center",
@@ -32,45 +44,44 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		},
 	});
 
+	protected static imgMap: { [key: string]: any } = {
+		shop: require("../../assets/icons/menu.png"),
+		allocate: require("../../assets/icons/settings.png"),
+	};
+
 	constructor(props: IImageOptionComponentsProps) {
 		super(props);
+		this.onPressWrapper = this.onPressWrapper.bind(this);
 	}
 
-
-	private static createImageElement(element: any, index: number): ReactNode {
-		return (
-			<View
-				key={"element " + index}
-				style={ImageOptionComponent.style.imageContainer}
-			>
-
-					<Image
-						style={{width: 70, resizeMode: "contain"}}
-						source={element.image}
-					/>
-					<Text style={ImageOptionComponent.style.textStyle}>{element.label}</Text>
-			</View>
-		)
+	private onPressWrapper(): void {
+		this.props.onPress((): void => {});
 	}
 
 	public render(): ReactNode {
-		const tempElements: ReactNode[] = this.props.renderElement.map(ImageOptionComponent.createImageElement);
 		return (
-			<View style={ImageOptionComponent.style.mainContainer}>
-				{tempElements}
-			</View>
+			<TouchableHighlight
+				style={ImageOptionComponent.style.imageContainer}
+				onPress={this.onPressWrapper}
+			>
+				<View>
+					<Image
+						style={{width: 70, height: 70}}
+						resizeMode="contain"
+						source={ImageOptionComponent[ImageOptionComponent.imgMap[this.props.imageKey]]}
+					/>
+					<Text style={ImageOptionComponent.style.textStyle}>{this.props.label}</Text>
+				</View>
+			</TouchableHighlight>
 		);
 
 	}
 }
 
-interface IRenderElement {
-	image: string;
-	label: string;
-}
-
 export interface IImageOptionComponentsProps extends IEnhancedComponentsProps {
-	renderElement: IRenderElement[];
+	onPress: (callback: () => void) => void;
+	imageKey: string;
+	label: string;
 }
 
 export interface IImageOptionComponentsState extends IEnhancedComponentsState {
