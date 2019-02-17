@@ -31,7 +31,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "TitleScreen",
+		currentContainer: "HowToPlayScreen",
 		gameData: defaultGameData,
 		popUpKey: undefined,
 	};
