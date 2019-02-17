@@ -6,6 +6,11 @@ import LinearGradient from "react-native-linear-gradient";
 
 export default class SilverModalButton extends ButtonWrapper<ISilverModalButtonProps, ISilverModalButtonState> {
 
+	public static defaultProps: ISilverModalButtonProps = {
+		buttonText: "Button",
+		style: {},
+	};
+
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		extraLinearGradientStyle: {
 			borderRadius: 10,
@@ -18,7 +23,8 @@ export default class SilverModalButton extends ButtonWrapper<ISilverModalButtonP
 			textAlign: "center",
 			color: "#111228",
 			fontSize: 18,
-			fontWeight: "bold",
+			// fontWeight: "bold",
+			fontFamily: "Anchor",
 		},
 	});
 
@@ -41,7 +47,7 @@ export default class SilverModalButton extends ButtonWrapper<ISilverModalButtonP
 					0.001,
 					1,
 				]}
-				style={SilverModalButton.style.extraLinearGradientStyle}
+				style={[SilverModalButton.style.extraLinearGradientStyle, this.props.style]}
 			>
 				<Text style={SilverModalButton.style.buttonTextStyle}>
 					{this.props.buttonText}
@@ -53,6 +59,7 @@ export default class SilverModalButton extends ButtonWrapper<ISilverModalButtonP
 
 export interface ISilverModalButtonProps extends IButtonWrapperProps {
 	buttonText: string;
+	style: ViewStyle;
 }
 
 export interface ISilverModalButtonState extends IButtonWrapperState {

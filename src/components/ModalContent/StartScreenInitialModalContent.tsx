@@ -10,8 +10,9 @@ export default class StartScreenInitialModalContent extends EnhancedComponent<IS
 		titleText: {
 			textAlign: "center",
 			color: "orange",
-			fontSize: 25,
+			fontSize: 26,
 			fontWeight: "bold",
+			fontFamily: "Anchor",
 		},
 	});
 
