@@ -9,7 +9,7 @@ import makeSound, {ISound} from "./sound";
 import GoodModal from "../components/GoodModal";
 import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
-import ShopComponentList from "../components/ShopComponentList";
+import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -31,7 +31,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "Grid",
+		currentContainer: "TitleScreen",
 		gameData: defaultGameData,
 		popUpKey: undefined,
 	};
@@ -106,7 +106,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 
 		switch (this.state.popUpKey) {
 			case("shop"):
-				return createPopUp(<ShopComponentList/>);
+				return createPopUp(<ShopComponentItemList/>);
 			case("allocation"):
 				return createPopUp(<View/>);
 			default:
