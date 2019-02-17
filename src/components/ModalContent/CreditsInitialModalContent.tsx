@@ -1,9 +1,10 @@
 import {ReactNode} from "react";
 import * as React from "react";
-import {View, Text, TextStyle, StyleSheet, Image} from "react-native";
+import {View, Text, TextStyle, StyleSheet, Image, TouchableOpacityComponent, ViewStyle} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import SilverModalButton from "../SilverModalButton";
-import TitleScreen from "../../containers/Screens/TitleScreen";
+import StartScreen from "../../containers/Screens/StartScreen";
+import CoolYellowButton from "../CoolYellowButton";
 
 export default class CreditsInitialModalContent extends EnhancedComponent<ICreditsInitialModalContentProps, ICreditsInitialModalContentState> {
 
@@ -49,6 +50,11 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 			color: "#fff",
 			marginTop: 25,
 		},
+		backBtn: {
+			position: "absolute",
+			top: -15,
+			right: -15,
+		},
 	});
 
 	public static modalTitle: string = "Credits";
@@ -77,6 +83,11 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 		};
 
 		this.generateCreditsReactNodes = this.generateCreditsReactNodes.bind(this);
+		this.goBack = this.goBack.bind(this);
+	}
+
+	public goBack(callback?: () => void): void {
+		this.props.startScreen.navigateFromModal("menu")(callback);
 	}
 
 	public generateCreditsReactNodes(): ReactNode {
@@ -123,6 +134,7 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 
 		return (
 			<View>
+				<CoolYellowButton viewStyle={{alignSelf: "flex-start"}} bgColor={"yellow"} text={"< Back"} onAction={this.goBack} />
 				<Text style={CreditsInitialModalContent.style.titleText}>
 					{CreditsInitialModalContent.modalTitle}
 				</Text>
@@ -139,7 +151,7 @@ export default class CreditsInitialModalContent extends EnhancedComponent<ICredi
 }
 
 export interface ICreditsInitialModalContentProps extends IEnhancedComponentsProps {
-
+	startScreen: StartScreen;
 }
 
 export interface ICreditsInitialModalContentState extends IEnhancedComponentsState {
@@ -148,4 +160,12 @@ export interface ICreditsInitialModalContentState extends IEnhancedComponentsSta
 
 interface IStyle {
 	titleText: TextStyle;
+	creditsContentContainer: ViewStyle;
+	creditNamesContainer: ViewStyle;
+	creditName: ViewStyle;
+	creditNamesLeft: ViewStyle;
+	creditNamesRight: ViewStyle;
+	teamName: ViewStyle;
+	fkb: ViewStyle;
+	backBtn: ViewStyle;
 }

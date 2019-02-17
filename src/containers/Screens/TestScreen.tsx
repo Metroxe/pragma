@@ -41,8 +41,6 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	public render(): ReactNode {
 		return (
 			<View>
-				{/*<ShopComponentList/>*/}
-				<ResourceStats/>
 				<PeopleAllocationItemList/>
 			</View>
 		);

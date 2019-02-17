@@ -11,8 +11,9 @@
     "lodash": "^4.17.11",
     "react": "16.6.3",
     "react-native": "0.58.4",
-    "react-native-sound": "^0.10.12",
     "react-native-linear-gradient": "^2.5.3",
+    "react-native-sound": "^0.10.12",
+    "react-native-video": "^4.3.1",
     "tslint": "^5.12.1",
     "tslint-react": "^3.6.0",
     "ws": "3.3.2"

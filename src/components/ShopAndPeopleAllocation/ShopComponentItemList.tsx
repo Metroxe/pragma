@@ -26,7 +26,6 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 		const that: ShopComponentItemList = this;
 
 		const onAction: (callback: () => void) => void = (callback: () => void): void => {
-			alert(item.entityKey);
 			this.props.gameFunctions.changeEntitySelection(item.entityKey)
 				.then(() => {
 					that.props.changePopUp(undefined)(callback);

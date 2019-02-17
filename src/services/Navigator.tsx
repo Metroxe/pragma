@@ -12,6 +12,7 @@ import {TabNavigator} from "../components/TabNavigator";
 import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
+import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -26,17 +27,12 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			bottom: TabNavigator.navBarHeight + 50,
 			alignSelf: "center",
 		},
-		resourceStats: {
-			position: "absolute",
-			left: 0,
-			top: 20,
-		},
 	});
 
 	public calculatingInterval: boolean = false;
 
 	public state: INavigatorState = {
-		currentContainer: "Grid",
+		currentContainer: "StartScreen",
 		gameData: defaultGameData,
 		popUpKey: undefined,
 	};
@@ -85,7 +81,9 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	}
 
 	private changePopUp(popUpKey: "shop" | "allocation"): (callback: () => void) => void {
+
 		const that: Navigator = this;
+
 		return (callback: () => void): void => {
 			that.setState({
 				popUpKey: that.state.popUpKey === popUpKey ? undefined : popUpKey,
@@ -114,6 +112,12 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 					/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
+			case("daySummary"):
+				return createPopUp(
+					<DailySummaryPopUpContent
+						closeModal={this.changePopUp(undefined)}
+					/>,
+				);
 			default:
 				return <View/>;
 		}
@@ -124,12 +128,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
 				{this.determinePopUp()}
-				{
-					this.state.popUpKey === undefined ?
-					<View style={Navigator.style.resourceStats}>
-						<ResourceStats gameData={this.state.gameData}/>
-					</View> : null
-				}
 			</View>
 		);
 	}

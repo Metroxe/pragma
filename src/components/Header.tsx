@@ -34,7 +34,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			width: "100%",
 			height: "100%",
 			flexDirection: "row",
-			justifyContent: "space-around",
+			justifyContent: "flex-end",
 			marginTop: 13,
 		},
 		headerTextStyle: {
@@ -50,6 +50,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 		logoStyle: {
 			height: 40,
 			width: 40,
+			marginRight: 20,
 		},
 		leftRectangle: {
 			backgroundColor: "#FBAE34",

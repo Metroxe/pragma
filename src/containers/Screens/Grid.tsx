@@ -14,9 +14,9 @@ import {
 	ViewStyle,
 } from "react-native";
 import * as _ from "lodash";
-import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
+import {Entity, ICoordinate, ITile} from "../../services/GameGrid";
 import SilverModalButton from "../../components/SilverModalButton";
-import {IEntityTracking} from "../../services/GameData";
+import {IEntityTracking, IIndividualLocation} from "../../services/GameData";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -81,17 +81,23 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		};
 
 		let borderColor: string = "transparent";
-		let opacity: number = 0;
-		if (tile.entity === Entity.UNOBSTRUCTED) {
-			borderColor = "grey";
-			opacity = 0.3;
-		}
+		let opacity: number = 1;
 		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
 			borderColor = "white";
 			opacity = 1;
+		} else if (tile.entity === Entity.OBSTRUCTED) {
+			borderColor = "transparent";
+			opacity = 0;
+		} else if (tile.entity === Entity.UNOBSTRUCTED) {
+			borderColor = "grey";
+			opacity = 0.3;
 		}
-		if (tile.entity !== Entity.UNOBSTRUCTED || Entity.OBSTRUCTED) {
-			opacity = 1;
+
+		let loc: IIndividualLocation;
+		for (loc of (this.props.gameData[tile.entity] as IEntityTracking).individualLocations) {
+			if (loc.location.x === tile.coordinate.x && loc.location.y === tile.coordinate.y) {
+				break;
+			}
 		}
 
 		return (
@@ -111,7 +117,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			>
 				<View>
 				{
-					buildingMap[tile.entity] ? (
+					tile.entity !== Entity.OBSTRUCTED && tile.entity !== Entity.UNOBSTRUCTED ? (
 						<View>
 							<Image
 								source={(this.props.gameData[tile.entity] as IEntityTracking).image}
@@ -119,7 +125,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 								resizeMode="cover"
 							/>
 							<View style={[Grid.style.circle, {right: 0}]}>
-								<Text style={Grid.style.text}>10</Text>
+								<Text style={Grid.style.text}>{loc.allocatedPeople}</Text>
 							</View>
 						</View>
 						) : null

@@ -3,7 +3,8 @@ import * as React from "react";
 import {View, Text, TextStyle, StyleSheet, Image} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import SilverModalButton from "../SilverModalButton";
-import TitleScreen from "../../containers/Screens/TitleScreen";
+import StartScreen from "../../containers/Screens/StartScreen";
+import CoolYellowButton from "../CoolYellowButton";
 
 export default class HowToPlayInitialModalContent extends EnhancedComponent<IHowToPlayInitialModalContentProps, IHowToPlayInitialModalContentState> {
 
@@ -21,7 +22,13 @@ export default class HowToPlayInitialModalContent extends EnhancedComponent<IHow
 			fontFamily: "Anchor",
 			color: "#fff",
 			width: 200,
-			marginLeft: 15,
+			alignSelf: "center",
+			textAlign: "center",
+		},
+		backBtn: {
+			position: "absolute",
+			top: 0,
+			right: 0,
 		},
 	});
 
@@ -40,17 +47,18 @@ export default class HowToPlayInitialModalContent extends EnhancedComponent<IHow
 			...this.state,
 		};
 
-		this.btnCallback = this.btnCallback.bind(this);
+		this.goBack = this.goBack.bind(this);
 	}
 
-	public btnCallback(callback: () => void): void {
-		callback();
+	public goBack(callback?: () => void): void {
+		this.props.startScreen.navigateFromModal("menu")(callback);
 	}
 
 	public render(): ReactNode {
 
 		return (
 			<View>
+				<CoolYellowButton viewStyle={{alignSelf: "flex-start"}} bgColor={"yellow"} text={"< Back"} onAction={this.goBack} />
 				<Text style={HowToPlayInitialModalContent.style.titleText}>
 					{HowToPlayInitialModalContent.modalTitle}
 				</Text>
@@ -61,7 +69,7 @@ export default class HowToPlayInitialModalContent extends EnhancedComponent<IHow
 }
 
 export interface IHowToPlayInitialModalContentProps extends IEnhancedComponentsProps {
-
+	startScreen: StartScreen;
 }
 
 export interface IHowToPlayInitialModalContentState extends IEnhancedComponentsState {

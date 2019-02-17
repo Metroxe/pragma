@@ -3,7 +3,7 @@ import * as React from "react";
 import {View, Text, TextStyle, StyleSheet, Image} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import SilverModalButton from "../SilverModalButton";
-import TitleScreen from "../../containers/Screens/TitleScreen";
+import StartScreen from "../../containers/Screens/StartScreen";
 
 export default class TitleScreenInitialModalContent extends EnhancedComponent<ITitleScreenInitialModalContentProps, ITitleScreenInitialModalContentState> {
 
@@ -39,11 +39,11 @@ export default class TitleScreenInitialModalContent extends EnhancedComponent<IT
 			...this.state,
 		};
 
-		this.btnCallback = this.btnCallback.bind(this);
+		this.handlePlayNowBtn = this.handlePlayNowBtn.bind(this);
 	}
 
-	public btnCallback(callback: () => void): void {
-		callback();
+	public handlePlayNowBtn(callback: () => void): void {
+		this.props.startScreen.navigateFromModal("menu")(callback);
 	}
 
 	public render(): ReactNode {
@@ -60,7 +60,7 @@ export default class TitleScreenInitialModalContent extends EnhancedComponent<IT
 					<SilverModalButton
 						style={TitleScreenInitialModalContent.style.btnStyle}
 						buttonText={TitleScreenInitialModalContent.btnText}
-						onAction={this.btnCallback}
+						onAction={this.handlePlayNowBtn}
 					/>
 				</View>
 			</View>
@@ -69,7 +69,7 @@ export default class TitleScreenInitialModalContent extends EnhancedComponent<IT
 }
 
 export interface ITitleScreenInitialModalContentProps extends IEnhancedComponentsProps {
-
+	startScreen: StartScreen;
 }
 
 export interface ITitleScreenInitialModalContentState extends IEnhancedComponentsState {

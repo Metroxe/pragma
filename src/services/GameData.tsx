@@ -108,6 +108,7 @@ for (item in Entity) {
 			title: "Building",
 			description: "Generic building description",
 			entityKey: item,
+			image: require("../../assets/buildings/safety_hospital.png"),
 		} as IEntityTracking;
 	}
 }
@@ -130,6 +131,7 @@ defaultGameData[Entity.HOSPITAL] = {
 	title: "Hospital",
 	description: "Prevents disease",
 	resourceGenerator: false,
+	entityKey: Entity.HOSPITAL,
 	image: require("../../assets/buildings/safety_hospital.png"),
 };
 
@@ -151,6 +153,7 @@ defaultGameData[Entity.WEAPON] = {
 	title: "Laser",
 	description: "Defends against aliens",
 	resourceGenerator: false,
+	entityKey: Entity.WEAPON,
 	image: require("../../assets/buildings/safety_weapon.png"),
 };
 
@@ -172,6 +175,7 @@ defaultGameData[Entity.GREENHOUSE] = {
 	title: "Storage",
 	description: "Houses food stores",
 	resourceGenerator: false,
+	entityKey: Entity.GREENHOUSE,
 	image: require("../../assets/buildings/safety_greenhouse.png"),
 };
 
@@ -193,6 +197,7 @@ defaultGameData[Entity.VAULT] = {
 	title: "Bank",
 	description: "A place to put your resources",
 	resourceGenerator: false,
+	entityKey: Entity.VAULT,
 	image: require("../../assets/buildings/safety_bank.png"),
 };
 
@@ -308,6 +313,7 @@ defaultGameData[Entity.ORCHARD] = {
 	resourceGenerator: true,
 	image: require("../../assets/buildings/food_orchard.png"),
 	outputMultiplier: 10,
+	entityKey: Entity.ORCHARD,
 };
 
 defaultGameData[Entity.FARM] = {
@@ -329,6 +335,7 @@ defaultGameData[Entity.FARM] = {
 	description: "Large food source",
 	resourceGenerator: true,
 	image: require("../../assets/buildings/food_farm.png"),
+	entityKey: Entity.FARM,
 	outputMultiplier: 20,
 };
 
@@ -336,6 +343,8 @@ defaultGameData[Entity.FARM] = {
 
 defaultGameData[Entity.MINE] = {
 	...defaultGameData[Entity.MINE],
+	entityKey: Entity.MINE,
+	image: require("../../assets/buildings/metal_mine.png"),
 	count: 0,
 	price: {
 		pragma: 30,
@@ -352,7 +361,6 @@ defaultGameData[Entity.MINE] = {
 	title: "Mine",
 	description: "Small resource harvester",
 	resourceGenerator: true,
-	image: require("../../assets/buildings/metal_mine.png"),
 	outputMultiplier: 5,
 };
 
@@ -376,6 +384,7 @@ defaultGameData[Entity.FORGE] = {
 	resourceGenerator: true,
 	image: require("../../assets/buildings/metal_smelting.png"),
 	outputMultiplier: 10,
+	entityKey: Entity.FORGE,
 };
 
 defaultGameData[Entity.FACTORY] = {
@@ -398,6 +407,7 @@ defaultGameData[Entity.FACTORY] = {
 	resourceGenerator: true,
 	image: require("../../assets/buildings/metal_factory.png"),
 	outputMultiplier: 20,
+	entityKey: Entity.FACTORY,
 };
 
 export default defaultGameData;
