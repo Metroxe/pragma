@@ -4,6 +4,7 @@ import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import {IContainerSet} from "./index";
 import {IGameData} from "../services/GameData";
 import {IGameFunctions} from "../services/GameFunctions";
+import {ISound} from "../services/sound";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
@@ -46,6 +47,7 @@ export interface IContainerProps {
 	navigate: (page: keyof IContainerSet) => Promise<void>;
 	gameData: IGameData;
 	gameFunctions: IGameFunctions;
+	gameMusic: ISound;
 }
 
 export interface IContainerState {
