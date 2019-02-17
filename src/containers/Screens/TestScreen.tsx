@@ -7,20 +7,30 @@ import {View, Text} from "react-native";
 import {TabNavigator} from "../../components/TabNavigator";
 import ShopItemComponent from "../../components/ShopItemComponent";
 import ShopComponentList from "../../components/ShopComponentList";
-import {CircularButton} from "../../components/CircularButton";
+
+import {ImageOptionComponent} from "../../components/ImageOptionComponent";
+import {SoundEffect} from "../../services/sound";
+import ResourceStats from "../../components/ResourceStats";
+import ShopComponentItem from "../../components/ShopAndPeopleAllocation/ShopComponentItem";
+import ShopComponentItemList from "../../components/ShopAndPeopleAllocation/ShopComponentItemList";
+import PeopleAllocationItemList from "../../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
+
+	public async componentDidMount(): Promise<void> {
+		// await this.props.gameMusic[SoundEffect.WIN]();
+		// await this.props.gameMusic[SoundEffect.GG]();
+		// await this.props.gameMusic[SoundEffect.CLICK]();
+		// await this.props.gameMusic[SoundEffect.HAMMER]();
+		// await this.props.gameMusic[SoundEffect.CLICK]();
+	}
+
 	protected static image1: any = require("../../../assets/icons/menu.png");
 	protected static image2: any = require("../../../assets/icons/settings.png");
 	protected static image3: any = require("../../../assets/icons/next.png");
-	private buttonRef: SilverModalButton;
-	private popUpRef: ReactNode = <PopUp position={PopUpPositions.TL} innerComponent={<ShopComponentList/>}/>;
 
 	protected constructor(props: ITestScreenProps) {
 		super(props);
-
-		this.buttonOnClick = this.buttonOnClick.bind(this);
-		this.saveButtonRef = this.saveButtonRef.bind(this);
 	}
 
 	private static test(callback: () => void): void {
@@ -28,36 +38,12 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 		callback();
 	}
 
-	private buttonOnClick(callback: () => void): void {
-		// console.log("button clicked");
-		if (this.buttonRef) {
-			// console.log(this.buttonRef.props);
-			this.buttonRef.showPopUp();
-		}
-		callback();
-	}
-
-	private saveButtonRef(ref: SilverModalButton): void {
-		this.buttonRef = ref;
-	}
-
 	public render(): ReactNode {
 		return (
 			<View>
-				<CircularButton image={"settings"}/>
-				{/*<SilverModalButton*/}
-					{/*ref={this.saveButtonRef}*/}
-					{/*buttonText={"click me"}*/}
-					{/*onAction={this.buttonOnClick}*/}
-					{/*popUp={this.popUpRef as PopUp}*/}
-				{/*/>*/}
-				{/*<PopUp position={PopUpPositions.BR}/>*/}
-				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
-				{/*<Text>{this.props.gameData.time}</Text>*/}
-				{/*<Text>Test Screen 1</Text>*/}
-				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
-				{/*<Text>{this.props.gameData.time}</Text>*/}
 				{/*<ShopComponentList/>*/}
+				<ResourceStats/>
+				<PeopleAllocationItemList/>
 			</View>
 		);
 	}

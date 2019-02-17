@@ -4,6 +4,7 @@ import {Dimensions, StyleSheet, Text, View, ViewStyle} from "react-native";
 import {IContainerSet} from "./index";
 import {IGameData} from "../services/GameData";
 import {IGameFunctions} from "../services/GameFunctions";
+import {ISound} from "../services/sound";
 import {IPagePackager, TabNavigator} from "../components/TabNavigator";
 import {Header} from "../components/Header";
 
@@ -68,15 +69,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		super(props);
 
 		// @ts-ignore
-		this.state = {
-			// popUpModalContent: (
-			// 	<View>
-			// 		<Text>
-			// 			hello slots!
-			// 		</Text>
-			// 	</View>
-			// ),
-		};
+		this.state = {};
 		this.determineContentHeight = this.determineContentHeight.bind(this);
 		this.wrapRender = this.wrapRender.bind(this);
 		this.wrapRender();
@@ -137,6 +130,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 					<TabNavigator
 						tabOptions={Container.pagesArray}
 						navigate={this.props.navigate}
+						changePopUp={this.props.changePopUp}
 					/>
 					}
 				</View>
@@ -157,7 +151,9 @@ export interface IContainerProps {
 	navigate: (page: keyof IContainerSet) => Promise<void>;
 	gameData: IGameData;
 	gameFunctions: IGameFunctions;
+	gameMusic: ISound;
 	currentPage: keyof IContainerSet;
+	changePopUp: (key: string) => (callback: () => void) => void;
 }
 
 export interface IContainerState {

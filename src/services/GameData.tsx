@@ -3,6 +3,7 @@ import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
 export interface IGameData {
 	population: number;
 	time: number;
+	maxTime: number;
 	grid: IGrid;
 	gridMode: GridMode;
 	buildModeObject: Entity;
@@ -37,11 +38,18 @@ export interface IEntityTracking {
 	count: number;
 	price: IPrice;
 	size: {x: number, y: number};
+	individualLocations: IIndividualLocation[];
+}
+
+export interface IIndividualLocation {
+	allocatedPeople: number;
+	location: ICoordinate;
 }
 
 const defaultGameData: IGameData = {
 	population: 100,
 	time: 0,
+	maxTime: 100,
 	grid: defaultGrid,
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,
@@ -74,10 +82,9 @@ for (item in Entity) {
 				x: 1,
 				y: 1,
 			},
+			individualLocations: [],
 		} as IEntityTracking;
 	}
 }
-
-console.log(defaultGameData);
 
 export default defaultGameData;

@@ -96,7 +96,8 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			deselectChildren();
 		}
 
-		if (newGameData.selectedTile && newGameData.selectedTile.x === coordinate.x && newGameData.selectedTile.y === coordinate.y) {
+		if ((newGameData.selectedTile && newGameData.selectedTile.x === coordinate.x && newGameData.selectedTile.y === coordinate.y)
+			|| newGameData.grid[coordinate.x][coordinate.y].entity !== Entity.UNOBSTRUCTED) {
 			newGameData.grid[coordinate.x][coordinate.y].selected = false;
 			newGameData.selectedTile = undefined;
 			deselectChildren();

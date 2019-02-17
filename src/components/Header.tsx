@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ReactNode} from "react";
-import {StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from "react-native";
+import {Dimensions, PixelRatio, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 
 export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {

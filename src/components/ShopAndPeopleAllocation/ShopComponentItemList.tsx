@@ -9,19 +9,19 @@ import {
 	TextStyle,
 	ViewStyle,
 	ScrollViewComponent,
-	ScrollView
+	ScrollView,
 } from "react-native";
-import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
-import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "./ButtonWrapper";
-import ShopItemComponent from "./ShopItemComponent";
+import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
+import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "../ButtonWrapper";
+import ShopComponentItem from "./ShopComponentItem";
 
-export default class ShopComponentList extends EnhancedComponent<IShopComponentListProps, IShopComponentListState> {
+export default class ShopComponentItemList extends EnhancedComponent<IShopComponentItemListProps, IShopComponentItemListState> {
 
-	public static defaultProps: IShopComponentListProps = {}
+	public static defaultProps: IShopComponentItemListProps = {};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({});
 
-	constructor(props: IShopComponentListProps) {
+	constructor(props: IShopComponentItemListProps) {
 		super(props);
 		this.state = {
 			...this.state,
@@ -33,7 +33,7 @@ export default class ShopComponentList extends EnhancedComponent<IShopComponentL
 
 	// TODO this function lol
 	private handleFacilitySelection(item: any, index: number): (callback: () => void) => void {
-		const that: ShopItemComponent = this;
+		const that: ShopComponentItemList = this;
 
 		return (callback: () => void): void => {
 			alert("pressed:" + index);
@@ -50,7 +50,7 @@ export default class ShopComponentList extends EnhancedComponent<IShopComponentL
 						width: "33%",
 					}}
 				>
-					<ShopItemComponent
+					<ShopComponentItem
 						onAction={this.handleFacilitySelection(price, i)}
 					/>
 				</View>
@@ -77,10 +77,10 @@ export default class ShopComponentList extends EnhancedComponent<IShopComponentL
 	}
 }
 
-export interface IShopComponentListProps extends IEnhancedComponentsProps {
+export interface IShopComponentItemListProps extends IEnhancedComponentsProps {
 }
 
-export interface IShopComponentListState extends IEnhancedComponentsState {
+export interface IShopComponentItemListState extends IEnhancedComponentsState {
 
 }
 
