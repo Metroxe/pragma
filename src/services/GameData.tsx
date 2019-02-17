@@ -1,4 +1,5 @@
 import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
+import {SoundEffect} from "./sound";
 
 export interface IGameData {
 	population: number;
@@ -24,6 +25,7 @@ export interface IGameData {
 	[Entity.UNOBSTRUCTED]: IEntityTracking;
 	[Entity.HOSPITAL]: IEntityTracking;
 	[Entity.WEAPON]: IEntityTracking;
+	music: SoundEffect;
 }
 
 export interface IPrice {
@@ -57,6 +59,7 @@ const defaultGameData: IGameData = {
 	alienCount: 0,
 	radiationCount: 0,
 	meteorCount: 0,
+	music: undefined,
 } as IGameData;
 
 let item: any;

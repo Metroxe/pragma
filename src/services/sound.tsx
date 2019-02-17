@@ -5,10 +5,10 @@ export enum SoundEffect {
 	GG = "gameOver.wav",
 	HAMMER = "hammerConstruction.wav",
 	CLICK = "selectClick.wav",
-	SUCCESS = "successfulHarvest",
-	BGSLOW = "BGSlow",
-	BGMEDIUM = "BGMedium",
-	BGFAST = "BGFast",
+	SUCCESS = "successfulHarvest.wav",
+	BGSLOW = "BGSlow.wav",
+	BGMEDIUM = "BGMedium.wav",
+	BGFAST = "BGFast.wav",
 }
 
 export interface ISound {
@@ -24,19 +24,19 @@ export interface ISound {
 
 function makeSound(): ISound {
 	function abstractSound(soundEffect: SoundEffect): () => Promise<void> {
-		return (): Promise<void> => {
-			return new Promise((resolve: () => void): void => {
-				try {
-					const win: any = new Sound(soundEffect, Sound.MAIN_BUNDLE, (error: any): void => {
-						win.play((success: any) => {
-							resolve();
-						});
-					});
-				} catch (error) {
-					console.log(error);
-				}
-			},
-		);
+				return (): Promise<void> => {
+					return new Promise((resolve: () => void): void => {
+							try {
+								const win: any = new Sound(soundEffect, Sound.MAIN_BUNDLE, (error: any): void => {
+									win.play((success: any) => {
+										resolve();
+									});
+								});
+							} catch (error) {
+								console.log(error);
+							}
+						},
+					);
 		};
 	}
 
@@ -46,9 +46,9 @@ function makeSound(): ISound {
 		[SoundEffect.HAMMER]: abstractSound(SoundEffect.HAMMER),
 		[SoundEffect.CLICK]: abstractSound(SoundEffect.CLICK),
 		[SoundEffect.SUCCESS]: abstractSound(SoundEffect.SUCCESS),
-		[SoundEffect.BGSLOW]: abstractSound(SoundEffect.SUCCESS),
-		[SoundEffect.BGMEDIUM]: abstractSound(SoundEffect.SUCCESS),
-		[SoundEffect.BGFAST]: abstractSound(SoundEffect.SUCCESS),
+		[SoundEffect.BGSLOW]: abstractSound(SoundEffect.BGSLOW),
+		[SoundEffect.BGMEDIUM]: abstractSound(SoundEffect.BGMEDIUM),
+		[SoundEffect.BGFAST]: abstractSound(SoundEffect.BGFAST),
 	};
 }
 

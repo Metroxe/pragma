@@ -5,7 +5,7 @@ import {IContainerProps} from "../containers/Container";
 import containerSet, {IContainerSet} from "../containers";
 import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
-import makeSound, {ISound} from "./sound";
+import makeSound, {SoundEffect} from "./sound";
 
 export default class Navigator extends React.PureComponent<INavigatorProps, INavigatorState> {
 
@@ -35,6 +35,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 		if (!this.interval) {
 			this.interval = setInterval(this.intervalFunction, Navigator.timeIncrement);
 		}
+
 	}
 
 	private intervalFunction(): void {
