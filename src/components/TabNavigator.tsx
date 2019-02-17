@@ -1,54 +1,97 @@
-import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
-import {ReactNode} from "react";
 import * as React from "react";
-import {StyleSheet, View, ViewStyle, Text, Image} from "react-native";
+import {ReactNode} from "react";
+import {StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native";
+import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
+import {IContainerSet} from "../containers";
+import {ImageOptionComponent} from "./ImageOptionComponent";
 
-export default class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
+export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
+
+	protected static imgArr: any[] = [{image: require("../../assets/icons/menu.png")}, {image: require("../../assets/icons/settings.png")}, {image: require("../../assets/icons/next.png")}]
+
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
-		topView: {
-			backgroundColor: "red",
-			height: 100,
+		mainContainer: {
 			width: "100%",
+			flexDirection: "row",
+			backgroundColor: "purple",
+		},
+		individualButton: {
+			flex: 1,
+			alignItems: "center",
+			justifyContent: "center",
+			height: "100%",
+			backgroundColor: "green",
 		},
 	});
 
+	public static navBarHeight: number = 130;
+
 	constructor(props: ITabNavigatorProps) {
 		super(props);
-		this.createTab = this.createTab.bind(this);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
-	private createTab(tab: ITab, index: number): ReactNode {
+	private handleClick(newPage: string): () => void {
+
+		const that: TabNavigator = this;
+
+		return (): void => {
+
+		// alert("hello");
+			that.props.navigate(newPage).then();
+		};
+	}
+
+
+
+	public render(): ReactNode {
+
+		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index: number) => {
+
+			let displayString: string = "";
+			if (item && item.displayString) {
+				displayString = item.displayString;
+			}
+			return (
+				<TouchableOpacity
+					key={"tabOption" + index}
+					onPress={this.handleClick(item.pageString)}
+					style={TabNavigator.style.individualButton}
+					activeOpacity={0.75}
+				>
+					<ImageOptionComponent
+						key={displayString}
+						renderElement={[{image: TabNavigator.imgArr[index].image, label: displayString}]}
+						onAction={null}
+					/>
+				</TouchableOpacity>
+			);
+		});
 
 		return (
-			<View key={"example " + index}>
-				<Text>{tab.key}</Text>
+			<View style={{...TabNavigator.style.mainContainer, height: TabNavigator.navBarHeight}}>
+				{tabOptions}
 			</View>
 		);
 	}
-
-	public render(): ReactNode {
-		return (
-				<View style={TabNavigator.style.topView}>
-					{this.createTab({key: "hello", image: "https://i.ytimg.com/vi/Fa_I68L_APY/maxresdefault.jpg" }, 1)}
-				</View>
-			);
-	}
 }
 
-interface IStyle {
-	topView: ViewStyle;
-}
-
-interface ITab {
-	key: string;
-	image: any;
+export interface IPagePackager {
+	pageString: string;
+	displayString: string;
 }
 
 export interface ITabNavigatorProps extends IEnhancedComponentsProps {
-	tabs: ITab[];
-	currentTab: string;
+	tabOptions: IPagePackager[];
+	navigate: (page: keyof IContainerSet) => Promise<void>;
+
 }
 
-export interface ITabNavigatorState extends IEnhancedComponentsState {
+export interface ITabNavigatorState extends IEnhancedComponentsProps {
 
+}
+
+interface IStyle {
+	mainContainer: ViewStyle;
+	individualButton: ViewStyle;
 }

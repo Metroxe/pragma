@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -36,16 +35,24 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* baymaxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* baymaxTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+<<<<<<< HEAD
 		407C9B61DAD3480EBFF6437A /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 851426C3323541D2B7330074 /* libRNSound.a */; };
 		7909B14F2219422400650E7F /* winSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14A2219422400650E7F /* winSound.wav */; };
 		7909B1502219422400650E7F /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14B2219422400650E7F /* gameOver.wav */; };
 		7909B1512219422400650E7F /* hammerConstruction.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14C2219422400650E7F /* hammerConstruction.wav */; };
 		7909B1522219422400650E7F /* selectClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14D2219422400650E7F /* selectClick.wav */; };
 		7909B1532219422400650E7F /* successfulHarvest.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7909B14E2219422400650E7F /* successfulHarvest.wav */; };
+=======
+		485819C6221886A900C89105 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 485819962218867800C89105 /* libBVLinearGradient.a */; };
+>>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
+		7FD1F871B9CD4C559F02A497 /* Anchor-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F4DA9CB676804BAAAF797D25 /* Anchor-Black.ttf */; };
+		E2995259AD144D239C1AC49E /* Anchor-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD491016A75D459B8673713B /* Anchor-Bold.ttf */; };
+		0D0B1FC441E74FFE831BDFBA /* Anchor-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A49BC45A173B4AD39DFC4572 /* Anchor-Medium.ttf */; };
+		59EC6AFAA9B044D487D4A284 /* Anchor-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43D792681A924FC58EC9CCB1 /* Anchor-Semibold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -259,6 +266,51 @@
 			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
 			remoteInfo = "cxxreact-tvOS";
 		};
+<<<<<<< HEAD
+=======
+		485819952218867800C89105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 485819902218867800C89105 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = BVLinearGradient;
+		};
+		485819972218867800C89105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 485819902218867800C89105 /* BVLinearGradient.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 64AA15081EF7F30100718508;
+			remoteInfo = "BVLinearGradient-tvOS";
+		};
+		485819BE2218867800C89105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC6D6214B3E7000DD5AC8;
+			remoteInfo = jsi;
+		};
+		485819C02218867800C89105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC73B214B45A300DD5AC8;
+			remoteInfo = jsiexecutor;
+		};
+		485819C22218867800C89105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FB6214C9A0900B7C4FE;
+			remoteInfo = "jsi-tvOS";
+		};
+		485819C42218867800C89105 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
+			remoteInfo = "jsiexecutor-tvOS";
+		};
+>>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -354,7 +406,11 @@
 		2D02E47B1E0B4A5D006451C7 /* baymax-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baymax-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* baymax-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "baymax-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
+<<<<<<< HEAD
 		46B7C81A15174890B21CF0D0 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
+=======
+		485819902218867800C89105 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+>>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7909B14A2219422400650E7F /* winSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = winSound.wav; path = ../sound/winSound.wav; sourceTree = "<group>"; };
@@ -367,6 +423,10 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F4DA9CB676804BAAAF797D25 /* Anchor-Black.ttf */ = {isa = PBXFileReference; name = "Anchor-Black.ttf"; path = "../assets/fonts/Anchor-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BD491016A75D459B8673713B /* Anchor-Bold.ttf */ = {isa = PBXFileReference; name = "Anchor-Bold.ttf"; path = "../assets/fonts/Anchor-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A49BC45A173B4AD39DFC4572 /* Anchor-Medium.ttf */ = {isa = PBXFileReference; name = "Anchor-Medium.ttf"; path = "../assets/fonts/Anchor-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		43D792681A924FC58EC9CCB1 /* Anchor-Semibold.ttf */ = {isa = PBXFileReference; name = "Anchor-Semibold.ttf"; path = "../assets/fonts/Anchor-Semibold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -382,6 +442,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485819C6221886A900C89105 /* libBVLinearGradient.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
@@ -534,10 +595,17 @@
 				2DF0FFE52056DD460020B375 /* libthird-party.a */,
 				2DF0FFE72056DD460020B375 /* libdouble-conversion.a */,
 				2DF0FFE92056DD460020B375 /* libdouble-conversion.a */,
+<<<<<<< HEAD
 				7909B13E2219418900650E7F /* libjsi.a */,
 				7909B1402219418900650E7F /* libjsiexecutor.a */,
 				7909B1422219418900650E7F /* libjsi-tvOS.a */,
 				7909B1442219418900650E7F /* libjsiexecutor-tvOS.a */,
+=======
+				485819BF2218867800C89105 /* libjsi.a */,
+				485819C12218867800C89105 /* libjsiexecutor.a */,
+				485819C32218867800C89105 /* libjsi-tvOS.a */,
+				485819C52218867800C89105 /* libjsiexecutor-tvOS.a */,
+>>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -550,6 +618,15 @@
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		485819912218867800C89105 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				485819962218867800C89105 /* libBVLinearGradient.a */,
+				485819982218867800C89105 /* libBVLinearGradient.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -589,6 +666,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				485819902218867800C89105 /* BVLinearGradient.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -628,7 +706,11 @@
 				00E356EF1AD99517003FC87E /* baymaxTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+<<<<<<< HEAD
 				7909B1172219418800650E7F /* Recovered References */,
+=======
+				EC30995FD6EB4D10A7587AF2 /* Resources */,
+>>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -654,6 +736,18 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		EC30995FD6EB4D10A7587AF2 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				F4DA9CB676804BAAAF797D25 /* Anchor-Black.ttf */,
+				BD491016A75D459B8673713B /* Anchor-Bold.ttf */,
+				A49BC45A173B4AD39DFC4572 /* Anchor-Medium.ttf */,
+				43D792681A924FC58EC9CCB1 /* Anchor-Semibold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -766,6 +860,10 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 485819912218867800C89105 /* Products */;
+					ProjectRef = 485819902218867800C89105 /* BVLinearGradient.xcodeproj */;
+				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -1026,6 +1124,51 @@
 			remoteRef = 3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+<<<<<<< HEAD
+=======
+		485819962218867800C89105 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 485819952218867800C89105 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		485819982218867800C89105 /* libBVLinearGradient.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBVLinearGradient.a;
+			remoteRef = 485819972218867800C89105 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		485819BF2218867800C89105 /* libjsi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsi.a;
+			remoteRef = 485819BE2218867800C89105 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		485819C12218867800C89105 /* libjsiexecutor.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsiexecutor.a;
+			remoteRef = 485819C02218867800C89105 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		485819C32218867800C89105 /* libjsi-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsi-tvOS.a";
+			remoteRef = 485819C22218867800C89105 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		485819C52218867800C89105 /* libjsiexecutor-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsiexecutor-tvOS.a";
+			remoteRef = 485819C42218867800C89105 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+>>>>>>> 9425d05968235f160af2eafc221ba6b28fbd71e8
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1117,6 +1260,10 @@
 				7909B1532219422400650E7F /* successfulHarvest.wav in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				7FD1F871B9CD4C559F02A497 /* Anchor-Black.ttf in Resources */,
+				E2995259AD144D239C1AC49E /* Anchor-Bold.ttf in Resources */,
+				0D0B1FC441E74FFE831BDFBA /* Anchor-Medium.ttf in Resources */,
+				59EC6AFAA9B044D487D4A284 /* Anchor-Semibold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
