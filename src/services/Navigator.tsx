@@ -19,7 +19,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "TestScreen",
+		currentContainer: "Grid",
 		gameData: defaultGameData,
 	};
 
@@ -39,7 +39,6 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 	private intervalFunction(): void {
 		if (!this.calculatingInterval) {
 			this.calculatingInterval = true;
-			console.log("incrementing");
 			const that: Navigator = this;
 			GameFunctions(this)
 				.incrementTime()

@@ -7,12 +7,14 @@ import {IGameFunctions} from "../services/GameFunctions";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
-	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
+	private static containerStyle: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		topView: {
 			backgroundColor: "white",
-			flex: 1,
+			height: "100%",
+			width: "100%",
 		},
 	});
+
 	public renderPointer: () => ReactNode;
 
 	constructor(props: P) {
@@ -28,7 +30,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		this.renderPointer = this.render;
 		this.render = (): ReactNode => {
 			return (
-				<View style={Container.style.topView}>
+				<View style={Container.containerStyle.topView}>
 					{this.renderPointer()}
 				</View>
 			);
