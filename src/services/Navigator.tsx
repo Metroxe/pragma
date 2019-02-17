@@ -12,6 +12,7 @@ import {TabNavigator} from "../components/TabNavigator";
 import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
+import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -35,7 +36,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "StartScreen",
 		gameData: defaultGameData,
-		popUpKey: undefined,
+		popUpKey: "daySummary",
 	};
 
 	constructor(props: INavigatorProps) {
@@ -44,6 +45,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		this.navigate = this.navigate.bind(this);
 		this.intervalFunction = this.intervalFunction.bind(this);
 		this.changePopUp = this.changePopUp.bind(this);
+		console.disableYellowBox = true;
 	}
 
 	public componentDidMount(): void {
@@ -87,7 +89,9 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	}
 
 	private changePopUp(popUpKey: "shop" | "allocation"): (callback: () => void) => void {
+
 		const that: Navigator = this;
+
 		return (callback: () => void): void => {
 			that.setState({
 				popUpKey: that.state.popUpKey === popUpKey ? undefined : popUpKey,
@@ -105,19 +109,29 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				</View>
 			);
 		}
-
+		
 		switch (this.state.popUpKey) {
 			case("shop"):
-				return createPopUp(<ShopComponentItemList gameData={this.state.gameData}/>);
+				return createPopUp(
+					<ShopComponentItemList
+						gameData={this.state.gameData}
+						gameFunctions={GameFunctions(this)}
+						changePopUp={this.changePopUp}
+					/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
+			case("daySummary"):
+				return createPopUp(
+					<DailySummaryPopUpContent
+						closeModal={this.changePopUp(undefined)}
+					/>,
+				);
 			default:
 				return <View/>;
 		}
 	}
 
 	public render(): ReactNode {
-
 		return (
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}

@@ -26,6 +26,16 @@ export default class ResourceStats extends EnhancedComponents<IResourceStatsProp
 			paddingTop: 5,
 			paddingBottom: 12,
 		},
+		resourceStats2: {
+			top: 6,
+			position: "absolute",
+			height: 164,
+			width: 130,
+			backgroundColor: "#FBAE34",
+			borderRadius: 20,
+			paddingTop: 5,
+			paddingBottom: 12,
+		},
 		resourceStatsRow: {
 			flexDirection: "row",
 			alignItems: "center",
@@ -62,12 +72,15 @@ export default class ResourceStats extends EnhancedComponents<IResourceStatsProp
 
 	public render(): ReactNode {
 		return (
-			<View style={ResourceStats.style.resourceStats}>
-				<View style={ResourceStats.style.resourceStatsRow}><Text style={[ResourceStats.style.resourceStatsText, ResourceStats.style.resourceStatsLeft]}>YEARS LEFT</Text><CountDisplay style={ResourceStats.style.countDisplay} textStyle={ResourceStats.style.countDisplayText} count={this.props.gameData.maxTime - this.props.gameData.time} /></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.pragma} /></View><CountDisplay count={this.props.gameData.pragma}/></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.food} /></View><CountDisplay count={this.props.gameData.food}/></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.people} /></View><CountDisplay count={this.props.gameData.people}/></View>
-				<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.metal} /></View><CountDisplay count={this.props.gameData.metal}/></View>
+			<View>
+				<View style={[ResourceStats.style.resourceStats2]}/>
+				<View style={ResourceStats.style.resourceStats}>
+					<View style={ResourceStats.style.resourceStatsRow}><Text style={[ResourceStats.style.resourceStatsText, ResourceStats.style.resourceStatsLeft]}>YEARS LEFT</Text><CountDisplay style={ResourceStats.style.countDisplay} textStyle={ResourceStats.style.countDisplayText} count={this.props.gameData.maxTime - this.props.gameData.time} /></View>
+					<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.pragma} /></View><CountDisplay count={this.props.gameData.pragma}/></View>
+					<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.food} /></View><CountDisplay count={this.props.gameData.food}/></View>
+					<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.people} /></View><CountDisplay count={this.props.gameData.people}/></View>
+					<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.metal} /></View><CountDisplay count={this.props.gameData.metal}/></View>
+				</View>
 			</View>
 		);
 	}

@@ -42,8 +42,8 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		},
 		resourceStats: {
 			position: "absolute",
-			left: 10,
-			top: 30,
+			left: 0,
+			top: 20,
 		},
 	});
 
@@ -85,9 +85,6 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 	private determineContentHeight(): number {
 		let baseHeight: number = Dimensions.get("window").height;
 
-		console.log("state:", this.state);
-		console.log("base height:", baseHeight);
-
 		if (this.showHeader) {
 			baseHeight = baseHeight - Header.headerHeight;
 		}
@@ -96,7 +93,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			baseHeight = baseHeight - TabNavigator.navBarHeight;
 		}
 
-		console.log("base height 2:", baseHeight);
+		// console.log("base height 2:", baseHeight);
 
 		return baseHeight;
 	}
@@ -138,6 +135,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 						tabOptions={Container.pagesArray}
 						navigate={this.props.navigate}
 						changePopUp={this.props.changePopUp}
+						gameFunctions={this.props.gameFunctions}
 					/>
 					}
 

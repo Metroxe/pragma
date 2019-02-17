@@ -1,22 +1,12 @@
-import {ReactNode} from "react";
 import * as React from "react";
-import {
-	Image,
-	View,
-	Text,
-	StyleSheet,
-	Dimensions,
-	TextStyle,
-	ViewStyle,
-	ScrollViewComponent,
-	ScrollView,
-} from "react-native";
+import {ReactNode} from "react";
+import {ScrollView, StyleSheet, View,} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
-import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "../ButtonWrapper";
 import ShopComponentItem from "./ShopComponentItem";
 import {IEntityTracking, IGameData} from "../../services/GameData";
 import {Entity} from "../../services/GameGrid";
-import defaultGameData from "../../services/GameData";
+import {IGameFunctions} from "../../services/GameFunctions";
+import * as _ from "lodash";
 
 export default class ShopComponentItemList extends EnhancedComponent<IShopComponentItemListProps, IShopComponentItemListState> {
 
@@ -33,9 +23,13 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 
 	private createEntries(item: IEntityTracking, i: number): ReactNode {
 
-		const onAction: (callback: () => void) => void = (callback: () => void): void => {
+		const that: ShopComponentItemList = this;
 
-			callback();
+		const onAction: (callback: () => void) => void = (callback: () => void): void => {
+			this.props.gameFunctions.changeEntitySelection(item.entityKey)
+				.then(() => {
+					that.props.changePopUp(undefined)(callback);
+				});
 		};
 
 		const canAfford: boolean =
@@ -54,6 +48,8 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 					metalPrice={item.price.metal}
 					onAction={onAction}
 					canAfford={canAfford}
+					itemTitle={item.entityKey + ""}
+					itemDescription={item.entityKey + ""}
 				/>
 			</View>
 		);
@@ -61,9 +57,12 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 
 	public render(): ReactNode {
 		const entities: IEntityTracking[] = [];
-		let item: any
+		let item: any;
 		for (item in Entity) {
-			if (!isNaN(Number(item))) {
+			if (!isNaN(Number(item)) &&
+				!_.isEqual(item + "", Entity.UNOBSTRUCTED + "") &&
+				!_.isEqual(item + "", Entity.OBSTRUCTED + "")
+			) {
 				entities.push(this.props.gameData[item]);
 			}
 		}
@@ -86,6 +85,8 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 
 export interface IShopComponentItemListProps extends IEnhancedComponentsProps {
 	gameData: IGameData;
+	gameFunctions: IGameFunctions;
+	changePopUp: (key: string) => (callback: () => void) => void;
 }
 
 export interface IShopComponentItemListState extends IEnhancedComponentsState {

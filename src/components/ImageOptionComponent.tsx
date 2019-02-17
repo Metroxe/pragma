@@ -28,8 +28,8 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		imageContainer: {
 			justifyContent: "center",
 			alignItems: "center",
-			height: 70,
-			width: 70,
+			height: 60,
+			width: 60,
 		},
 		textContainer: {
 			alignItems: "center",
@@ -39,14 +39,16 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 		},
 		textStyle: {
 			fontFamily: "Anchor",
-			fontSize: 24,
+			fontSize: 21,
 			textAlign: "center",
 		},
 	});
 
 	protected static imgMap: { [key: string]: any } = {
+		build: require("../../assets/icons/build.png"),
 		shop: require("../../assets/icons/menu.png"),
-		allocate: require("../../assets/icons/settings.png"),
+		allocate: require("../../assets/icons/people.png"),
+		next: require("../../assets/icons/next.png"),
 	};
 
 	constructor(props: IImageOptionComponentsProps) {
@@ -68,7 +70,7 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 					<Image
 						style={{width: 70, height: 70}}
 						resizeMode="contain"
-						source={ImageOptionComponent[ImageOptionComponent.imgMap[this.props.imageKey]]}
+						source={ImageOptionComponent.imgMap[this.props.imageKey]}
 					/>
 					<Text style={ImageOptionComponent.style.textStyle}>{this.props.label}</Text>
 				</View>
@@ -79,9 +81,9 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 }
 
 export interface IImageOptionComponentsProps extends IEnhancedComponentsProps {
-	onPress: (callback: () => void) => void;
-	imageKey: string;
-	label: string;
+	onPress?: (callback: () => void) => void;
+	imageKey?: string;
+	label?: string;
 }
 
 export interface IImageOptionComponentsState extends IEnhancedComponentsState {
