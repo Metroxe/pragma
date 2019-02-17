@@ -14,10 +14,11 @@ import {
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "../ButtonWrapper";
 import ShopComponentItem from "./ShopComponentItem";
+import {IEntityTracking, IGameData} from "../../services/GameData";
+import {Entity} from "../../services/GameGrid";
+import defaultGameData from "../../services/GameData";
 
 export default class ShopComponentItemList extends EnhancedComponent<IShopComponentItemListProps, IShopComponentItemListState> {
-
-	public static defaultProps: IShopComponentItemListProps = {};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({});
 
@@ -27,39 +28,45 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 			...this.state,
 		};
 
-		this.handleFacilitySelection = this.handleFacilitySelection.bind(this);
-		this.createListOfPrices = this.createListOfPrices.bind(this);
+		this.createEntries = this.createEntries.bind(this);
 	}
 
-	// TODO this function lol
-	private handleFacilitySelection(item: any, index: number): (callback: () => void) => void {
-		const that: ShopComponentItemList = this;
+	private createEntries(item: IEntityTracking, i: number): ReactNode {
 
-		return (callback: () => void): void => {
-			alert("pressed:" + index);
+		const onAction: (callback: () => void) => void = (callback: () => void): void => {
+
 			callback();
 		};
-	}
 
-	private createListOfPrices(prices: any): ReactNode {
-		return prices.map((price: any, i: number) => {
-			return (
-				<View
-					key={"shopItem" + i}
-					style={{
-						width: "33%",
-					}}
-				>
-					<ShopComponentItem
-						onAction={this.handleFacilitySelection(price, i)}
-					/>
-				</View>
-			);
-		});
+		const canAfford: boolean =
+			this.props.gameData.pragma >= item.price.pragma &&
+			this.props.gameData.metal >= item.price.metal;
+
+		return (
+			<View
+				key={"shopItem" + i}
+				style={{
+					width: "33%",
+				}}
+			>
+				<ShopComponentItem
+					pragmaPrice={item.price.pragma}
+					metalPrice={item.price.metal}
+					onAction={onAction}
+					canAfford={canAfford}
+				/>
+			</View>
+		);
 	}
 
 	public render(): ReactNode {
-		const prices: ReactNode = this.createListOfPrices([1, 2, 3, 4, 5, 1, 2, 3, 4, 5]);
+		const entities: IEntityTracking[] = [];
+		let item: any
+		for (item in Entity) {
+			if (!isNaN(Number(item))) {
+				entities.push(this.props.gameData[item]);
+			}
+		}
 
 		return (
 			<ScrollView>
@@ -70,7 +77,7 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 						flexWrap: "wrap",
 					}}
 				>
-					{prices}
+					{entities.map(this.createEntries)}
 				</View>
 			</ScrollView>
 		);
@@ -78,6 +85,7 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 }
 
 export interface IShopComponentItemListProps extends IEnhancedComponentsProps {
+	gameData: IGameData;
 }
 
 export interface IShopComponentItemListState extends IEnhancedComponentsState {

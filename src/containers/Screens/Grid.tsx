@@ -107,14 +107,14 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				{
 					buildingMap[tile.entity] ? (
 						<View>
-							<View style={Grid.style.circle}>
-								<Text style={Grid.style.text}>10</Text>
-							</View>
 							<Image
 								source={buildingMap[tile.entity]}
 								style={{height: this.state.tileHeight, width: this.state.tileWidth}}
 								resizeMode="cover"
 							/>
+							<View style={[Grid.style.circle, {right: 0}]}>
+								<Text style={Grid.style.text}>10</Text>
+							</View>
 						</View>
 						) : null
 				}
