@@ -95,7 +95,6 @@ def enableProguardInReleaseBuilds = false
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.baymax"
@@ -131,6 +130,7 @@ android {
             }
         }
     }
+    buildToolsVersion '28.0.3'
 }
 
 dependencies {

@@ -25,7 +25,6 @@ export default class EnhancedComponent<P extends IEnhancedComponentsProps, S ext
 			);
 		};
 	}
-
 }
 
 export interface IEnhancedComponentsProps {
