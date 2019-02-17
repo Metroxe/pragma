@@ -38,7 +38,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "CreditsScreen",
+		currentContainer: "Grid",
 		gameData: defaultGameData,
 		popUpKey: undefined,
 	};
