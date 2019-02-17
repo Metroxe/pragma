@@ -128,6 +128,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 						tabOptions={Container.pagesArray}
 						navigate={this.props.navigate}
 						changePopUp={this.props.changePopUp}
+						gameFunctions={this.props.gameFunctions}
 					/>
 					}
 				</View>

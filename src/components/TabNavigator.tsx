@@ -4,6 +4,7 @@ import {StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native"
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 import {IContainerSet} from "../containers";
 import {ImageOptionComponent} from "./ImageOptionComponent";
+import {IGameFunctions} from "../services/GameFunctions";
 
 export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
 
@@ -42,6 +43,16 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 
 	public static navBarHeight: number = 130;
 
+	constructor(props: ITabNavigatorProps) {
+		super(props);
+		this.gameFunctionWrapper = this.gameFunctionWrapper.bind(this);
+	}
+
+
+	private gameFunctionWrapper(callback: () => void): void {
+		this.props.gameFunctions.incrementTime().then(callback);
+	}
+
 	public render(): ReactNode {
 
 		return (
@@ -50,21 +61,16 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 					<View style={TabNavigator.style.tabNavButtonStyle}>
 						<ImageOptionComponent
 							onPress={this.props.changePopUp("shop")}
-							imageKey="shop"
-							label="Shop"
-						/>
-						<ImageOptionComponent
-							onPress={this.props.changePopUp("shop")}
 							imageKey="build"
 							label="Build"
 						/>
 						<ImageOptionComponent
-							onPress={this.props.changePopUp("shop")}
+							onPress={this.props.changePopUp("allocation")}
 							imageKey="allocate"
 							label="Allocate"
 						/>
 						<ImageOptionComponent
-							onPress={this.props.changePopUp("shop")}
+							onPress={this.gameFunctionWrapper}
 							imageKey="next"
 							label="End Turn"
 						/>
@@ -84,6 +90,7 @@ export interface ITabNavigatorProps extends IEnhancedComponentsProps {
 	tabOptions: IPagePackager[];
 	navigate: (page: keyof IContainerSet) => Promise<void>;
 	changePopUp: (key: string) => (callback: () => void) => void;
+	gameFunctions?: IGameFunctions;
 }
 
 export interface ITabNavigatorState extends IEnhancedComponentsProps {
