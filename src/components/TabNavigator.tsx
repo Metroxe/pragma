@@ -3,8 +3,14 @@ import {ReactNode} from "react";
 import {StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 import {IContainerSet} from "../containers";
+import {ImageOptionComponent} from "./ImageOptionComponent";
 
 export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
+
+	protected static imgArr: any[] = [{image: require("../../assets/icons/menu.png")}, {image: require("../../assets/icons/settings.png")}, {image: require("../../assets/icons/vector.png")}]
+	protected static image1: any = require("../../assets/icons/menu.png");
+	protected static image2: any = require("../../assets/icons/settings.png");
+	protected static image3: any = require("../../assets/icons/vector.png");
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
@@ -21,7 +27,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 		},
 	});
 
-	public static navBarHeight: number = 60;
+	public static navBarHeight: number = 120;
 
 	constructor(props: ITabNavigatorProps) {
 		super(props);
@@ -39,6 +45,8 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 		};
 	}
 
+
+
 	public render(): ReactNode {
 
 		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index: number) => {
@@ -54,7 +62,11 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 					style={TabNavigator.style.individualButton}
 					activeOpacity={0.75}
 				>
-					<Text>{displayString}</Text>
+					<ImageOptionComponent
+						key={displayString}
+						renderElement={[{image: TabNavigator.imgArr[index].image}]}
+						onAction={null}
+					/>
 				</TouchableOpacity>
 			);
 		});
