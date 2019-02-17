@@ -109,8 +109,6 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				onPress={onPress}
 			>
 				<View>
-					<Text style={{color: "white"}}>{tile.coordinate.x + "," + tile.coordinate.y}</Text>
-
 					{
 					tile.entity !== Entity.OBSTRUCTED && tile.entity !== Entity.UNOBSTRUCTED ? (
 						<View>
