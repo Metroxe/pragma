@@ -52,7 +52,7 @@ export default class StartScreen extends Container<IStartScreenProps, IStartScre
 		console.log(e);
 	}
 
-	public navigateFromModal(name: string): (callback: () => void) => void {
+	public navigateFromModal(name: string): (callback?: () => void) => void {
 		let modal: ReactNode;
 		switch (name) {
 			case "menu":
@@ -65,9 +65,11 @@ export default class StartScreen extends Container<IStartScreenProps, IStartScre
 				modal = (<CreditsInitialModalContent startScreen={this} />);
 				break;
 		}
-		return (callback: () => void): void => {
+		return (callback?: () => void): void => {
 			this.setState({popUpModalContent: modal}, () => {
-				callback();
+				/*if (callback) {
+					callback();
+				}*/
 			});
 		};
 	}
@@ -75,7 +77,7 @@ export default class StartScreen extends Container<IStartScreenProps, IStartScre
 	public render(): ReactNode {
 		return (
 			<View style={StartScreen.style.mainContainer}>
-				<Video source={require("./../../../assets/video-test-2.mov")}   // Can be a URL or a local file.
+				<Video source={require("./../../../assets/menu_video.mp4")}   // Can be a URL or a local file.
 					rate={1.0}
 					style={StartScreen.style.videoStyle}
 					resizeMode={"cover"}

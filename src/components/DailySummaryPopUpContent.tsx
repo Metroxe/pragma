@@ -27,11 +27,11 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 		this.handleClose = this.handleClose.bind(this);
 	}
 
-	private handleClose(callback: () => void): void {
+	private handleClose(): void {
 		// TODO hook up @Raymond
-		callback();
+		// callback();
 
-		this.props.closeModal(callback);
+		this.props.closeModal();
 	}
 
 	public render(): ReactNode {
@@ -59,7 +59,7 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 }
 
 export interface IDailySummaryPopUpContentProps {
-	closeModal: (callback: () => void) => void;
+	closeModal: () => void;
 }
 
 export interface IDailySummaryPopUpContentState {
