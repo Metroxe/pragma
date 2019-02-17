@@ -78,6 +78,4 @@ for (item in Entity) {
 	}
 }
 
-console.log(defaultGameData);
-
 export default defaultGameData;
