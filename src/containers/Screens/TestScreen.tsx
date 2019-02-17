@@ -7,6 +7,7 @@ import {View, Text} from "react-native";
 import {TabNavigator} from "../../components/TabNavigator";
 import ShopItemComponent from "../../components/ShopItemComponent";
 import ShopComponentList from "../../components/ShopComponentList";
+import {CircularButton} from "../../components/CircularButton";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
 
@@ -39,12 +40,13 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 	public render(): ReactNode {
 		return (
 			<View>
-				<SilverModalButton
-					ref={this.saveButtonRef}
-					buttonText={"click me"}
-					onAction={this.buttonOnClick}
-					popUp={this.popUpRef as PopUp}
-				/>
+				<CircularButton image={"settings"}/>
+				{/*<SilverModalButton*/}
+					{/*ref={this.saveButtonRef}*/}
+					{/*buttonText={"click me"}*/}
+					{/*onAction={this.buttonOnClick}*/}
+					{/*popUp={this.popUpRef as PopUp}*/}
+				{/*/>*/}
 				{/*<PopUp position={PopUpPositions.BR}/>*/}
 				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
 				{/*<Text>{this.props.gameData.time}</Text>*/}
