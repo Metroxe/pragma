@@ -1,7 +1,6 @@
 import Container, {IContainerProps, IContainerState} from "../Container";
 import * as React from "react";
 import {ReactNode} from "react";
-import {View} from "react-native";
 import SilverModalButton from "../../components/SilverModalButton";
 import {PopUp, PopUpPositions} from "../../components/PopUp";
 import {View, Text} from "react-native";
