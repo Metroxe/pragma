@@ -69,10 +69,10 @@ const defaultGameData: IGameData = {
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,
 
-	pragma: 20,
-	people: 10,
-	food: 50,
-	metal: 25,
+	pragma: 10,
+	people: 5,
+	food: 0,
+	metal: 20,
 	disease: false,
 	alien: false,
 	radiation: false,
@@ -126,7 +126,7 @@ defaultGameData[Entity.HOSPITAL] = {
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
 	title: "Hospital",
-	description: "Prevents the spread of disease",
+	description: "Prevents disease",
 	resourceGenerator: false,
 	image: require("../../assets/buildings/safety_hospital.png"),
 };
@@ -146,8 +146,8 @@ defaultGameData[Entity.WEAPON] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "Weapon Institute",
-	description: "Defends against alien attack",
+	title: "Laser",
+	description: "Defends against aliens",
 	resourceGenerator: false,
 	image: require("../../assets/buildings/safety_weapon.png"),
 };
@@ -167,7 +167,7 @@ defaultGameData[Entity.GREENHOUSE] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "Greenhouse",
+	title: "Storage",
 	description: "Houses food stores",
 	resourceGenerator: false,
 	image: require("../../assets/buildings/safety_greenhouse.png"),
@@ -194,11 +194,78 @@ defaultGameData[Entity.VAULT] = {
 	image: require("../../assets/buildings/safety_bank.png"),
 };
 
+///////////////////////////
+
 defaultGameData[Entity.WINDMILL] = {
 	...defaultGameData[Entity.WINDMILL],
 	count: 0,
 	price: {
 		pragma: 20,
+		people: 0,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 5,
+	title: "Windmill",
+	description: "Small energy generator",
+	resourceGenerator: true,
+	image: require("../../assets/buildings/energy_windmill.png"),
+};
+
+defaultGameData[Entity.REACTOR] = {
+	...defaultGameData[Entity.REACTOR],
+	count: 0,
+	price: {
+		pragma: 30,
+		people: 10,
+		food: 10,
+		metal: 10,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 12,
+	title: "Reactor",
+	description: "Medium energy generator",
+	resourceGenerator: true,
+	image: require("../../assets/buildings/energy_nuclear.png"),
+};
+
+defaultGameData[Entity.PYLON] = {
+	...defaultGameData[Entity.PYLON],
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 15,
+		food: 15,
+		metal: 15,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 4,
+	title: "Pylon",
+	description: "Large energy generator",
+	resourceGenerator: true,
+	image: require("../../assets/buildings/energy_crystal.png"),
+};
+
+///////////////////////
+
+defaultGameData[Entity.TREE] = {
+	...defaultGameData[Entity.TREE],
+	count: 0,
+	price: {
+		pragma: 40,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -209,14 +276,58 @@ defaultGameData[Entity.WINDMILL] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
+	title: "Tree",
+	description: "Small food source",
 	resourceGenerator: true,
-	image: require("../../assets/buildings/energy_windmill.png"),
+	image: require("../../assets/buildings/food_tree.png"),
 };
 
-defaultGameData[Entity.REACTOR] = {
-	...defaultGameData[Entity.REACTOR],
+defaultGameData[Entity.ORCHARD] = {
+	...defaultGameData[Entity.ORCHARD],
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 5,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 12,
+	title: "Orchard",
+	description: "Medium food source",
+	resourceGenerator: true,
+	image: require("../../assets/buildings/food_orchard.png"),
+};
+
+defaultGameData[Entity.FARM] = {
+	...defaultGameData[Entity.FARM],
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 5,
+		food: 0,
+		metal: 0,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 0,
+	title: "Farm",
+	description: "Large food source",
+	resourceGenerator: true,
+	image: require("../../assets/buildings/food_farm.png"),
+};
+
+/////////////////////////////
+
+defaultGameData[Entity.MINE] = {
+	...defaultGameData[Entity.MINE],
 	count: 0,
 	price: {
 		pragma: 30,
@@ -230,14 +341,14 @@ defaultGameData[Entity.REACTOR] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
+	title: "Mine",
+	description: "Small resource harvester",
 	resourceGenerator: true,
-	image: require("../../assets/buildings/energy_nuclear.png"),
+	image: require("../../assets/buildings/metal_mine.png"),
 };
 
-defaultGameData[Entity.PYLON] = {
-	...defaultGameData[Entity.PYLON],
+defaultGameData[Entity.FORGE] = {
+	...defaultGameData[Entity.FORGE],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -251,14 +362,14 @@ defaultGameData[Entity.PYLON] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
+	title: "Forge",
+	description: "Med. resource harvester",
 	resourceGenerator: true,
-	image: require("../../assets/buildings/energy_crystal.png"),
+	image: require("../../assets/buildings/metal_smelting.png"),
 };
 
-defaultGameData[Entity.PYLON] = {
-	...defaultGameData[Entity.PYLON],
+defaultGameData[Entity.FACTORY] = {
+	...defaultGameData[Entity.FACTORY],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -272,10 +383,10 @@ defaultGameData[Entity.PYLON] = {
 	},
 	individualLocations: [],
 	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "A place to put your resources",
+	title: "Factory",
+	description: "Large resource harvester",
 	resourceGenerator: true,
-	image: require("../../assets/buildings/safety_hospital.png"),
+	image: require("../../assets/buildings/metal_factory.png"),
 };
 
 export default defaultGameData;
