@@ -25,7 +25,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -40,10 +40,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
+	<!--See http://ste.vn/2015/06/10/configuring-app-transport-security-ios-9-osx-10-11/ -->
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -53,12 +56,5 @@
 			</dict>
 		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Anchor-Black.ttf</string>
-		<string>Anchor-Bold.ttf</string>
-		<string>Anchor-Medium.ttf</string>
-		<string>Anchor-Semibold.ttf</string>
-	</array>
 </dict>
 </plist>
