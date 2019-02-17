@@ -70,6 +70,10 @@ abstract class ButtonWrapper<P extends IButtonWrapperProps, S extends IButtonWra
 			);
 		};
 	}
+
+	public  render(): ReactNode {
+		return null;
+	}
 }
 
 export interface IButtonWrapperProps extends IEnhancedComponentsProps {

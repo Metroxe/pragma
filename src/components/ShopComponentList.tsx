@@ -27,18 +27,32 @@ export default class ShopComponentList extends EnhancedComponent<IShopComponentL
 			...this.state,
 		};
 
+		this.handleFacilitySelection = this.handleFacilitySelection.bind(this);
 		this.createListOfPrices = this.createListOfPrices.bind(this);
+	}
+
+	// TODO this function lol
+	private handleFacilitySelection(item: any, index: number): (callback: () => void) => void {
+		const that: ShopItemComponent = this;
+
+		return (callback: () => void): void => {
+			alert("pressed:" + index);
+			callback();
+		};
 	}
 
 	private createListOfPrices(prices: any): ReactNode {
 		return prices.map((price: any, i: number) => {
 			return (
 				<View
+					key={"shopItem" + i}
 					style={{
 						width: "33%",
 					}}
 				>
-					<ShopItemComponent/>
+					<ShopItemComponent
+						onAction={this.handleFacilitySelection(price, i)}
+					/>
 				</View>
 			);
 		});

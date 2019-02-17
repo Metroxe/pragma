@@ -1,10 +1,13 @@
-import {IGrid} from "./GameGrid";
-import defaultGrid from "./GameGrid";
+import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
 
 export interface IGameData {
 	population: number;
 	time: number;
 	grid: IGrid;
+	gridMode: GridMode;
+	buildModeObject: Entity;
+	selectedTile?: ICoordinate;
+	childSelection?: ICoordinate[];
 	pragma: number;
 	people: number;
 	food: number;
@@ -17,23 +20,10 @@ export interface IGameData {
 	alienCount: number;
 	radiationCount: number;
 	meteorCount: number;
-	hospitalCount: number;
-	weaponCount: number;
-	greenHouseCount: number;
-	safeHouseCount: number;
-	hospitalPrice: IPrice;
-	weaponPrice: IPrice;
-	greenHousePrice: IPrice;
-	safeHousePrice: IPrice;
-	windmillPrice: IPrice;
-	nuclearPrice: IPrice;
-	crystalPrice: IPrice;
-	AppleTreePrice: IPrice;
-	AppleFieldPrice: IPrice;
-	AppleFarmPrice: IPrice;
-	MinePrice: IPrice;
-	SmeltingPrice: IPrice;
-	FactoryPrice: IPrice;
+	[Entity.OBSTRUCTED]: IEntityTracking;
+	[Entity.UNOBSTRUCTED]: IEntityTracking;
+	[Entity.HOSPITAL]: IEntityTracking;
+	[Entity.WEAPON]: IEntityTracking;
 }
 
 export interface IPrice {
@@ -43,10 +33,18 @@ export interface IPrice {
 	metal: number;
 }
 
+export interface IEntityTracking {
+	count: number;
+	price: IPrice;
+	size: {x: number, y: number};
+}
+
 const defaultGameData: IGameData = {
 	population: 100,
 	time: 0,
 	grid: defaultGrid,
+	gridMode: GridMode.VIEW_MODE,
+	buildModeObject: Entity.WINDMILL,
 	pragma: 0,
 	people: 0,
 	food: 0,
@@ -59,88 +57,27 @@ const defaultGameData: IGameData = {
 	alienCount: 0,
 	radiationCount: 0,
 	meteorCount: 0,
-	hospitalCount: 0,
-	weaponCount: 0,
-	greenHouseCount: 0,
-	safeHouseCount: 0,
-	hospitalPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	weaponPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	greenHousePrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	safeHousePrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	windmillPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	nuclearPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	crystalPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	AppleTreePrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	AppleFieldPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	AppleFarmPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	MinePrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	SmeltingPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-	FactoryPrice: {
-		pragma: 0,
-		people: 0,
-		food: 0,
-		metal: 0,
-	},
-};
+} as IGameData;
+
+let item: any;
+for (item in Entity) {
+	if (!isNaN(Number(item))) {
+		defaultGameData[item] = {
+			count: 0,
+			price: {
+				pragma: 0,
+				people: 0,
+				food: 0,
+				metal: 0,
+			},
+			size: {
+				x: 1,
+				y: 1,
+			},
+		} as IEntityTracking;
+	}
+}
+
+console.log(defaultGameData);
 
 export default defaultGameData;

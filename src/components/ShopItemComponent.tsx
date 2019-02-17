@@ -10,6 +10,7 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 		itemDescription: "Description",
 		pragmaPrice: 69,
 		metalPrice: 420,
+		canAfford: true,
 	};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -17,18 +18,18 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 			width: "100%",
 			padding: 10,
 		},
-		titleContainer: {
-
+		previewImageContainer: {
+			width: "100%",
+			height: 100,
 		},
+		titleContainer: {},
 		titleStyle: {
 			textAlign: "center",
 			fontSize: 28,
 			color: "#111228",
 			fontFamily: "Anchor",
 		},
-		descriptionContainer: {
-
-		},
+		descriptionContainer: {},
 		descriptionStyle: {
 			textAlign: "center",
 			fontSize: 18,
@@ -63,11 +64,34 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 			color: "#B1336B",
 			fontFamily: "Anchor",
 		},
+		decorationLine: {
+			width: "95%",
+			alignSelf: "center",
+			backgroundColor: "#111228",
+			height: 1,
+			marginTop: 20,
+		},
 	});
+
+	constructor(props: IShopItemComponentProps) {
+		super(props);
+		this.state = {
+			...this.state,
+			disabled: !props.canAfford,
+		};
+	}
 
 	public render(): ReactNode {
 		return (
-			<View style={ShopItemComponent.style.mainContainer}>
+			<View style={{...ShopItemComponent.style.mainContainer, opacity: this.props.canAfford ? 1 : 0.3}}>
+				<View style={ShopItemComponent.style.previewImageContainer}>
+					<Image
+						source={require("../../assets/images/Resource-Icons/pragma.png")}
+						style={ShopItemComponent.style.currencyImageStyle}
+						resizeMode={"contain"}
+					/>
+				</View>
+
 				<View style={ShopItemComponent.style.titleContainer}>
 					<Text style={ShopItemComponent.style.titleStyle}>
 						{this.props.itemTitle}
@@ -112,6 +136,8 @@ export default class ShopItemComponent extends ButtonWrapper<IShopItemComponentP
 						</View>
 					</View>
 				</View>
+
+				<View style={ShopItemComponent.style.decorationLine}/>
 			</View>
 		);
 	}
@@ -122,6 +148,8 @@ export interface IShopItemComponentProps extends IButtonWrapperProps {
 	itemDescription: string;
 	pragmaPrice: number;
 	metalPrice: number;
+
+	canAfford: boolean;
 }
 
 export interface IShopItemComponentState extends IButtonWrapperState {
@@ -130,6 +158,8 @@ export interface IShopItemComponentState extends IButtonWrapperState {
 
 interface IStyle {
 	mainContainer: ViewStyle;
+
+	previewImageContainer: ViewStyle;
 
 	titleContainer: ViewStyle;
 	titleStyle: TextStyle;
@@ -143,4 +173,6 @@ interface IStyle {
 
 	currencyImageStyle: any;
 	currencyCostText: TextStyle;
+
+	decorationLine: ViewStyle;
 }

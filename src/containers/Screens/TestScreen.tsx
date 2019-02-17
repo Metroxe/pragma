@@ -10,18 +10,22 @@ import ShopComponentList from "../../components/ShopComponentList";
 import {CircularButton} from "../../components/CircularButton";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
-
+	protected static image1: any = require("../../../assets/icons/menu.png");
+	protected static image2: any = require("../../../assets/icons/settings.png");
+	protected static image3: any = require("../../../assets/icons/next.png");
 	private buttonRef: SilverModalButton;
 	private popUpRef: ReactNode = <PopUp position={PopUpPositions.TL} innerComponent={<ShopComponentList/>}/>;
 
 	protected constructor(props: ITestScreenProps) {
 		super(props);
-		this.state = {
-			...this.state,
-		};
 
 		this.buttonOnClick = this.buttonOnClick.bind(this);
 		this.saveButtonRef = this.saveButtonRef.bind(this);
+	}
+
+	private static test(callback: () => void): void {
+		alert("this is a test");
+		callback();
 	}
 
 	private buttonOnClick(callback: () => void): void {
