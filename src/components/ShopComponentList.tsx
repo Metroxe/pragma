@@ -9,7 +9,7 @@ import {
 	TextStyle,
 	ViewStyle,
 	ScrollViewComponent,
-	ScrollView
+	ScrollView,
 } from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
 import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "./ButtonWrapper";
