@@ -16,7 +16,7 @@ export default class EnhancedComponent<P extends IEnhancedComponentsProps, S ext
 		// @ts-ignore
 		this.state = {
 			popUpShown: false,
-			popUpOpacity: new Animated.Value(0),
+			popUpOpacity: new Animated.Value(0.0),
 		};
 		this.wrapRender = this.wrapRender.bind(this);
 		this.wrapRender();
@@ -25,16 +25,18 @@ export default class EnhancedComponent<P extends IEnhancedComponentsProps, S ext
 	}
 
 	public showPopUp(): void {
-		if (true && this.props.popUp) {
+		if (!this.state.popUpShown  && this.props.popUp) {
 			console.log(this.state.popUpOpacity);
 			Animated.timing(
 				this.state.popUpOpacity,
 				{
 					toValue: 1.0,
-					duration: 1000,
+					duration: 10000,
 				},
-			).start();
-			this.setState({popUpShown: true});
+			).start(() => {
+				this.setState({popUpShown: true});
+			});
+
 		}
 	}
 
