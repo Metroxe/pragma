@@ -4,6 +4,7 @@ import {Dimensions, StyleSheet, Text, View, ViewStyle} from "react-native";
 import {IContainerSet} from "./index";
 import {IGameData} from "../services/GameData";
 import {IGameFunctions} from "../services/GameFunctions";
+import {ISound} from "../services/sound";
 import {IPagePackager, TabNavigator} from "../components/TabNavigator";
 import {Header} from "../components/Header";
 
@@ -157,6 +158,7 @@ export interface IContainerProps {
 	navigate: (page: keyof IContainerSet) => Promise<void>;
 	gameData: IGameData;
 	gameFunctions: IGameFunctions;
+	gameMusic: ISound;
 	currentPage: keyof IContainerSet;
 }
 

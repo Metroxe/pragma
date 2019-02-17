@@ -5,6 +5,7 @@ import {IContainerProps} from "../containers/Container";
 import containerSet, {IContainerSet} from "../containers";
 import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
+import makeSound, {ISound} from "./sound";
 
 export default class Navigator extends React.PureComponent<INavigatorProps, INavigatorState> {
 
@@ -60,6 +61,7 @@ export default class Navigator extends React.PureComponent<INavigatorProps, INav
 			navigate: this.navigate,
 			gameData: this.state.gameData,
 			gameFunctions: GameFunctions(this),
+			gameMusic: makeSound(),
 			currentPage: this.state.currentContainer,
 		};
 
