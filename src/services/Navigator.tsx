@@ -34,7 +34,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "StartScreen",
 		gameData: defaultGameData,
-		popUpKey: "allocation",
+		popUpKey: undefined,
 	};
 
 	constructor(props: INavigatorProps) {
@@ -101,7 +101,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				</View>
 			);
 		}
-		
+
 		switch (this.state.popUpKey) {
 			case("shop"):
 				return createPopUp(
