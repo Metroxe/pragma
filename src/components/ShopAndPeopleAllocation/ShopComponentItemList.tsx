@@ -60,8 +60,8 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 		let item: any;
 		for (item in Entity) {
 			if (!isNaN(Number(item)) &&
-				!_.isEqual(item, Entity.UNOBSTRUCTED) &&
-				!_.isEqual(item, Entity.OBSTRUCTED)
+				!_.isEqual(item + "", Entity.UNOBSTRUCTED + "") &&
+				!_.isEqual(item + "", Entity.OBSTRUCTED + "")
 			) {
 				entities.push(this.props.gameData[item]);
 			}
