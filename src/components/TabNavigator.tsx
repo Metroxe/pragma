@@ -18,7 +18,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 			justifyContent: "center",
 			height: "100%",
 			backgroundColor: "green",
-		}
+		},
 	});
 
 	public static navBarHeight: number = 60;
@@ -36,11 +36,17 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 
 		// alert("hello");
 			that.props.navigate(newPage).then();
-		}
+		};
 	}
 
 	public render(): ReactNode {
-		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index) => {
+
+		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index: number) => {
+
+			let displayString: string = "";
+			if (item && item.displayString) {
+				displayString = item.displayString;
+			}
 			return (
 				<TouchableOpacity
 					key={"tabOption" + index}
@@ -48,7 +54,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 					style={TabNavigator.style.individualButton}
 					activeOpacity={0.75}
 				>
-					<Text>{item.displayString}</Text>
+					<Text>{displayString}</Text>
 				</TouchableOpacity>
 			);
 		});
@@ -57,7 +63,7 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 			<View style={{...TabNavigator.style.mainContainer, height: TabNavigator.navBarHeight}}>
 				{tabOptions}
 			</View>
-		)
+		);
 	}
 }
 

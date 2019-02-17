@@ -6,6 +6,7 @@ import {IGameData} from "../services/GameData";
 import {IGameFunctions} from "../services/GameFunctions";
 import {IPagePackager, TabNavigator} from "../components/TabNavigator";
 import {Header} from "../components/Header";
+import LinearGradient from "react-native-linear-gradient";
 
 export default class Container<P extends IContainerProps, S extends IContainerState> extends React.PureComponent<P, S> {
 
@@ -13,8 +14,8 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		topView: {
 			backgroundColor: "white",
 			// flex: 1,
-			height: Dimensions.get("screen").height,
-			width: Dimensions.get("screen").width,
+			height: Dimensions.get("window").height,
+			width: Dimensions.get("window").width,
 		},
 		grayOverlay: {
 			width: "100%",
@@ -53,6 +54,10 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			pageString: "ShopScreen",
 			displayString: "ShopScreen",
 		},
+		{
+			pageString: "TestScreen",
+			displayString: "TestScreen",
+		},
 	];
 
 	public renderPointer: () => ReactNode;
@@ -83,7 +88,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 	}
 
 	private determineContentHeight(): number {
-		let baseHeight: number = Dimensions.get("screen").height;
+		let baseHeight: number = Dimensions.get("window").height;
 
 		console.log("state:", this.state);
 		console.log("base height:", baseHeight);
@@ -110,6 +115,15 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 
 			return (
 				<View style={Container.containerStyle.topView}>
+					<Header
+						title={Container.pagesArray[Container.pagesArray.findIndex((property: IPagePackager) => property.pageString === this.props.currentPage.toString())].displayString}
+					/>
+
+					<View
+						style={{height: Dimensions.get("screen").height - Header.headerHeight - TabNavigator.navBarHeight}}
+					>
+						{this.renderPointer()}
+					</View>
 
 					{this.state.popUpModalContent &&
 					<View style={Container.containerStyle.grayOverlay}/>
