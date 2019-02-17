@@ -7,12 +7,14 @@ import {
 	PixelRatio,
 	ScrollView,
 	StyleSheet,
-	Text, TextStyle,
+	Text, TextStyle, TouchableHighlight,
 	TouchableOpacity,
 	View,
 	ViewStyle,
 } from "react-native";
+import * as _ from "lodash";
 import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
+import SilverModalButton from "../../components/SilverModalButton";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -42,6 +44,11 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			color: "white",
 			fontFamily: "Anchor",
 		},
+		buildButton: {
+			position: "absolute",
+			bottom: 20,
+			alignSelf: "center",
+		},
 	});
 
 	// width: 13961
@@ -50,31 +57,35 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		super(props);
 		this.state = {
 			...this.state,
-			tileHeight: 1186 / PixelRatio.get() / 3,
-			tileWidth: 1186 / PixelRatio.get() / 3,
+			tileHeight: 1186 / PixelRatio.get() / 4,
+			tileWidth: 1186 / PixelRatio.get() / 4,
 		};
 		this.headerTitle = "Map";
 
 		this.createTile = this.createTile.bind(this);
 		this.createColumn = this.createColumn.bind(this);
+		this.buildAction = this.buildAction.bind(this);
 	}
 
 	private createTile(tile: ITile): ReactNode {
 		const onPress: () => void = (): void => {
-			const that: Grid = this;
 			this.props.gameFunctions.selectTile(tile.coordinate)
-				.then(that.props.gameFunctions.buildOnTile)
+				.then();
 		};
 
 		let borderColor: string = "transparent";
-		let opacity: number = 1;
+		let opacity: number = 0;
 		if (tile.entity === Entity.UNOBSTRUCTED) {
 			borderColor = "grey";
-			opacity = 0.7;
+			opacity = 0.3;
+		}
+		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
+			borderColor = "white";
+			opacity = 1;
 		}
 
 		return (
-			<TouchableOpacity
+			<TouchableHighlight
 				style={[
 					Grid.style.tileStyle,
 					{
@@ -84,9 +95,11 @@ export default class Grid extends Container<IGridProps, IGridState> {
 						borderColor,
 					},
 				]}
+				underlayColor="transparent"
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
+				<View>
 				{
 					buildingMap[tile.entity] ? (
 						<View>
@@ -101,7 +114,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 						</View>
 						) : null
 				}
-			</TouchableOpacity>
+				</View>
+			</TouchableHighlight>
 		);
 	}
 
@@ -115,21 +129,38 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		);
 	}
 
+	private buildAction(callback: () => void): void {
+		this.props.gameFunctions.buildOnTile()
+			.then(callback);
+	}
+
 	public render(): ReactNode {
 		return (
-			<ScrollView
-				horizontal={true}
-				bounces={false}
-				style={Grid.style.scrollViewStyle}
-				contentContainerStyle={{alignItems: "center"}}
-			>
-				<Image
-					source={require("../../../assets/grid.png")}
-					style={Grid.style.image as any}
-					resizeMode="stretch"
-				/>
-				{this.props.gameData.grid.map(this.createColumn)}
-			</ScrollView>
+			<View>
+				<ScrollView
+					horizontal={true}
+					bounces={false}
+					style={Grid.style.scrollViewStyle}
+					contentContainerStyle={{alignItems: "center"}}
+				>
+					<Image
+						source={require("../../../assets/grid.png")}
+						style={Grid.style.image as any}
+						resizeMode="stretch"
+					/>
+					{this.props.gameData.grid.map(this.createColumn)}
+				</ScrollView>
+				{
+					this.props.gameData.selectedTile !== undefined ?
+						<View style={Grid.style.buildButton}>
+							<SilverModalButton
+								buttonText="Build"
+								onAction={this.buildAction}
+							/>
+						</View> : null
+				}
+
+			</View>
 		);
 	}
 }
@@ -140,6 +171,7 @@ interface IStyle {
 	image: ImageStyle;
 	circle: ViewStyle;
 	text: TextStyle;
+	buildButton: ViewStyle;
 }
 
 export interface IGridProps extends IContainerProps {
