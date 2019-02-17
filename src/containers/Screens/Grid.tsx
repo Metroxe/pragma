@@ -7,11 +7,12 @@ import {
 	PixelRatio,
 	ScrollView,
 	StyleSheet,
-	Text, TextStyle,
+	Text, TextStyle, TouchableHighlight,
 	TouchableOpacity,
 	View,
 	ViewStyle,
 } from "react-native";
+import * as _ from "lodash";
 import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
 
 export default class Grid extends Container<IGridProps, IGridState> {
@@ -61,20 +62,23 @@ export default class Grid extends Container<IGridProps, IGridState> {
 
 	private createTile(tile: ITile): ReactNode {
 		const onPress: () => void = (): void => {
-			const that: Grid = this;
 			this.props.gameFunctions.selectTile(tile.coordinate)
-				.then(that.props.gameFunctions.buildOnTile);
+				.then();
 		};
 
 		let borderColor: string = "transparent";
-		let opacity: number = 1;
+		let opacity: number = 0;
 		if (tile.entity === Entity.UNOBSTRUCTED) {
-			borderColor = "grey";
-			opacity = 0.7;
+			borderColor = "white";
+			opacity = 0.5;
+		}
+		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
+			borderColor = "white";
+			opacity = 1;
 		}
 
 		return (
-			<TouchableOpacity
+			<TouchableHighlight
 				style={[
 					Grid.style.tileStyle,
 					{
@@ -87,7 +91,10 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
+				<View>
 				<Text style={{color: "white"}}>{tile.coordinate.x + "," + tile.coordinate.y}</Text>
+				<Text style={{color: "white"}}>{tile.entity}</Text>
+				<Text style={{color: "white"}}>{opacity}</Text>
 				{
 					buildingMap[tile.entity] ? (
 						<View>
@@ -102,7 +109,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 						</View>
 						) : null
 				}
-			</TouchableOpacity>
+				</View>
+			</TouchableHighlight>
 		);
 	}
 

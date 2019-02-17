@@ -7,7 +7,7 @@ import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
 import makeSound, {ISound} from "./sound";
 
-export default class Navigator extends React.PureComponent<INavigatorProps, INavigatorState> {
+export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		topView: {
