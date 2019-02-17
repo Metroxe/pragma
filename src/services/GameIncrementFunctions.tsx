@@ -1,11 +1,26 @@
 import {IGameData} from "./GameData";
 import makeSound, {SoundEffect} from "./sound";
+import defaultGameData from "./GameData";
+import {Entity} from "./GameGrid";
 
 export type IIncrementFunction = (gameData: IGameData) => Promise<IGameData>;
 
 async function randomDeath(gameData: IGameData): Promise<IGameData> {
 	gameData.population -= Math.floor(Math.random() * 5 + 1);
 	gameData.previousDay.peopleDied = 5;
+	return gameData;
+}
+
+async function pragmaGeneration(gameData: IGameData): Promise<IGameData> {
+	console.log(defaultGameData[Entity.WINDMILL]);
+	return gameData;
+}
+
+async function peopleGeneration(gameData: IGameData): Promise<IGameData> {
+	while (gameData.food >= 10) {
+		gameData.food -= 10;
+		gameData.people += 1;
+	}
 	return gameData;
 }
 
@@ -41,7 +56,9 @@ async function backgroundMusic(gameData: IGameData): Promise<IGameData> {
 
 const gameIncrementFunctions: IIncrementFunction[] = [
 	resetPreviousDay,
-	randomDeath,
+	pragmaGeneration,
+	// peopleGeneration,
+	// randomDeath,
 	createPreviousDayMessage,
 	backgroundMusic,
 ];

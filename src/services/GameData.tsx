@@ -68,10 +68,10 @@ const defaultGameData: IGameData = {
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,
 
-	pragma: 20,
-	people: 10,
-	food: 50,
-	metal: 25,
+	pragma: 10,
+	people: 5,
+	food: 0,
+	metal: 20,
 	disease: false,
 	alien: false,
 	radiation: false,
@@ -270,46 +270,46 @@ defaultGameData[Entity.TREE] = {
 	resourceGenerator: true,
 	entityKey: Entity.TREE,
 };
-
-defaultGameData[Entity.ORCHARD] = {
-	count: 0,
-	price: {
-		pragma: 40,
-		people: 5,
-		food: 0,
-		metal: 0,
-	},
-	size: {
-		x: 1,
-		y: 1,
-	},
-	individualLocations: [],
-	maximumAllocatedPeople: 12,
-	title: "Orchard",
-	description: "Medium food source",
-	resourceGenerator: true,
-	entityKey: Entity.ORCHARD,
-};
-
-defaultGameData[Entity.FARM] = {
-	count: 0,
-	price: {
-		pragma: 40,
-		people: 5,
-		food: 0,
-		metal: 0,
-	},
-	size: {
-		x: 1,
-		y: 1,
-	},
-	individualLocations: [],
-	maximumAllocatedPeople: 0,
-	title: "Farm",
-	description: "Large food source",
-	resourceGenerator: true,
-	entityKey: Entity.FARM,
-};
+//
+// defaultGameData[Entity.ORCHARD] = {
+// 	count: 0,
+// 	price: {
+// 		pragma: 40,
+// 		people: 5,
+// 		food: 0,
+// 		metal: 0,
+// 	},
+// 	size: {
+// 		x: 1,
+// 		y: 1,
+// 	},
+// 	individualLocations: [],
+// 	maximumAllocatedPeople: 12,
+// 	title: "Orchard",
+// 	description: "Medium food source",
+// 	resourceGenerator: true,
+// 	entityKey: Entity.ORCHARD,
+// };
+//
+// defaultGameData[Entity.FARM] = {
+// 	count: 0,
+// 	price: {
+// 		pragma: 40,
+// 		people: 5,
+// 		food: 0,
+// 		metal: 0,
+// 	},
+// 	size: {
+// 		x: 1,
+// 		y: 1,
+// 	},
+// 	individualLocations: [],
+// 	maximumAllocatedPeople: 0,
+// 	title: "Farm",
+// 	description: "Large food source",
+// 	resourceGenerator: true,
+// 	entityKey: Entity.FARM,
+// };
 
 defaultGameData[Entity.MINE] = {
 	count: 0,
@@ -330,46 +330,46 @@ defaultGameData[Entity.MINE] = {
 	resourceGenerator: true,
 	entityKey: Entity.MINE,
 };
-
-defaultGameData[Entity.FORGE] = {
-	count: 0,
-	price: {
-		pragma: 40,
-		people: 5,
-		food: 0,
-		metal: 0,
-	},
-	size: {
-		x: 1,
-		y: 1,
-	},
-	individualLocations: [],
-	maximumAllocatedPeople: 0,
-	title: "Forge",
-	description: "Medium resource harvester",
-	resourceGenerator: true,
-	entityKey: Entity.FORGE,
-};
-
-defaultGameData[Entity.FACTORY] = {
-	count: 0,
-	price: {
-		pragma: 40,
-		people: 5,
-		food: 0,
-		metal: 0,
-	},
-	size: {
-		x: 1,
-		y: 1,
-	},
-	individualLocations: [],
-	maximumAllocatedPeople: 0,
-	title: "VAULT",
-	description: "Large resource harvester",
-	resourceGenerator: true,
-	entityKey: Entity.FACTORY,
-};
+//
+// defaultGameData[Entity.FORGE] = {
+// 	count: 0,
+// 	price: {
+// 		pragma: 40,
+// 		people: 5,
+// 		food: 0,
+// 		metal: 0,
+// 	},
+// 	size: {
+// 		x: 1,
+// 		y: 1,
+// 	},
+// 	individualLocations: [],
+// 	maximumAllocatedPeople: 0,
+// 	title: "Forge",
+// 	description: "Medium resource harvester",
+// 	resourceGenerator: true,
+// 	entityKey: Entity.FORGE,
+// };
+//
+// defaultGameData[Entity.FACTORY] = {
+// 	count: 0,
+// 	price: {
+// 		pragma: 40,
+// 		people: 5,
+// 		food: 0,
+// 		metal: 0,
+// 	},
+// 	size: {
+// 		x: 1,
+// 		y: 1,
+// 	},
+// 	individualLocations: [],
+// 	maximumAllocatedPeople: 0,
+// 	title: "VAULT",
+// 	description: "Large resource harvester",
+// 	resourceGenerator: true,
+// 	entityKey: Entity.FACTORY,
+// };
 
 
 
