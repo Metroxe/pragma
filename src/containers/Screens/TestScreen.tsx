@@ -41,7 +41,6 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 			<View>
 				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
 				{/*<Text>{this.props.gameData.time}</Text>*/}
-				<ResourceStats/>
 				<PeopleAllocationItemList/>
 			</View>
 
