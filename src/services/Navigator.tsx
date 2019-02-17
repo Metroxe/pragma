@@ -41,7 +41,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "Grid",
 		gameData: defaultGameData,
-		popUpKey: "daySummary",
+		popUpKey: undefined,
 	};
 
 	constructor(props: INavigatorProps) {
@@ -86,6 +86,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			gameMusic: makeSound(),
 			currentPage: this.state.currentContainer,
 			changePopUp: this.changePopUp,
+			popUpKey: this.state.popUpKey,
 		};
 
 		const pointer: any = containerSet[this.state.currentContainer];
@@ -114,7 +115,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				</View>
 			);
 		}
-		
+
 		switch (this.state.popUpKey) {
 			case("shop"):
 				return createPopUp(
