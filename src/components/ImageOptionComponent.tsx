@@ -68,7 +68,7 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 					<Image
 						style={{width: 70, height: 70}}
 						resizeMode="contain"
-						source={ImageOptionComponent[ImageOptionComponent.imgMap[this.props.imageKey]]}
+						source={ImageOptionComponent.imgMap[this.props.imageKey]}
 					/>
 					<Text style={ImageOptionComponent.style.textStyle}>{this.props.label}</Text>
 				</View>

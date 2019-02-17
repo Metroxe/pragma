@@ -33,6 +33,11 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 			height: "100%",
 			backgroundColor: "green",
 		},
+		tabNavButtonStyle: {
+			bottom: 30,
+			flexDirection: "row",
+			justifyContent: "space-around",
+		},
 	});
 
 	public static navBarHeight: number = 130;
@@ -41,12 +46,30 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 
 		return (
 			<View style={[TabNavigator.style.mainContainer, {height: TabNavigator.navBarHeight}]}>
-				<ImageOptionComponent
-					onPress={this.props.changePopUp("shop")}
-					imageKey="shop"
-					label="shop"
-				/>
-				<View style={TabNavigator.style.secondaryContainerBottom}/>
+				<View style={TabNavigator.style.secondaryContainerBottom}>
+					<View style={TabNavigator.style.tabNavButtonStyle}>
+						<ImageOptionComponent
+							onPress={this.props.changePopUp("shop")}
+							imageKey="shop"
+							label="shop"
+						/>
+						<ImageOptionComponent
+							onPress={this.props.changePopUp("shop")}
+							imageKey="shop"
+							label="shop"
+						/>
+						<ImageOptionComponent
+							onPress={this.props.changePopUp("shop")}
+							imageKey="shop"
+							label="shop"
+						/>
+						<ImageOptionComponent
+							onPress={this.props.changePopUp("shop")}
+							imageKey="shop"
+							label="shop"
+						/>
+					</View>
+				</View>
 			</View>
 		);
 	}
@@ -71,4 +94,5 @@ interface IStyle {
 	mainContainer: ViewStyle;
 	secondaryContainerBottom: ViewStyle;
 	individualButton: ViewStyle;
+	tabNavButtonStyle: ViewStyle;
 }
