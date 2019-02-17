@@ -1,7 +1,17 @@
 import Container, {IContainerProps, IContainerState} from "../Container";
 import * as React from "react";
 import {ReactNode} from "react";
-import {Image, ImageStyle, PixelRatio, ScrollView, StyleSheet, Text, TouchableOpacity, View, ViewStyle} from "react-native";
+import {
+	Image,
+	ImageStyle,
+	PixelRatio,
+	ScrollView,
+	StyleSheet,
+	Text, TextStyle,
+	TouchableOpacity,
+	View,
+	ViewStyle,
+} from "react-native";
 import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
 
 export default class Grid extends Container<IGridProps, IGridState> {
@@ -9,8 +19,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		tileStyle: {
 			margin: 3,
-			borderWidth: 2,
-			height: 1,
+			borderWidth: 4,
+			borderRadius: 30 / PixelRatio.get(),
 		},
 		scrollViewStyle: {
 			flexDirection: "row",
@@ -20,6 +30,17 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			height: "100%",
 			width: "100%",
 			position: "absolute",
+		},
+		circle: {
+			height: 30,
+			width: 30,
+			borderRadius: 30 / PixelRatio.get(),
+			backgroundColor: "red",
+			position: "absolute",
+		},
+		text: {
+			color: "white",
+			fontFamily: "Anchor",
 		},
 	});
 
@@ -47,7 +68,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		let opacity: number = 1;
 		if (tile.entity === Entity.UNOBSTRUCTED) {
 			borderColor = "grey";
-			opacity = 0.5;
+			opacity = 0.7;
 		}
 
 		return (
@@ -64,15 +85,19 @@ export default class Grid extends Container<IGridProps, IGridState> {
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
-				{/*<Text style={{backgroundColor: borderColor}}>{tile.coordinate.x},{tile.coordinate.y}</Text>*/}
-				{/*<Text style={{backgroundColor: borderColor}}>{tile.entity}</Text>*/}
 				{
-					buildingMap[tile.entity] ?
-					<Image
-						source={buildingMap[tile.entity]}
-						style={{height: this.state.tileHeight, width: this.state.tileWidth}}
-						resizeMode="cover"
-					/> : null
+					buildingMap[tile.entity] ? (
+						<View>
+							<View style={Grid.style.circle}>
+								<Text style={Grid.style.text}>10</Text>
+							</View>
+							<Image
+								source={buildingMap[tile.entity]}
+								style={{height: this.state.tileHeight, width: this.state.tileWidth}}
+								resizeMode="cover"
+							/>
+						</View>
+						) : null
 				}
 			</TouchableOpacity>
 		);
@@ -111,6 +136,8 @@ interface IStyle {
 	tileStyle: ViewStyle;
 	scrollViewStyle: ViewStyle;
 	image: ImageStyle;
+	circle: ViewStyle;
+	text: TextStyle;
 }
 
 export interface IGridProps extends IContainerProps {

@@ -32,7 +32,6 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			navigator.setState({
 				gameData: _.assign({}, navigator.state.gameData, gameData),
 			}, resolve);
-			console.log(_.assign({}, navigator.state.gameData, gameData));
 		});
 	}
 
