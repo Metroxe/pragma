@@ -1,6 +1,6 @@
 import * as React from "react";
 import {ReactNode} from "react";
-import {Dimensions, PixelRatio, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from "react-native";
+import {Dimensions, Image, StyleSheet, Text, TextStyle, TouchableOpacity, View, ViewStyle} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 
 export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
@@ -24,6 +24,11 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			fontWeight: "bold",
 			fontSize: 16,
 		},
+		headerImageStyle: {
+			zIndex: -1,
+			position: "absolute",
+			top: 0,
+		},
 	});
 
 	public static headerHeight: number = 60;
@@ -31,6 +36,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 	public render(): ReactNode {
 		return (
 			<View style={{...Header.style.mainContainer, height: Header.headerHeight, backgroundColor: this.props.bgColor}}>
+				<Image style={Header.style.headerImageStyle} source={require("../../assets/images/header.png")}/>
 				<Text style={Header.style.headerTextStyle}>
 					{this.props.title}
 				</Text>
@@ -51,4 +57,5 @@ export interface IHeaderState extends IEnhancedComponentsProps {
 interface IStyle {
 	mainContainer: ViewStyle;
 	headerTextStyle: TextStyle;
+	headerImageStyle: ViewStyle;
 }
