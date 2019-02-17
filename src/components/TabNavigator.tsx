@@ -26,51 +26,15 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 
 	public static navBarHeight: number = 130;
 
-	constructor(props: ITabNavigatorProps) {
-		super(props);
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	private handleClick(newPage: string): () => void {
-
-		const that: TabNavigator = this;
-
-		return (): void => {
-
-		// alert("hello");
-			that.props.navigate(newPage).then();
-		};
-	}
-
-
-
 	public render(): ReactNode {
 
-		const tabOptions: any = this.props.tabOptions.map((item: IPagePackager, index: number) => {
-
-			let displayString: string = "";
-			if (item && item.displayString) {
-				displayString = item.displayString;
-			}
-			return (
-				<TouchableOpacity
-					key={"tabOption" + index}
-					onPress={this.handleClick(item.pageString)}
-					style={TabNavigator.style.individualButton}
-					activeOpacity={0.75}
-				>
-					<ImageOptionComponent
-						key={displayString}
-						renderElement={[{image: TabNavigator.imgArr[index].image, label: displayString}]}
-						onAction={null}
-					/>
-				</TouchableOpacity>
-			);
-		});
-
 		return (
-			<View style={{...TabNavigator.style.mainContainer, height: TabNavigator.navBarHeight}}>
-				{tabOptions}
+			<View style={[TabNavigator.style.mainContainer, {height: TabNavigator.navBarHeight}]}>
+				<ImageOptionComponent
+					onPress={this.props.changePopUp("shop")}
+					imageKey="shop"
+					label="shop"
+				/>
 			</View>
 		);
 	}
@@ -84,7 +48,7 @@ export interface IPagePackager {
 export interface ITabNavigatorProps extends IEnhancedComponentsProps {
 	tabOptions: IPagePackager[];
 	navigate: (page: keyof IContainerSet) => Promise<void>;
-
+	changePopUp: (key: string) => (callback: () => void) => void;
 }
 
 export interface ITabNavigatorState extends IEnhancedComponentsProps {

@@ -12,11 +12,11 @@ import ResourceStats from "../../components/ResourceStats";
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
 
 	public async componentDidMount(): Promise<void> {
-		await this.props.gameMusic[SoundEffect.WIN]();
-		await this.props.gameMusic[SoundEffect.GG]();
-		await this.props.gameMusic[SoundEffect.CLICK]();
-		await this.props.gameMusic[SoundEffect.HAMMER]();
-		await this.props.gameMusic[SoundEffect.CLICK]();
+		// await this.props.gameMusic[SoundEffect.WIN]();
+		// await this.props.gameMusic[SoundEffect.GG]();
+		// await this.props.gameMusic[SoundEffect.CLICK]();
+		// await this.props.gameMusic[SoundEffect.HAMMER]();
+		// await this.props.gameMusic[SoundEffect.CLICK]();
 	}
 
 	protected static image1: any = require("../../../assets/icons/menu.png");

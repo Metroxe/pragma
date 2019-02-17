@@ -37,6 +37,12 @@ export interface IEntityTracking {
 	count: number;
 	price: IPrice;
 	size: {x: number, y: number};
+	individualLocations: IIndividualLocation[];
+}
+
+export interface IIndividualLocation {
+	allocatedPeople: number;
+	location: ICoordinate;
 }
 
 const defaultGameData: IGameData = {
@@ -74,6 +80,7 @@ for (item in Entity) {
 				x: 1,
 				y: 1,
 			},
+			individualLocations: [],
 		} as IEntityTracking;
 	}
 }
