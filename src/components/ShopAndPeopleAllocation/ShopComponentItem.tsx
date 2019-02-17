@@ -9,6 +9,7 @@ export default class ShopComponentItem extends ButtonWrapper<IShopComponentItemP
 	public static defaultProps: IShopComponentItemProps = {
 		itemTitle: "Shop Title",
 		itemDescription: "Shop Description",
+		image: require("../../../assets/images/Resource-Icons/pragma.png"),
 		pragmaPrice: 69,
 		metalPrice: 420,
 		canAfford: true,
@@ -70,7 +71,7 @@ export default class ShopComponentItem extends ButtonWrapper<IShopComponentItemP
 				<ShopAndPeopleGenericBodyWithImage
 					title={this.props.itemTitle}
 					description={this.props.itemDescription}
-					imageSrc={require("../../../assets/images/Resource-Icons/pragma.png")}
+					imageSrc={this.props.image}
 				/>
 
 				<View style={ShopComponentItem.style.costContainer}>
@@ -119,6 +120,7 @@ export interface IShopComponentItemProps extends IButtonWrapperProps {
 	pragmaPrice: number;
 	metalPrice: number;
 	canAfford: boolean;
+	image: any;
 }
 
 export interface IShopComponentItemState extends IButtonWrapperState {
