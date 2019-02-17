@@ -6,6 +6,9 @@ export enum SoundEffect {
 	HAMMER = "hammerConstruction.wav",
 	CLICK = "selectClick.wav",
 	SUCCESS = "successfulHarvest",
+	BGSLOW = "BGSlow",
+	BGMEDIUM = "BGMedium",
+	BGFAST = "BGFast",
 }
 
 export interface ISound {
@@ -14,6 +17,9 @@ export interface ISound {
 	[SoundEffect.HAMMER]: () => Promise<void>;
 	[SoundEffect.CLICK]: () => Promise<void>;
 	[SoundEffect.SUCCESS]: () => Promise<void>;
+	[SoundEffect.BGSLOW]: () => Promise<void>;
+	[SoundEffect.BGMEDIUM]: () => Promise<void>;
+	[SoundEffect.BGFAST]: () => Promise<void>;
 }
 
 function makeSound(): ISound {
@@ -40,6 +46,9 @@ function makeSound(): ISound {
 		[SoundEffect.HAMMER]: abstractSound(SoundEffect.HAMMER),
 		[SoundEffect.CLICK]: abstractSound(SoundEffect.CLICK),
 		[SoundEffect.SUCCESS]: abstractSound(SoundEffect.SUCCESS),
+		[SoundEffect.BGSLOW]: abstractSound(SoundEffect.SUCCESS),
+		[SoundEffect.BGMEDIUM]: abstractSound(SoundEffect.SUCCESS),
+		[SoundEffect.BGFAST]: abstractSound(SoundEffect.SUCCESS),
 	};
 }
 
