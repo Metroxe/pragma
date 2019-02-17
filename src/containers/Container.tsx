@@ -13,8 +13,8 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		topView: {
 			backgroundColor: "white",
 			// flex: 1,
-			height: Dimensions.get("screen").height,
-			width: Dimensions.get("screen").width,
+			height: Dimensions.get("window").height,
+			width: Dimensions.get("window").width,
 		},
 		grayOverlay: {
 			width: "100%",
@@ -83,7 +83,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 	}
 
 	private determineContentHeight(): number {
-		let baseHeight: number = Dimensions.get("screen").height;
+		let baseHeight: number = Dimensions.get("window").height;
 
 		console.log("state:", this.state);
 		console.log("base height:", baseHeight);
