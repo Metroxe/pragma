@@ -7,8 +7,9 @@ import {
 	PixelRatio,
 	ScrollView,
 	StyleSheet,
-	Text, TextStyle, TouchableHighlight,
-	TouchableOpacity,
+	Text,
+	TextStyle,
+	TouchableHighlight,
 	View,
 	ViewStyle,
 } from "react-native";
@@ -81,6 +82,9 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		}
 		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
 			borderColor = "white";
+			opacity = 1;
+		}
+		if (tile.entity !== Entity.UNOBSTRUCTED || Entity.OBSTRUCTED) {
 			opacity = 1;
 		}
 
