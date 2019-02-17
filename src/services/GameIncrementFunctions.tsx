@@ -22,14 +22,11 @@ async function createPreviousDayMessage(gameData: IGameData): Promise<IGameData>
 
 async function backgroundMusic(gameData: IGameData): Promise<IGameData> {
 	let music: SoundEffect;
-	if (gameData.time < 21) {
-			console.log(gameData.time);
+	if (gameData.time < 11) {
 			music = SoundEffect.BGSLOW;
-		} else if (gameData.time >= 21 && gameData.time <= 90) {
-			console.log(gameData.time);
+		} else if (gameData.time >= 1 && gameData.time <= 90) {
 			music = SoundEffect.BGMEDIUM;
 		} else if (gameData.time > 90) {
-			console.log(gameData.time);
 			music = SoundEffect.BGFAST;
 		}
 	if (gameData.music !== music) {
