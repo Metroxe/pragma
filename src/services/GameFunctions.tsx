@@ -19,6 +19,7 @@ export interface IGameFunctions {
 	buildOnTile: () => Promise<void>;
 	changeGridMode: (gridMode: GridMode) => Promise<void>;
 	selectTile: (coordinate: ICoordinate) => Promise<void>;
+	changeEntitySelection: (entity: Entity) => Promise<void>;
 }
 
 function createGameFunctions(navigator: Navigator): IGameFunctions {
@@ -44,6 +45,12 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 				await updateGameData(newGameData);
 			}
 		};
+	}
+
+	async function changeEntitySelection(entity: Entity): Promise<void> {
+		const newGameData: IGameData = getGameDataClone();
+		newGameData.buildModeObject = entity;
+		await updateGameData(newGameData);
 	}
 
 	function changeTechnology(technology: "hospital" | "weapon" | "greenHouse" | "safeHouse", count: number): () => Promise<void> {
@@ -96,7 +103,8 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 			deselectChildren();
 		}
 
-		if (newGameData.selectedTile && newGameData.selectedTile.x === coordinate.x && newGameData.selectedTile.y === coordinate.y) {
+		if ((newGameData.selectedTile && newGameData.selectedTile.x === coordinate.x && newGameData.selectedTile.y === coordinate.y)
+			|| newGameData.grid[coordinate.x][coordinate.y].entity !== Entity.UNOBSTRUCTED) {
 			newGameData.grid[coordinate.x][coordinate.y].selected = false;
 			newGameData.selectedTile = undefined;
 			deselectChildren();
@@ -176,6 +184,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		changeWeapon: changeTechnology("weapon", 1),
 		changeGreenHouse: changeTechnology("greenHouse", 1),
 		changeSafeHouse: changeTechnology("safeHouse", 1),
+		changeEntitySelection,
 	};
 }
 

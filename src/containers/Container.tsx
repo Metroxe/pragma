@@ -34,7 +34,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			zIndex: 100000,
 		},
 		popUpModal: {
-			backgroundColor: "#303379",
+			backgroundColor: "#111228",
 			borderRadius: 15,
 			padding: 40,
 			width: "95%",
@@ -69,15 +69,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 		super(props);
 
 		// @ts-ignore
-		this.state = {
-			// popUpModalContent: (
-			// 	<View>
-			// 		<Text>
-			// 			hello slots!
-			// 		</Text>
-			// 	</View>
-			// ),
-		};
+		this.state = {};
 		this.determineContentHeight = this.determineContentHeight.bind(this);
 		this.wrapRender = this.wrapRender.bind(this);
 		this.wrapRender();
@@ -85,9 +77,6 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 
 	private determineContentHeight(): number {
 		let baseHeight: number = Dimensions.get("window").height;
-
-		console.log("state:", this.state);
-		console.log("base height:", baseHeight);
 
 		if (this.showHeader) {
 			baseHeight = baseHeight - Header.headerHeight;
@@ -138,6 +127,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 					<TabNavigator
 						tabOptions={Container.pagesArray}
 						navigate={this.props.navigate}
+						changePopUp={this.props.changePopUp}
 					/>
 					}
 				</View>
@@ -160,6 +150,7 @@ export interface IContainerProps {
 	gameFunctions: IGameFunctions;
 	gameMusic: ISound;
 	currentPage: keyof IContainerSet;
+	changePopUp: (key: string) => (callback: () => void) => void;
 }
 
 export interface IContainerState {
