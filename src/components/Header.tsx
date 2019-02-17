@@ -37,6 +37,10 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 			position: "absolute",
 			top: 0,
 		},
+		logoStyle: {
+			height: 40,
+			width: 40,
+		},
 		leftRectangle: {
 			backgroundColor: "#FBAE34",
 			borderRadius: 15,
@@ -79,7 +83,7 @@ export class Header extends EnhancedComponent<IHeaderProps, IHeaderState> {
 						<Text style={Header.style.headerTextStyle}>
 							{this.props.title}
 						</Text>
-						<Image source={require("../../assets/images/gameIcon.png")}/>
+						<Image style={Header.style.logoStyle} source={require("../../assets/images/pragmaLogo.png")}/>
 					</View>
 				</View>
 			</View>
@@ -101,6 +105,7 @@ interface IStyle {
 	headerFlexStyle: ViewStyle;
 	headerTextStyle: TextStyle;
 	headerImageStyle: ViewStyle;
+	logoStyle: ViewStyle;
 	leftRectangle: ViewStyle;
 	rightRectangle: ViewStyle;
 }
