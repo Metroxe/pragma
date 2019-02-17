@@ -79,9 +79,9 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 }
 
 export interface IImageOptionComponentsProps extends IEnhancedComponentsProps {
-	onPress: (callback: () => void) => void;
-	imageKey: string;
-	label: string;
+	onPress?: (callback: () => void) => void;
+	imageKey?: string;
+	label?: string;
 }
 
 export interface IImageOptionComponentsState extends IEnhancedComponentsState {

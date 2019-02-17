@@ -12,23 +12,17 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
 			width: "100%",
-			backgroundColor: "red",
-			// borderTopStartRadius: 20,
-			// borderTopEndRadius: 20,
-		},
-		secondaryContainerTop: {
-			width: "100%",
 			backgroundColor: "#111228",
-			zIndex: -1,
-			// position: "absolute",
 			// borderTopStartRadius: 20,
 			// borderTopEndRadius: 20,
 		},
 		secondaryContainerBottom: {
 			width: "100%",
+			height: 500,
 			backgroundColor: "#FBAE34",
-			zIndex: -1,
-			// position: "absolute",
+			position: "absolute",
+			zIndex: 1,
+			top: 50,
 			borderTopStartRadius: 20,
 			borderTopEndRadius: 20,
 		},
@@ -52,7 +46,6 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 					imageKey="shop"
 					label="shop"
 				/>
-				<View style={TabNavigator.style.secondaryContainerTop}/>
 				<View style={TabNavigator.style.secondaryContainerBottom}/>
 			</View>
 		);
@@ -76,7 +69,6 @@ export interface ITabNavigatorState extends IEnhancedComponentsProps {
 
 interface IStyle {
 	mainContainer: ViewStyle;
-	secondaryContainerTop: ViewStyle;
 	secondaryContainerBottom: ViewStyle;
 	individualButton: ViewStyle;
 }
