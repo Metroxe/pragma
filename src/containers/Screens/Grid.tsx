@@ -69,8 +69,8 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		let borderColor: string = "transparent";
 		let opacity: number = 0;
 		if (tile.entity === Entity.UNOBSTRUCTED) {
-			borderColor = "white";
-			opacity = 0.5;
+			borderColor = "grey";
+			opacity = 0.1;
 		}
 		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
 			borderColor = "white";
@@ -88,13 +88,11 @@ export default class Grid extends Container<IGridProps, IGridState> {
 						borderColor,
 					},
 				]}
+				underlayColor="transparent"
 				key={tile.coordinate.x + "," + tile.coordinate.y}
 				onPress={onPress}
 			>
 				<View>
-				<Text style={{color: "white"}}>{tile.coordinate.x + "," + tile.coordinate.y}</Text>
-				<Text style={{color: "white"}}>{tile.entity}</Text>
-				<Text style={{color: "white"}}>{opacity}</Text>
 				{
 					buildingMap[tile.entity] ? (
 						<View>
