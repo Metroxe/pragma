@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import * as _ from "lodash";
 import {buildingMap, Entity, ICoordinate, ITile} from "../../services/GameGrid";
+import SilverModalButton from "../../components/SilverModalButton";
 
 export default class Grid extends Container<IGridProps, IGridState> {
 
@@ -43,6 +44,11 @@ export default class Grid extends Container<IGridProps, IGridState> {
 			color: "white",
 			fontFamily: "Anchor",
 		},
+		buildButton: {
+			position: "absolute",
+			bottom: 20,
+			alignSelf: "center",
+		},
 	});
 
 	// width: 13961
@@ -58,6 +64,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 
 		this.createTile = this.createTile.bind(this);
 		this.createColumn = this.createColumn.bind(this);
+		this.buildAction = this.buildAction.bind(this);
 	}
 
 	private createTile(tile: ITile): ReactNode {
@@ -70,7 +77,7 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		let opacity: number = 0;
 		if (tile.entity === Entity.UNOBSTRUCTED) {
 			borderColor = "grey";
-			opacity = 0.1;
+			opacity = 0.3;
 		}
 		if (_.isEqual(this.props.gameData.selectedTile, tile.coordinate)) {
 			borderColor = "white";
@@ -122,21 +129,38 @@ export default class Grid extends Container<IGridProps, IGridState> {
 		);
 	}
 
+	private buildAction(callback: () => void): void {
+		this.props.gameFunctions.buildOnTile()
+			.then(callback);
+	}
+
 	public render(): ReactNode {
 		return (
-			<ScrollView
-				horizontal={true}
-				bounces={false}
-				style={Grid.style.scrollViewStyle}
-				contentContainerStyle={{alignItems: "center"}}
-			>
-				<Image
-					source={require("../../../assets/grid.png")}
-					style={Grid.style.image as any}
-					resizeMode="stretch"
-				/>
-				{this.props.gameData.grid.map(this.createColumn)}
-			</ScrollView>
+			<View>
+				<ScrollView
+					horizontal={true}
+					bounces={false}
+					style={Grid.style.scrollViewStyle}
+					contentContainerStyle={{alignItems: "center"}}
+				>
+					<Image
+						source={require("../../../assets/grid.png")}
+						style={Grid.style.image as any}
+						resizeMode="stretch"
+					/>
+					{this.props.gameData.grid.map(this.createColumn)}
+				</ScrollView>
+				{
+					this.props.gameData.selectedTile !== undefined ?
+						<View style={Grid.style.buildButton}>
+							<SilverModalButton
+								buttonText="Build"
+								onAction={this.buildAction}
+							/>
+						</View> : null
+				}
+
+			</View>
 		);
 	}
 }
@@ -147,6 +171,7 @@ interface IStyle {
 	image: ImageStyle;
 	circle: ViewStyle;
 	text: TextStyle;
+	buildButton: ViewStyle;
 }
 
 export interface IGridProps extends IContainerProps {
