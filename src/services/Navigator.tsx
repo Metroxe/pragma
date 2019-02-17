@@ -49,6 +49,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		this.navigate = this.navigate.bind(this);
 		this.intervalFunction = this.intervalFunction.bind(this);
 		this.changePopUp = this.changePopUp.bind(this);
+		console.disableYellowBox = true;
 	}
 
 	public componentDidMount(): void {
@@ -127,7 +128,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	}
 
 	public render(): ReactNode {
-
 		return (
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
