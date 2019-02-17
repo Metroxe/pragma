@@ -12,6 +12,7 @@ import {TabNavigator} from "../components/TabNavigator";
 import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
+import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -40,7 +41,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "Grid",
 		gameData: defaultGameData,
-		popUpKey: undefined,
+		popUpKey: "daySummary",
 	};
 
 	constructor(props: INavigatorProps) {
@@ -116,6 +117,8 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				return createPopUp(<ShopComponentItemList/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
+			case("daySummary"):
+				return createPopUp(<DailySummaryPopUpContent/>);
 			default:
 				return <View/>;
 		}

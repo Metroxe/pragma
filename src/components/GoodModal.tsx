@@ -10,13 +10,14 @@ export default class GoodModal extends React.Component<IGoodModalProps, IGoodMod
 		topView: {
 			flex: 1,
 			backgroundColor: "white",
+			height: "100%",
 		},
 	});
 
 	public render(): ReactNode {
 		return (
 			<View style={GoodModal.style.topView}>
-				<ScrollView>
+				<ScrollView style={{height: "100%"}} contentContainerStyle={{height: "100%"}}>
 					{this.props.children}
 				</ScrollView>
 			</View>);
