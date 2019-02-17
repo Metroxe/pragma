@@ -73,7 +73,7 @@ export default class ResourceStats extends EnhancedComponents<IResourceStatsProp
 	public render(): ReactNode {
 		return (
 			<View>
-				<View style={ResourceStats.style.resourceStats2}/>
+				<View style={[ResourceStats.style.resourceStats2]}/>
 				<View style={ResourceStats.style.resourceStats}>
 					<View style={ResourceStats.style.resourceStatsRow}><Text style={[ResourceStats.style.resourceStatsText, ResourceStats.style.resourceStatsLeft]}>YEARS LEFT</Text><CountDisplay style={ResourceStats.style.countDisplay} textStyle={ResourceStats.style.countDisplayText} count={this.props.gameData.maxTime - this.props.gameData.time} /></View>
 					<View style={ResourceStats.style.resourceStatsRow}><View style={[ResourceStats.style.resourceStatsImgContainer, ResourceStats.style.resourceStatsLeft]}><Image resizeMode={"contain"} style={[ResourceStats.style.resourceStatsImg]} source={ResourceStats.resourceImages.pragma} /></View><CountDisplay count={this.props.gameData.pragma}/></View>
