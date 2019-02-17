@@ -10,6 +10,12 @@ export enum Entity {
 	VAULT,
 	REACTOR,
 	PYLON,
+	TREE,
+	ORCHARD,
+	FARM,
+	MINE,
+	FORGE,
+	FACTORY,
 }
 
 export enum GridMode {

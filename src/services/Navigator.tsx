@@ -12,6 +12,7 @@ import {TabNavigator} from "../components/TabNavigator";
 import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
+import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -40,7 +41,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "Grid",
 		gameData: defaultGameData,
-		popUpKey: undefined,
+		popUpKey: "daySummary",
 	};
 
 	constructor(props: INavigatorProps) {
@@ -93,7 +94,9 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	}
 
 	private changePopUp(popUpKey: "shop" | "allocation"): (callback: () => void) => void {
+
 		const that: Navigator = this;
+
 		return (callback: () => void): void => {
 			that.setState({
 				popUpKey: that.state.popUpKey === popUpKey ? undefined : popUpKey,
@@ -111,7 +114,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				</View>
 			);
 		}
-
+		
 		switch (this.state.popUpKey) {
 			case("shop"):
 				return createPopUp(
@@ -122,6 +125,12 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 					/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
+			case("daySummary"):
+				return createPopUp(
+					<DailySummaryPopUpContent
+						closeModal={this.changePopUp(undefined)}
+					/>,
+				);
 			default:
 				return <View/>;
 		}
