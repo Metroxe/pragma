@@ -8,6 +8,7 @@ export default class CoolYellowButton extends ButtonWrapper<ICoolYellowButtonPro
 	public static defaultProps: ICoolYellowButtonProps = {
 		text: "Replace Me!",
 		bgColor: "#FBAE34",
+		extraStyle: {},
 	};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -34,7 +35,7 @@ export default class CoolYellowButton extends ButtonWrapper<ICoolYellowButtonPro
 
 	public render(): ReactNode {
 		return (
-			<View style={[CoolYellowButton.style.mainContainer, {backgroundColor: this.props.bgColor}]}>
+			<View style={[CoolYellowButton.style.mainContainer, {backgroundColor: this.props.bgColor}, this.props.extraStyle]}>
 				<Text style={CoolYellowButton.style.textStyle}>
 					{this.props.text}
 				</Text>
@@ -46,6 +47,7 @@ export default class CoolYellowButton extends ButtonWrapper<ICoolYellowButtonPro
 export interface ICoolYellowButtonProps extends IButtonWrapperProps {
 	text: string;
 	bgColor: string;
+	extraStyle: ViewStyle;
 }
 
 export interface ICoolYellowButtonState extends IButtonWrapperState {

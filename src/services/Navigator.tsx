@@ -42,7 +42,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "Grid",
 		gameData: defaultGameData,
-		popUpKey: "shop",
+		popUpKey: "loss",
 	};
 
 	constructor(props: INavigatorProps) {
@@ -134,7 +134,11 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				);
 			case("victory"):
 				return createPopUp(
-					<EndGameModalContent/>,
+					<EndGameModalContent victory={true}/>,
+				);
+			case("loss"):
+				return createPopUp(
+					<EndGameModalContent victory={false}/>,
 				);
 			default:
 				return <View/>;
