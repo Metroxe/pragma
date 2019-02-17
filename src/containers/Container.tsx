@@ -34,7 +34,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 			zIndex: 100000,
 		},
 		popUpModal: {
-			backgroundColor: "#303379",
+			backgroundColor: "#111228",
 			borderRadius: 15,
 			padding: 40,
 			width: "95%",
@@ -77,9 +77,6 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 
 	private determineContentHeight(): number {
 		let baseHeight: number = Dimensions.get("window").height;
-
-		// console.log("state:", this.state);
-		// console.log("base height:", baseHeight);
 
 		if (this.showHeader) {
 			baseHeight = baseHeight - Header.headerHeight;

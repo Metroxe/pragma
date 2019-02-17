@@ -11,8 +11,6 @@ import ShopComponentList from "../../components/ShopComponentList";
 import {ImageOptionComponent} from "../../components/ImageOptionComponent";
 import {SoundEffect} from "../../services/sound";
 import ResourceStats from "../../components/ResourceStats";
-import ShopComponentItem from "../../components/ShopAndPeopleAllocation/ShopComponentItem";
-import ShopComponentItemList from "../../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {

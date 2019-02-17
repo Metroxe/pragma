@@ -113,7 +113,12 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 
 		switch (this.state.popUpKey) {
 			case("shop"):
-				return createPopUp(<ShopComponentItemList/>);
+				return createPopUp(
+					<ShopComponentItemList
+						gameData={this.state.gameData}
+						gameFunctions={GameFunctions(this)}
+						changePopUp={this.changePopUp}
+					/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
 			default:
@@ -127,9 +132,12 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
 				{this.determinePopUp()}
-				<View style={Navigator.style.resourceStats}>
-					<ResourceStats gameData={this.state.gameData}/>
-				</View>
+				{
+					this.state.popUpKey === undefined ?
+					<View style={Navigator.style.resourceStats}>
+						<ResourceStats gameData={this.state.gameData}/>
+					</View> : null
+				}
 			</View>
 		);
 	}

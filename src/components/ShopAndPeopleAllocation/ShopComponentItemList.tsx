@@ -1,23 +1,14 @@
-import {ReactNode} from "react";
 import * as React from "react";
-import {
-	Image,
-	View,
-	Text,
-	StyleSheet,
-	Dimensions,
-	TextStyle,
-	ViewStyle,
-	ScrollViewComponent,
-	ScrollView,
-} from "react-native";
+import {ReactNode} from "react";
+import {ScrollView, StyleSheet, View,} from "react-native";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
-import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "../ButtonWrapper";
 import ShopComponentItem from "./ShopComponentItem";
+import {IEntityTracking, IGameData} from "../../services/GameData";
+import {Entity} from "../../services/GameGrid";
+import {IGameFunctions} from "../../services/GameFunctions";
+import * as _ from "lodash";
 
 export default class ShopComponentItemList extends EnhancedComponent<IShopComponentItemListProps, IShopComponentItemListState> {
-
-	public static defaultProps: IShopComponentItemListProps = {};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({});
 
@@ -27,39 +18,54 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 			...this.state,
 		};
 
-		this.handleFacilitySelection = this.handleFacilitySelection.bind(this);
-		this.createListOfPrices = this.createListOfPrices.bind(this);
+		this.createEntries = this.createEntries.bind(this);
 	}
 
-	// TODO this function lol
-	private handleFacilitySelection(item: any, index: number): (callback: () => void) => void {
+	private createEntries(item: IEntityTracking, i: number): ReactNode {
+
 		const that: ShopComponentItemList = this;
 
-		return (callback: () => void): void => {
-			alert("pressed:" + index);
-			callback();
+		const onAction: (callback: () => void) => void = (callback: () => void): void => {
+			this.props.gameFunctions.changeEntitySelection(item.entityKey)
+				.then(() => {
+					that.props.changePopUp(undefined)(callback);
+				});
 		};
-	}
 
-	private createListOfPrices(prices: any): ReactNode {
-		return prices.map((price: any, i: number) => {
-			return (
-				<View
-					key={"shopItem" + i}
-					style={{
-						width: "33%",
-					}}
-				>
-					<ShopComponentItem
-						onAction={this.handleFacilitySelection(price, i)}
-					/>
-				</View>
-			);
-		});
+		const canAfford: boolean =
+			this.props.gameData.pragma >= item.price.pragma &&
+			this.props.gameData.metal >= item.price.metal;
+
+		return (
+			<View
+				key={"shopItem" + i}
+				style={{
+					width: "33%",
+				}}
+			>
+				<ShopComponentItem
+					pragmaPrice={item.price.pragma}
+					metalPrice={item.price.metal}
+					onAction={onAction}
+					canAfford={canAfford}
+					itemTitle={item.entityKey + ""}
+					itemDescription={item.entityKey + ""}
+				/>
+			</View>
+		);
 	}
 
 	public render(): ReactNode {
-		const prices: ReactNode = this.createListOfPrices([1, 2, 3, 4, 5, 1, 2, 3, 4, 5]);
+		const entities: IEntityTracking[] = [];
+		let item: any;
+		for (item in Entity) {
+			if (!isNaN(Number(item)) &&
+				!_.isEqual(item, Entity.UNOBSTRUCTED) &&
+				!_.isEqual(item, Entity.OBSTRUCTED)
+			) {
+				entities.push(this.props.gameData[item]);
+			}
+		}
 
 		return (
 			<ScrollView>
@@ -70,7 +76,7 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 						flexWrap: "wrap",
 					}}
 				>
-					{prices}
+					{entities.map(this.createEntries)}
 				</View>
 			</ScrollView>
 		);
@@ -78,6 +84,9 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 }
 
 export interface IShopComponentItemListProps extends IEnhancedComponentsProps {
+	gameData: IGameData;
+	gameFunctions: IGameFunctions;
+	changePopUp: (key: string) => (callback: () => void) => void;
 }
 
 export interface IShopComponentItemListState extends IEnhancedComponentsState {
