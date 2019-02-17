@@ -49,6 +49,7 @@ export interface IEntityTracking {
 	title: string;
 	description: string;
 	resourceGenerator: boolean;
+	entityKey: Entity;
 }
 
 export interface IIndividualLocation {
@@ -100,7 +101,7 @@ for (item in Entity) {
 			maximumAllocatedPeople: 10,
 			title: "Building",
 			description: "Generic building description",
-
+			entityKey: item,
 		} as IEntityTracking;
 	}
 }

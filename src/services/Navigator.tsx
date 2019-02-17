@@ -38,7 +38,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "CreditsScreen",
+		currentContainer: "Grid",
 		gameData: defaultGameData,
 		popUpKey: undefined,
 	};
@@ -113,7 +113,12 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 
 		switch (this.state.popUpKey) {
 			case("shop"):
-				return createPopUp(<ShopComponentItemList gameData={this.state.gameData}/>);
+				return createPopUp(
+					<ShopComponentItemList
+						gameData={this.state.gameData}
+						gameFunctions={GameFunctions(this)}
+						changePopUp={this.changePopUp}
+					/>);
 			case("allocation"):
 				return createPopUp(<PeopleAllocationItemList/>);
 			default:
