@@ -5,6 +5,7 @@ import {View, Text} from "react-native";
 import {TabNavigator} from "../../components/TabNavigator";
 import ShopItemComponent from "../../components/ShopItemComponent";
 import ShopComponentList from "../../components/ShopComponentList";
+import ResourceStats from "../../components/ResourceStats";
 
 export default class TestScreen extends Container<ITestScreenProps, ITestScreenState> {
 	public render(): ReactNode {
@@ -12,7 +13,7 @@ export default class TestScreen extends Container<ITestScreenProps, ITestScreenS
 			<View>
 				{/*<Text>{JSON.stringify(this.props.gameData, null, 2)}</Text>*/}
 				{/*<Text>{this.props.gameData.time}</Text>*/}
-				<ShopComponentList/>
+				<ResourceStats/>
 			</View>
 		);
 	}
