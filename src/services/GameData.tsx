@@ -352,7 +352,7 @@ defaultGameData[Entity.MINE] = {
 	...defaultGameData[Entity.MINE],
 	count: 0,
 	price: {
-		pragma: 30,
+		pragma: 40,
 		people: 5,
 		food: 0,
 		metal: 0,

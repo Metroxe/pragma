@@ -11,10 +11,10 @@ const images: any = {
 	food: require("../../assets/images/Resource-Icons/food.png"),
 	pragma: require("../../assets/images/Resource-Icons/pragma.png"),
 
-	disease: require("../../assets/images/Resource-Icons/disease.png"),
-	radiation: require("../../assets/images/Resource-Icons/radiation.png"),
-	alien: require("../../assets/images/Resource-Icons/alien.png"),
-    meteor: require("../../assets/images/Resource-Icons/meteor.png"),
+	disease: require("../../assets/icons/disease.png"),
+	radiation: require("../../assets/icons/radiation.png"),
+	alien: require("../../assets/icons/alien.png"),
+    meteor: require("../../assets/icons/meteor.png"),
 };
 const humanFoodCost: number = 10;
 
