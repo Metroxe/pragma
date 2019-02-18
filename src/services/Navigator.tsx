@@ -35,7 +35,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "StartScreen",
 		gameData: defaultGameData,
-		popUpKey: "daySummary",
+		popUpKey: undefined,
 	};
 
 	constructor(props: INavigatorProps) {
