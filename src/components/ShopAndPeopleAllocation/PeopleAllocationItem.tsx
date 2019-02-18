@@ -4,6 +4,9 @@ import {Image, View, Text, StyleSheet, Dimensions, TextStyle, ViewStyle, ImageSt
 import ShopAndPeopleGenericBodyWithImage from "./ShopAndPeopleGenericBodyWithImage";
 import PeopleAddDecreaseComponent from "./PeopleAddDecreaseComponent";
 import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
+import {IGameFunctions} from "../../services/GameFunctions";
+import {Entity} from "../../services/GameGrid";
+import {IIndividualLocation} from "../../services/GameData";
 
 export default class PeopleAllocationItem extends EnhancedComponent<IPeopleAllocationItemProps, IPeopleAllocationItemState> {
 
@@ -63,26 +66,25 @@ export default class PeopleAllocationItem extends EnhancedComponent<IPeopleAlloc
 	}
 
 	private increment(): void {
-		// alert("inc");
-
-		// TODO connect to real data
-
-		if (this.state.peopleAssigned < this.props.maxPeople) {
-			this.setState({
-				peopleAssigned: this.state.peopleAssigned + 1,
-			});
-		}
+		const that: PeopleAllocationItem = this;
+		this.props.gameFunctions.changeAllocation(1, this.props.loc).then(() => {
+			if (that.state.peopleAssigned < that.props.maxPeople) {
+				that.setState({
+					peopleAssigned: that.state.peopleAssigned + 1,
+				});
+			}
+		});
 	}
 
 	private decrement(): void {
-
-		// TODO connect to real data
-
-		if (this.state.peopleAssigned > 0) {
-			this.setState({
-				peopleAssigned: this.state.peopleAssigned - 1,
-			});
-		}
+		const that: PeopleAllocationItem = this;
+		this.props.gameFunctions.changeAllocation(-1, this.props.loc).then(() => {
+			if (that.state.peopleAssigned > 0) {
+				that.setState({
+					peopleAssigned: that.state.peopleAssigned - 1,
+				});
+			}
+		});
 	}
 
 	private generateTextForNumberPicker(): string {
@@ -99,7 +101,7 @@ export default class PeopleAllocationItem extends EnhancedComponent<IPeopleAlloc
 				<ShopAndPeopleGenericBodyWithImage
 					title={this.props.itemTitle}
 					description={this.props.itemDescription}
-					imageSrc={require("../../../assets/images/Resource-Icons/metal.png")}
+					imageSrc={this.props.image}
 				/>
 
 				<View style={PeopleAllocationItem.style.interactPartContainer}>
@@ -128,9 +130,12 @@ export default class PeopleAllocationItem extends EnhancedComponent<IPeopleAlloc
 export interface IPeopleAllocationItemProps extends IEnhancedComponentsProps {
 	itemTitle: string;
 	itemDescription: string;
-
+	image: any;
 	peopleAssigned: number;
 	maxPeople: number;
+	gameFunctions: IGameFunctions;
+	entity: Entity;
+	loc: IIndividualLocation;
 }
 
 export interface IPeopleAllocationItemState extends IEnhancedComponentsState {

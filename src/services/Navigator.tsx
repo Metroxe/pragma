@@ -1,18 +1,18 @@
 import * as React from "react";
 import {ReactNode} from "react";
-import {StyleSheet, View, ViewStyle, Text, Dimensions} from "react-native";
+import {Dimensions, StyleSheet, View, ViewStyle} from "react-native";
 import {IContainerProps} from "../containers/Container";
 import containerSet, {IContainerSet} from "../containers";
 import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
-import makeSound, {ISound, SoundEffect} from "./sound";
+import makeSound, {SoundEffect} from "./sound";
 import GoodModal from "../components/GoodModal";
 import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
-import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
+import EndGameModalContent from "../components/EndGameModalContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -112,12 +112,24 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 						changePopUp={this.changePopUp}
 					/>);
 			case("allocation"):
-				return createPopUp(<PeopleAllocationItemList/>);
+				return createPopUp(<PeopleAllocationItemList
+					gameData={this.state.gameData}
+					gameFunctions={GameFunctions(this)}
+					changePopUp={this.changePopUp}
+				/>);
 			case("daySummary"):
 				return createPopUp(
 					<DailySummaryPopUpContent
 						closeModal={this.changePopUp(undefined)}
 					/>,
+				);
+			case("victory"):
+				return createPopUp(
+					<EndGameModalContent victory={true}/>,
+				);
+			case("loss"):
+				return createPopUp(
+					<EndGameModalContent victory={false}/>,
 				);
 			default:
 				return <View/>;
