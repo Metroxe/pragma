@@ -185,7 +185,7 @@ defaultGameData[Entity.VAULT] = {
 		pragma: 40,
 		people: 5,
 		food: 0,
-		metal: 0,
+		metal: 20,
 	},
 	size: {
 		x: 1,
@@ -290,7 +290,7 @@ defaultGameData[Entity.TREE] = {
 defaultGameData[Entity.ORCHARD] = {
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 60,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -311,7 +311,7 @@ defaultGameData[Entity.ORCHARD] = {
 defaultGameData[Entity.FARM] = {
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 80,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -355,7 +355,7 @@ defaultGameData[Entity.FORGE] = {
 	...defaultGameData[Entity.FORGE],
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 80,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -377,7 +377,7 @@ defaultGameData[Entity.FACTORY] = {
 	...defaultGameData[Entity.FACTORY],
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 120,
 		people: 5,
 		food: 0,
 		metal: 0,
