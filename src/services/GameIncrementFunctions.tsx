@@ -1,8 +1,22 @@
 import {IEntityTracking, IGameData} from "./GameData";
 import makeSound, {SoundEffect} from "./sound";
 import {Entity} from "./GameGrid";
+import {IDailySummaryInformationRowProps} from "../components/DailySummaryInformationRow";
 
 export type IIncrementFunction = (gameData: IGameData) => Promise<IGameData>;
+
+const images: any = {
+	people: require("../../assets/images/Resource-Icons/people.png"),
+	metal: require("../../assets/images/Resource-Icons/metal.png"),
+	food: require("../../assets/images/Resource-Icons/food.png"),
+	pragma: require("../../assets/images/Resource-Icons/pragma.png"),
+
+	disease: require("../../assets/images/Resource-Icons/disease.png"),
+	radiation: require("../../assets/images/Resource-Icons/radiation.png"),
+	alien: require("../../assets/images/Resource-Icons/alien.png"),
+    meteor: require("../../assets/images/Resource-Icons/meteor.png"),
+};
+const humanFoodCost: number = 10;
 
 async function randomDeath(gameData: IGameData): Promise<IGameData> {
 	gameData.population -= Math.floor(Math.random() * 5 + 1);
@@ -53,8 +67,8 @@ async function peopleGeneration(gameData: IGameData): Promise<IGameData> {
 	}
 	gameData.food += tempNumberOfPeople * gameData[Entity.FARM].outputMultiplier;
 
-	while (gameData.food >= 10) {
-		gameData.food -= 10;
+	while (gameData.food >= humanFoodCost) {
+		gameData.food -= humanFoodCost;
 		gameData.people += 1;
 	}
 
@@ -118,22 +132,22 @@ async function eventGeneration(gameData: IGameData): Promise<IGameData> {
 function handleEvent(type: string, gameData: IGameData): void {
 	if (type === "disease") {
 		if (gameData[Entity.HOSPITAL].count < 1) {
-			gameData.people -= (gameData.people * 0.1);
+			gameData[type + "Deduction"] = (gameData.people * 0.1);
 			gameData[type] = true;
 		}
 	} else if (type === "alien") {
 		if (gameData[Entity.WEAPON].count < 1) {
-			gameData.pragma -= (gameData.pragma * 0.1);
+			gameData[type + "Deduction"] = (gameData.pragma * 0.1);
 			gameData[type] = true;
 		}
 	} else if (type === "radiation") {
 		if (gameData[Entity.GREENHOUSE].count < 1) {
-			gameData.food -= (gameData.food * 0.1);
+			gameData[type + "Deduction"] = (gameData.food * 0.1);
 			gameData[type] = true;
 		}
 	} else if (type === "meteor") {
 		if (gameData[Entity.VAULT].count < 1) {
-			gameData.metal -= (gameData.metal * 0.1);
+			gameData[type + "Deduction"] = (gameData.metal * 0.1);
 			gameData[type] = true;
 		}
 	}
@@ -146,7 +160,76 @@ async function resetPreviousDay(gameData: IGameData): Promise<IGameData> {
 
 async function createPreviousDayMessage(gameData: IGameData): Promise<IGameData> {
 	// look at gameData.previous
-	gameData.previousDayMessage = "";
+	// gameData.previousDayMessage = "";
+
+	// resources
+	// people and how much food it cost
+	// events
+
+	const messages: IDailySummaryInformationRowProps[] = [];
+
+	const previousData: IGameData = gameData.previousDay;
+	let peopleGained: number;
+	if ((peopleGained = gameData.people - previousData.people) > 0) {
+		messages.push({
+			image: images.people,
+			text: "You have gained " + peopleGained + " humans by consuming " + (peopleGained * humanFoodCost) + " food",
+		});
+	}
+	let metalGained: number;
+	if ((metalGained = gameData.metal - previousData.metal) > 0) {
+		messages.push({
+			image: images.metal,
+			text: "You have gained " + metalGained + " metal",
+		});
+	}
+	let pragmaGained: number;
+	if ((pragmaGained = gameData.pragma - previousData.pragma) > 0) {
+		messages.push({
+			image: images.pragma,
+			text: "You have gained " + pragmaGained + " pragma",
+		});
+	}
+
+	if (gameData.disease && gameData.diseaseDeduction !== null) {
+		messages.push({
+			image: images.disease,
+			text: "Your city has been infected with a disease. You have lost " + gameData.diseaseDeduction + " humans.",
+		});
+		gameData.people -= gameData.diseaseDeduction;
+
+		gameData.diseaseDeduction = null;
+	}
+	if (gameData.radiation && gameData.radiationDeduction !== null) {
+		messages.push({
+			image: images.radiation,
+			text: "You have lost " + gameData.radiationDeduction + " food to a radioactive outbreak.",
+		});
+		gameData.food -= gameData.radiationDeduction;
+
+		gameData.radiationDeduction = null;
+	}
+	if (gameData.meteor && gameData.meteorDeduction !== null) {
+		messages.push({
+			image: images.meteor,
+			text: "A meteor has struck your city. You have lost " + gameData.meteorDeduction + " metal as a result.",
+		});
+		gameData.people -= gameData.meteorDeduction;
+
+		gameData.meteorDeduction = null;
+	}
+	if (gameData.alien && gameData.alienDeduction !== null) {
+		messages.push({
+			image: images.alien,
+			text: "Aliens have robbed you of " + gameData.alienDeduction + " pragma.",
+		});
+		gameData.people -= gameData.alienDeduction;
+
+		gameData.alienDeduction = null;
+	}
+
+	gameData.summaryData = messages;
+
 	return gameData;
 }
 

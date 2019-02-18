@@ -1,5 +1,6 @@
 import defaultGrid, {Entity, GridMode, ICoordinate, IGrid} from "./GameGrid";
 import {SoundEffect} from "./sound";
+import {IDailySummaryInformationRowProps} from "../components/DailySummaryInformationRow";
 
 export interface IGameData {
 	previousDay: any;
@@ -17,9 +18,13 @@ export interface IGameData {
 	food: number;
 	metal: number;
 	disease: boolean;
+	diseaseDeduction?: number;
 	alien: boolean;
+	alienDeduction?: number;
 	radiation: boolean;
+	radiationDeduction?: number;
 	meteor: boolean;
+	meteorDeduction?: number;
 	diseaseCount: number;
 	alienCount: number;
 	radiationCount: number;
@@ -34,6 +39,7 @@ export interface IGameData {
 	[Entity.REACTOR]: IEntityTracking;
 	[Entity.PYLON]: IEntityTracking;
 	music: SoundEffect;
+	summaryData?: IDailySummaryInformationRowProps[];
 }
 
 export interface IPrice {
