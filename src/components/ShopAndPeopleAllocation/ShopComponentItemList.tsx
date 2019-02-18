@@ -73,7 +73,10 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 			<ScrollView>
 
 				<View>
-					<TotalUserResourcesDisplayForShop/>
+					<TotalUserResourcesDisplayForShop
+						pragmaRemaining={this.props.gameData.pragma}
+						metalRemaining={this.props.gameData.metal}
+					/>
 				</View>
 
 				<View
