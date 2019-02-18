@@ -74,7 +74,11 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		newGameData.time += 1;
 		let func: IIncrementFunction;
 		for (func of gameIncrementFunctions) {
-			newGameData = await func(_.cloneDeep(newGameData));
+			try {
+				newGameData = await func(_.cloneDeep(newGameData));
+			} catch (err) {
+				newGameData.summaryData = [];
+			}
 		}
 		await updateGameData(newGameData);
 	}

@@ -126,6 +126,7 @@ async function eventGeneration(gameData: IGameData): Promise<IGameData> {
 			}
 		}
 	}
+	return gameData;
 }
 
 function handleEvent(type: string, gameData: IGameData): void {
