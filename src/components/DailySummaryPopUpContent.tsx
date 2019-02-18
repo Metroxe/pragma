@@ -50,6 +50,8 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 	}
 
 	public render(): ReactNode {
+		// console.log("render:", this.props.gameData);
+
 		const generatedRows: ReactNode[] = this.generateRows();
 
 		return (
