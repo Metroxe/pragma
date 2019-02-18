@@ -12,6 +12,7 @@ import {TabNavigator} from "../components/TabNavigator";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
+import EndGameModalContent from "../components/EndGameModalContent";
 
 export default class Navigator extends React.Component<INavigatorProps, INavigatorState> {
 
@@ -72,6 +73,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			gameMusic: makeSound(),
 			currentPage: this.state.currentContainer,
 			changePopUp: this.changePopUp,
+			popUpKey: this.state.popUpKey,
 		};
 
 		const pointer: any = containerSet[this.state.currentContainer];
@@ -120,6 +122,14 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 					<DailySummaryPopUpContent
 						closeModal={this.changePopUp(undefined)}
 					/>,
+				);
+			case("victory"):
+				return createPopUp(
+					<EndGameModalContent victory={true}/>,
+				);
+			case("loss"):
+				return createPopUp(
+					<EndGameModalContent victory={false}/>,
 				);
 			default:
 				return <View/>;

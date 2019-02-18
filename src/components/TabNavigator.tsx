@@ -48,9 +48,13 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 		this.gameFunctionWrapper = this.gameFunctionWrapper.bind(this);
 	}
 
-
 	private gameFunctionWrapper(callback: () => void): void {
 		this.props.gameFunctions.incrementTime().then(callback);
+	}
+
+	public componentWillReceiveProps(): void {
+		console.log("porps", this.props)
+		this.forceUpdate();
 	}
 
 	public render(): ReactNode {
@@ -63,16 +67,19 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 							onPress={this.props.changePopUp("shop")}
 							imageKey="build"
 							label="Build"
+							selected={this.props.popUpKey === "shop"}
 						/>
 						<ImageOptionComponent
 							onPress={this.props.changePopUp("allocation")}
 							imageKey="allocate"
 							label="Allocate"
+							selected={this.props.popUpKey === "allocation"}
 						/>
 						<ImageOptionComponent
 							onPress={this.gameFunctionWrapper}
 							imageKey="next"
 							label="Next Year"
+							selected={this.props.popUpKey === "next"}
 						/>
 					</View>
 				</View>
@@ -91,6 +98,7 @@ export interface ITabNavigatorProps extends IEnhancedComponentsProps {
 	navigate: (page: keyof IContainerSet) => Promise<void>;
 	changePopUp: (key: string) => (callback: () => void) => void;
 	gameFunctions?: IGameFunctions;
+	popUpKey?: string;
 }
 
 export interface ITabNavigatorState extends IEnhancedComponentsProps {
