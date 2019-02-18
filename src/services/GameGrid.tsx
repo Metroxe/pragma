@@ -3,11 +3,7 @@ import * as _ from "lodash";
 export enum Entity {
 	OBSTRUCTED,
 	UNOBSTRUCTED,
-	HOSPITAL,
 	WINDMILL,
-	WEAPON,
-	GREENHOUSE,
-	VAULT,
 	REACTOR,
 	PYLON,
 	TREE,
@@ -16,6 +12,10 @@ export enum Entity {
 	MINE,
 	FORGE,
 	FACTORY,
+	HOSPITAL,
+	WEAPON,
+	GREENHOUSE,
+	VAULT,
 }
 
 export enum GridMode {
