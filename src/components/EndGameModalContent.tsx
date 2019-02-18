@@ -20,7 +20,7 @@ export default class EndGameModalContent extends EnhancedComponent<IEndGameModal
 	private static victoryContent: string = "You've successfully weathered years of dangerous, hostile threats on an alien planet and found your way back home! Maybe a nice bath and dinner back home on Earth is in short order?";
 	private static lossContent: string = "The harsh, dangerous threats on this planet proved too much for you and your shipwrecked crew of space driftabouts. Perhaps you shouldn't have left Earth in the first place";
 
-	private static victoryButtonText: string = "Nice!";
+	private static victoryButtonText: string = "YEAH!";
 	private static lossButtonText: string = "Oof...";
 
 	public static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
@@ -88,7 +88,7 @@ export default class EndGameModalContent extends EnhancedComponent<IEndGameModal
 					<CoolYellowButton
 						text={this.props.victory ? EndGameModalContent.victoryButtonText : EndGameModalContent.lossButtonText}
 						bgColor={this.props.victory ? "#FBAE34" : "#DB1D61"}
-						extraStyle={{width: 200}}
+						viewStyle={{width: 200}}
 					/>
 				</View>
 			</View>
