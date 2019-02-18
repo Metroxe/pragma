@@ -313,7 +313,7 @@ defaultGameData[Entity.ORCHARD] = {
 		pragma: 60,
 		people: 5,
 		food: 0,
-		metal: 0,
+		metal: 40,
 	},
 	size: {
 		x: 1,
@@ -336,7 +336,7 @@ defaultGameData[Entity.FARM] = {
 		pragma: 80,
 		people: 5,
 		food: 0,
-		metal: 0,
+		metal: 70,
 	},
 	size: {
 		x: 1,
@@ -384,7 +384,7 @@ defaultGameData[Entity.FORGE] = {
 		pragma: 80,
 		people: 5,
 		food: 0,
-		metal: 0,
+		metal: 30,
 	},
 	size: {
 		x: 1,
@@ -407,7 +407,7 @@ defaultGameData[Entity.FACTORY] = {
 		pragma: 120,
 		people: 5,
 		food: 0,
-		metal: 0,
+		metal: 50,
 	},
 	size: {
 		x: 1,
