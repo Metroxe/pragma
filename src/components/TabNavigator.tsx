@@ -54,9 +54,9 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 		this.props.gameFunctions.incrementTime()
 			.then(() => {
 				// check for victory
-				if (false) {
+				if (this.props.gameData.pragma >= 500) {
 					that.props.changePopUp("victory")(callback);
-				} else if (false) {
+				} else if (this.props.gameData.time >= 100) {
 					that.props.changePopUp("loss")(callback);
 				} else {
 					that.props.changePopUp("daySummary")(callback);
