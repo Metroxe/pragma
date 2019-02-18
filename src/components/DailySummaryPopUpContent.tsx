@@ -40,6 +40,11 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 		const gameData: IGameData = this.props.gameData;
 		const output: ReactNode[] = [];
 
+		console.log(gameData.summaryData, 'summary data');
+		if (!gameData.summaryData) {
+			return null;
+		}
+
 		let i: number;
 		for (i = 0; i < gameData.summaryData.length; i++) {
 			 const data: IDailySummaryInformationRowProps = gameData.summaryData[i];

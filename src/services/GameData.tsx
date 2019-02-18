@@ -38,6 +38,12 @@ export interface IGameData {
 	[Entity.WINDMILL]: IEntityTracking;
 	[Entity.REACTOR]: IEntityTracking;
 	[Entity.PYLON]: IEntityTracking;
+	[Entity.TREE]: IEntityTracking;
+	[Entity.ORCHARD]: IEntityTracking;
+	[Entity.FARM]: IEntityTracking;
+	[Entity.MINE]: IEntityTracking;
+	[Entity.FORGE]: IEntityTracking;
+	[Entity.FACTORY]: IEntityTracking;
 	music: SoundEffect;
 	summaryData?: IDailySummaryInformationRowProps[];
 }
