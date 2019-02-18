@@ -1,4 +1,4 @@
-import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "./EnhancedComponent";
+import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} from "../EnhancedComponent";
 import {ReactNode} from "react";
 import * as React from "react";
 import {Dimensions, Image, StyleSheet, Text, TextStyle, View, ViewStyle} from "react-native";
@@ -63,7 +63,7 @@ export default class TotalPeopleDisplayForAllocationModal extends EnhancedCompon
 
 					<View style={TotalPeopleDisplayForAllocationModal.style.imageContainerStyle}>
 						<Image
-							source={require("../../assets/images/Resource-Icons/people.png")}
+							source={require("../../../assets/images/Resource-Icons/people.png")}
 							style={{height: "100%", maxWidth: "100%"}}
 							resizeMode={"contain"}
 						/>
