@@ -221,47 +221,50 @@ defaultGameData[Entity.WINDMILL] = {
 	description: "Small energy generator",
 	resourceGenerator: true,
 	entityKey: Entity.WINDMILL,
+	image: require("../../assets/buildings/energy_windmill.png"),
 };
-//
-// defaultGameData[Entity.REACTOR] = {
-// 	count: 0,
-// 	price: {
-// 		pragma: 30,
-// 		people: 10,
-// 		food: 10,
-// 		metal: 10,
-// 	},
-// 	size: {
-// 		x: 1,
-// 		y: 1,
-// 	},
-// 	individualLocations: [],
-// 	maximumAllocatedPeople: 12,
-// 	title: "Reactor",
-// 	description: "Medium energy generator",
-// 	resourceGenerator: true,
-// 	entityKey: Entity.REACTOR,
-// };
-//
-// defaultGameData[Entity.PYLON] = {
-// 	count: 0,
-// 	price: {
-// 		pragma: 40,
-// 		people: 15,
-// 		food: 15,
-// 		metal: 15,
-// 	},
-// 	size: {
-// 		x: 1,
-// 		y: 1,
-// 	},
-// 	individualLocations: [],
-// 	maximumAllocatedPeople: 4,
-// 	title: "Pylon",
-// 	description: "Large energy generator",
-// 	resourceGenerator: true,
-// 	entityKey: Entity.PYLON,
-// };
+
+defaultGameData[Entity.REACTOR] = {
+	count: 0,
+	price: {
+		pragma: 30,
+		people: 10,
+		food: 10,
+		metal: 10,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 12,
+	title: "Reactor",
+	description: "Medium energy generator",
+	resourceGenerator: true,
+	entityKey: Entity.REACTOR,
+	image: require("../../assets/buildings/energy_nuclear.png"),
+};
+
+defaultGameData[Entity.PYLON] = {
+	count: 0,
+	price: {
+		pragma: 40,
+		people: 15,
+		food: 15,
+		metal: 15,
+	},
+	size: {
+		x: 1,
+		y: 1,
+	},
+	individualLocations: [],
+	maximumAllocatedPeople: 4,
+	title: "Pylon",
+	description: "Large energy generator",
+	resourceGenerator: true,
+	entityKey: Entity.PYLON,
+	image: require("../../assets/buildings/energy_crystal.png"),
+};
 
 defaultGameData[Entity.TREE] = {
 	count: 0,
@@ -281,6 +284,7 @@ defaultGameData[Entity.TREE] = {
 	description: "Small food source",
 	resourceGenerator: true,
 	entityKey: Entity.TREE,
+	image: require("../../assets/buildings/food_tree.png"),
 };
 
 defaultGameData[Entity.ORCHARD] = {
@@ -301,6 +305,7 @@ defaultGameData[Entity.ORCHARD] = {
 	description: "Medium food source",
 	resourceGenerator: true,
 	entityKey: Entity.ORCHARD,
+	image: require("../../assets/buildings/food_orchard.png"),
 };
 
 defaultGameData[Entity.FARM] = {
@@ -321,11 +326,11 @@ defaultGameData[Entity.FARM] = {
 	description: "Large food source",
 	resourceGenerator: true,
 	entityKey: Entity.FARM,
-	image: require("../../assets/buildings/energy_windmill.png"),
+	image: require("../../assets/buildings/food_farm.png"),
 };
 
 defaultGameData[Entity.MINE] = {
-    ...defaultGameData[Entity.MINE],
+	...defaultGameData[Entity.MINE],
 	count: 0,
 	price: {
 		pragma: 40,
@@ -343,7 +348,7 @@ defaultGameData[Entity.MINE] = {
 	description: "Small resource harvester",
 	resourceGenerator: true,
 	entityKey: Entity.MINE,
-	image: require("../../assets/buildings/energy_nuclear.png"),
+	image: require("../../assets/buildings/metal_mine.png"),
 };
 
 defaultGameData[Entity.FORGE] = {
