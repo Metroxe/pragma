@@ -31,17 +31,17 @@ async function pragmaGeneration(gameData: IGameData): Promise<IGameData> {
 		const peopleCount: number = gameData[Entity.WINDMILL].individualLocations[i].allocatedPeople;
 		tempNumberOfPeople += peopleCount;
 	}
-	gameData.pragma += tempNumberOfPeople * gameData[Entity.WINDMILL].pragmaOutput;
+	gameData.pragma += tempNumberOfPeople * gameData[Entity.WINDMILL].outputMultiplier;
 	for (i = 0; i < gameData[Entity.REACTOR].count; i++) {
 		const peopleCount: number = gameData[Entity.REACTOR].individualLocations[i].allocatedPeople;
 		tempNumberOfPeople += peopleCount;
 	}
-	gameData.pragma += tempNumberOfPeople * gameData[Entity.REACTOR].pragmaOutput;
+	gameData.pragma += tempNumberOfPeople * gameData[Entity.REACTOR].outputMultiplier;
 	for (i = 0; i < gameData[Entity.PYLON].count; i++) {
 		const peopleCount: number = gameData[Entity.PYLON].individualLocations[i].allocatedPeople;
 		tempNumberOfPeople += peopleCount;
 	}
-	gameData.pragma += tempNumberOfPeople * gameData[Entity.PYLON].pragmaOutput;
+	gameData.pragma += tempNumberOfPeople * gameData[Entity.PYLON].outputMultiplier;
 
 	return gameData;
 }
@@ -155,7 +155,7 @@ function handleEvent(type: string, gameData: IGameData): void {
 }
 
 async function resetPreviousDay(gameData: IGameData): Promise<IGameData> {
-	gameData.previousDay = gameData;
+	gameData.previousDay = JSON.parse(JSON.stringify(gameData));
 	return gameData;
 }
 
@@ -184,6 +184,7 @@ async function createPreviousDayMessage(gameData: IGameData): Promise<IGameData>
 			text: "You have gained " + metalGained + " metal",
 		});
 	}
+	console.log(gameData.pragma, previousData.pragma, 'checking pragma');
 	let pragmaGained: number;
 	if ((pragmaGained = gameData.pragma - previousData.pragma) > 0) {
 		messages.push({
