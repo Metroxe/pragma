@@ -75,12 +75,7 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		const backup: IGameData = _.cloneDeep(newGameData);
 		let func: IIncrementFunction;
 		for (func of gameIncrementFunctions) {
-			try {
-				newGameData = await func(_.cloneDeep(newGameData));
-			} catch (err) {
-				newGameData = _.cloneDeep(backup);
-				break;
-			}
+			newGameData = await func(_.cloneDeep(newGameData));
 		}
 
 		await updateGameData(newGameData);
