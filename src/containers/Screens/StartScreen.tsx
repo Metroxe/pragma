@@ -82,7 +82,7 @@ export default class StartScreen extends Container<IStartScreenProps, IStartScre
 	public render(): ReactNode {
 		return (
 			<View style={StartScreen.style.mainContainer}>
-				<Video source={require("./../../../assets/menu_video.mp4")}   // Can be a URL or a local file.
+				<Video source={require("../../../assets/menu_video.mp4")}   // Can be a URL or a local file.
 					rate={1.0}
 					style={StartScreen.style.videoStyle}
 					resizeMode={"cover"}

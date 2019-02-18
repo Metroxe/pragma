@@ -8,6 +8,7 @@
     "android-dev": "react-native run-android"
   },
   "dependencies": {
+    "@types/react-native-video": "^3.1.1",
     "lodash": "^4.17.11",
     "react": "16.6.3",
     "react-native": "0.58.4",

@@ -583,7 +583,14 @@
   version "15.5.9"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.9.tgz#f2d14df87b0739041bc53a7d75e3d77d726a3ec0"
 
-"@types/react-native@^0.57.36":
+"@types/react-native-video@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@types/react-native-video/-/react-native-video-3.1.1.tgz#a1ef9c1807a0e469f3e38a520c35d03da2a6a8b5"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-native" "*"
+
+"@types/react-native@*", "@types/react-native@^0.57.36":
   version "0.57.36"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.57.36.tgz#b8e8c2c119fd0f9227f32ee260b7abf223f47960"
   dependencies:
