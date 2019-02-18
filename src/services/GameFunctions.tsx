@@ -72,10 +72,17 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 	async function incrementTime(): Promise<void> {
 		let newGameData: IGameData = getGameDataClone();
 		newGameData.time += 1;
+		const backup: IGameData = _.cloneDeep(newGameData);
 		let func: IIncrementFunction;
 		for (func of gameIncrementFunctions) {
-			newGameData = await func(_.cloneDeep(newGameData));
+			try {
+				newGameData = await func(_.cloneDeep(newGameData));
+			} catch (err) {
+				newGameData = _.cloneDeep(backup);
+				break;
+			}
 		}
+
 		await updateGameData(newGameData);
 	}
 

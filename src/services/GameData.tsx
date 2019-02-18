@@ -38,6 +38,12 @@ export interface IGameData {
 	[Entity.WINDMILL]: IEntityTracking;
 	[Entity.REACTOR]: IEntityTracking;
 	[Entity.PYLON]: IEntityTracking;
+	[Entity.TREE]: IEntityTracking;
+	[Entity.ORCHARD]: IEntityTracking;
+	[Entity.FARM]: IEntityTracking;
+	[Entity.MINE]: IEntityTracking;
+	[Entity.FORGE]: IEntityTracking;
+	[Entity.FACTORY]: IEntityTracking;
 	music: SoundEffect;
 	summaryData?: IDailySummaryInformationRowProps[];
 }
@@ -78,10 +84,10 @@ const defaultGameData: IGameData = {
 	gridMode: GridMode.VIEW_MODE,
 	buildModeObject: Entity.WINDMILL,
 
-	pragma: 10,
+	pragma: 50,
 	people: 5,
 	food: 0,
-	metal: 20,
+	metal: 50,
 	disease: false,
 	alien: false,
 	radiation: false,

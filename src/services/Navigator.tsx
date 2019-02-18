@@ -27,6 +27,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			bottom: TabNavigator.navBarHeight + 50,
 			alignSelf: "center",
 		},
+		resourceStats: {},
 	});
 
 	public calculatingInterval: boolean = false;
@@ -34,7 +35,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 	public state: INavigatorState = {
 		currentContainer: "StartScreen",
 		gameData: defaultGameData,
-		popUpKey: undefined,
+		popUpKey: "daySummary",
 	};
 
 	constructor(props: INavigatorProps) {
@@ -121,6 +122,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				return createPopUp(
 					<DailySummaryPopUpContent
 						closeModal={this.changePopUp(undefined)}
+						gameData={this.state.gameData}
 					/>,
 				);
 			case("victory"):
