@@ -5,6 +5,7 @@ import EnhancedComponent, {IEnhancedComponentsProps} from "./EnhancedComponent";
 import {IContainerSet} from "../containers";
 import {ImageOptionComponent} from "./ImageOptionComponent";
 import {IGameFunctions} from "../services/GameFunctions";
+import {IGameData} from "../services/GameData";
 
 export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavigatorState> {
 
@@ -49,7 +50,18 @@ export class TabNavigator extends EnhancedComponent<ITabNavigatorProps, ITabNavi
 	}
 
 	private gameFunctionWrapper(callback: () => void): void {
-		this.props.gameFunctions.incrementTime().then(callback);
+		const that: TabNavigator = this;
+		this.props.gameFunctions.incrementTime()
+			.then(() => {
+				// check for victory
+				if (false) {
+					that.props.changePopUp("victory")(callback);
+				} else if (false) {
+					that.props.changePopUp("loss")(callback);
+				} else {
+					that.props.changePopUp("daySummary")(callback);
+				}
+			});
 	}
 
 	public componentWillReceiveProps(): void {
@@ -99,6 +111,7 @@ export interface ITabNavigatorProps extends IEnhancedComponentsProps {
 	changePopUp: (key: string) => (callback: () => void) => void;
 	gameFunctions?: IGameFunctions;
 	popUpKey?: string;
+	gameData: IGameData;
 }
 
 export interface ITabNavigatorState extends IEnhancedComponentsProps {
