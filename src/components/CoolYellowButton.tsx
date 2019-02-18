@@ -1,20 +1,32 @@
 import {ReactNode} from "react";
 import * as React from "react";
-import {Image, View, Text, StyleSheet, Dimensions, TextStyle, ViewStyle, ImageStyle} from "react-native";
+import {
+	Image,
+	View,
+	Text,
+	StyleSheet,
+	Dimensions,
+	TextStyle,
+	ViewStyle,
+	ImageStyle,
+	TouchableOpacity
+} from "react-native";
 import {ButtonWrapper, IButtonWrapperProps, IButtonWrapperState} from "./ButtonWrapper";
+import EnhancedComponent from "./EnhancedComponent";
+import {IEnhancedComponentProps, IEnhancedComponentState} from "../../../Senketsu/app/src/Components/EnhancedComponent";
 
-export default class CoolYellowButton extends ButtonWrapper<ICoolYellowButtonProps, ICoolYellowButtonState> {
+export default class CoolYellowButton extends EnhancedComponent<ICoolYellowButtonProps, ICoolYellowButtonState> {
 
 	public static defaultProps: ICoolYellowButtonProps = {
 		text: "Replace Me!",
 		bgColor: "#FBAE34",
-		extraStyle: {},
+		viewStyle: {},
 	};
 
 	private static style: StyleSheet.NamedStyles<IStyle> = StyleSheet.create<IStyle>({
 		mainContainer: {
 			paddingHorizontal: 20,
-            paddingVertical: 10,
+			paddingVertical: 10,
 			borderRadius: 20,
 			alignItems: "center",
 			alignSelf: "center",
@@ -35,22 +47,23 @@ export default class CoolYellowButton extends ButtonWrapper<ICoolYellowButtonPro
 
 	public render(): ReactNode {
 		return (
-			<View style={[CoolYellowButton.style.mainContainer, {backgroundColor: this.props.bgColor}, this.props.extraStyle]}>
+			<TouchableOpacity onPress={this.props.onAction} style={[CoolYellowButton.style.mainContainer, {backgroundColor: this.props.bgColor}, this.props.viewStyle]}>
 				<Text style={CoolYellowButton.style.textStyle}>
 					{this.props.text}
 				</Text>
-			</View>
+			</TouchableOpacity>
 		);
 	}
 }
 
-export interface ICoolYellowButtonProps extends IButtonWrapperProps {
+export interface ICoolYellowButtonProps extends IEnhancedComponentProps {
 	text: string;
 	bgColor: string;
-	extraStyle: ViewStyle;
+	onAction: () => void;
+	viewStyle: ViewStyle;
 }
 
-export interface ICoolYellowButtonState extends IButtonWrapperState {
+export interface ICoolYellowButtonState extends IEnhancedComponentState {
 
 }
 

@@ -49,8 +49,9 @@ export default class ShopComponentItemList extends EnhancedComponent<IShopCompon
 					metalPrice={item.price.metal}
 					onAction={onAction}
 					canAfford={canAfford}
-					itemTitle={item.entityKey + ""}
-					itemDescription={item.entityKey + ""}
+					itemTitle={item.title}
+					itemDescription={item.description}
+					image={item.image}
 				/>
 			</View>
 		);

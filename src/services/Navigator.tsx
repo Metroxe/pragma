@@ -1,15 +1,14 @@
 import * as React from "react";
 import {ReactNode} from "react";
-import {StyleSheet, View, ViewStyle, Text, Dimensions} from "react-native";
+import {Dimensions, StyleSheet, View, ViewStyle} from "react-native";
 import {IContainerProps} from "../containers/Container";
 import containerSet, {IContainerSet} from "../containers";
 import defaultGameData, {IGameData} from "./GameData";
 import GameFunctions from "./GameFunctions";
-import makeSound, {ISound} from "./sound";
+import makeSound, {SoundEffect} from "./sound";
 import GoodModal from "../components/GoodModal";
 import {Header} from "../components/Header";
 import {TabNavigator} from "../components/TabNavigator";
-import ResourceStats from "../components/ResourceStats";
 import ShopComponentItemList from "../components/ShopAndPeopleAllocation/ShopComponentItemList";
 import PeopleAllocationItemList from "../components/ShopAndPeopleAllocation/PeopleAllocationItemList";
 import DailySummaryPopUpContent from "../components/DailySummaryPopUpContent";
@@ -28,21 +27,14 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			bottom: TabNavigator.navBarHeight + 50,
 			alignSelf: "center",
 		},
-		resourceStats: {
-			position: "absolute",
-			left: 0,
-			top: 20,
-		},
 	});
 
-	public static timeIncrement: number = 1000;
 	public calculatingInterval: boolean = false;
-	public interval: number;
 
 	public state: INavigatorState = {
-		currentContainer: "Grid",
+		currentContainer: "StartScreen",
 		gameData: defaultGameData,
-		popUpKey: "loss",
+		popUpKey: undefined,
 	};
 
 	constructor(props: INavigatorProps) {
@@ -52,12 +44,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 		this.intervalFunction = this.intervalFunction.bind(this);
 		this.changePopUp = this.changePopUp.bind(this);
 		console.disableYellowBox = true;
-	}
-
-	public componentDidMount(): void {
-		if (!this.interval) {
-			this.interval = setInterval(this.intervalFunction, Navigator.timeIncrement);
-		}
 	}
 
 	private intervalFunction(): void {
@@ -115,7 +101,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 				</View>
 			);
 		}
-		
+
 		switch (this.state.popUpKey) {
 			case("shop"):
 				return createPopUp(
@@ -125,7 +111,11 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 						changePopUp={this.changePopUp}
 					/>);
 			case("allocation"):
-				return createPopUp(<PeopleAllocationItemList/>);
+				return createPopUp(<PeopleAllocationItemList
+					gameData={this.state.gameData}
+					gameFunctions={GameFunctions(this)}
+					changePopUp={this.changePopUp}
+				/>);
 			case("daySummary"):
 				return createPopUp(
 					<DailySummaryPopUpContent
@@ -150,12 +140,6 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			<View style={Navigator.style.topView}>
 				{this.renderContainer()}
 				{this.determinePopUp()}
-				{
-					this.state.popUpKey === undefined ?
-					<View style={Navigator.style.resourceStats}>
-						<ResourceStats gameData={this.state.gameData}/>
-					</View> : null
-				}
 			</View>
 		);
 	}
