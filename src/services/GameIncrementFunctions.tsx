@@ -13,7 +13,7 @@ const images: any = {
 	disease: require("../../assets/icons/disease.png"),
 	radiation: require("../../assets/icons/radiation.png"),
 	alien: require("../../assets/icons/alien.png"),
-    meteor: require("../../assets/icons/meteor.png"),
+	meteor: require("../../assets/icons/meteor.png"),
 };
 const humanFoodCost: number = 10;
 
@@ -106,7 +106,7 @@ async function eventGeneration(gameData: IGameData): Promise<IGameData> {
 
 			const randEvent: number = Math.random() * 4;
 			let eventType: string = null;
-			switch(randEvent) {
+			switch (randEvent) {
 				case 1:
 					eventType = "disease";
 					break;

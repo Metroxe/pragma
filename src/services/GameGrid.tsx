@@ -3,19 +3,15 @@ import * as _ from "lodash";
 export enum Entity {
 	OBSTRUCTED,
 	UNOBSTRUCTED,
-
 	WINDMILL,
 	REACTOR,
 	PYLON,
-
 	TREE,
 	ORCHARD,
 	FARM,
-
 	MINE,
 	FORGE,
 	FACTORY,
-
 	HOSPITAL,
 	WEAPON,
 	GREENHOUSE,

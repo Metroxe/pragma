@@ -199,7 +199,7 @@ defaultGameData[Entity.VAULT] = {
 		pragma: 40,
 		people: 5,
 		food: 0,
-		metal: 0,
+		metal: 20,
 	},
 	size: {
 		x: 1,
@@ -310,7 +310,7 @@ defaultGameData[Entity.ORCHARD] = {
 	...defaultGameData[Entity.ORCHARD],
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 60,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -324,16 +324,16 @@ defaultGameData[Entity.ORCHARD] = {
 	title: "Orchard",
 	description: "Medium food source",
 	resourceGenerator: true,
-	image: require("../../assets/buildings/food_orchard.png"),
 	outputMultiplier: 10,
 	entityKey: Entity.ORCHARD,
+	image: require("../../assets/buildings/food_orchard.png"),
 };
 
 defaultGameData[Entity.FARM] = {
 	...defaultGameData[Entity.FARM],
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 80,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -356,11 +356,9 @@ defaultGameData[Entity.FARM] = {
 
 defaultGameData[Entity.MINE] = {
 	...defaultGameData[Entity.MINE],
-	entityKey: Entity.MINE,
-	image: require("../../assets/buildings/metal_mine.png"),
 	count: 0,
 	price: {
-		pragma: 30,
+		pragma: 40,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -374,6 +372,8 @@ defaultGameData[Entity.MINE] = {
 	title: "Mine",
 	description: "Small resource harvester",
 	resourceGenerator: true,
+	entityKey: Entity.MINE,
+	image: require("../../assets/buildings/metal_mine.png"),
 	outputMultiplier: 5,
 };
 
@@ -381,7 +381,7 @@ defaultGameData[Entity.FORGE] = {
 	...defaultGameData[Entity.FORGE],
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 80,
 		people: 5,
 		food: 0,
 		metal: 0,
@@ -404,7 +404,7 @@ defaultGameData[Entity.FACTORY] = {
 	...defaultGameData[Entity.FACTORY],
 	count: 0,
 	price: {
-		pragma: 40,
+		pragma: 120,
 		people: 5,
 		food: 0,
 		metal: 0,
