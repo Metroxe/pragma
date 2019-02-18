@@ -136,6 +136,7 @@ export default class Container<P extends IContainerProps, S extends IContainerSt
 						navigate={this.props.navigate}
 						changePopUp={this.props.changePopUp}
 						gameFunctions={this.props.gameFunctions}
+                        popUpKey={this.props.popUpKey}
 					/>
 					}
 
@@ -165,6 +166,7 @@ export interface IContainerProps {
 	gameMusic: ISound;
 	currentPage: keyof IContainerSet;
 	changePopUp: (key: string) => (callback: () => void) => void;
+	popUpKey: string;
 }
 
 export interface IContainerState {

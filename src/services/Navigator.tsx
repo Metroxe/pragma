@@ -73,6 +73,7 @@ export default class Navigator extends React.Component<INavigatorProps, INavigat
 			gameMusic: makeSound(),
 			currentPage: this.state.currentContainer,
 			changePopUp: this.changePopUp,
+			popUpKey: this.state.popUpKey,
 		};
 
 		const pointer: any = containerSet[this.state.currentContainer];

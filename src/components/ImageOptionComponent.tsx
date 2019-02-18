@@ -46,9 +46,12 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 
 	protected static imgMap: { [key: string]: any } = {
 		build: require("../../assets/icons/build.png"),
+		build_selected: require("../../assets/icons/build_selected.png"),
 		shop: require("../../assets/icons/menu.png"),
 		allocate: require("../../assets/icons/people.png"),
+		allocate_selected: require("../../assets/icons/people_selected.png"),
 		next: require("../../assets/icons/next.png"),
+		next_selected: require("../../assets/icons/next_selected.png"),
 	};
 
 	constructor(props: IImageOptionComponentsProps) {
@@ -70,7 +73,7 @@ export class ImageOptionComponent extends EnhancedComponent<IImageOptionComponen
 					<Image
 						style={{width: 70, height: 70}}
 						resizeMode="contain"
-						source={ImageOptionComponent.imgMap[this.props.imageKey]}
+						source={ImageOptionComponent.imgMap[this.props.selected ? this.props.imageKey + "_selected" : this.props.imageKey]}
 					/>
 					<Text style={ImageOptionComponent.style.textStyle}>{this.props.label}</Text>
 				</View>
@@ -84,6 +87,7 @@ export interface IImageOptionComponentsProps extends IEnhancedComponentsProps {
 	onPress?: (callback: () => void) => void;
 	imageKey?: string;
 	label?: string;
+	selected?: boolean;
 }
 
 export interface IImageOptionComponentsState extends IEnhancedComponentsState {
