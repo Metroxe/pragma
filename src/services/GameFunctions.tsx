@@ -3,6 +3,7 @@ import Navigator from "./Navigator";
 import * as _ from "lodash";
 import gameIncrementFunctions, {IIncrementFunction} from "./GameIncrementFunctions";
 import {Entity, GridMode, ICoordinate} from "./GameGrid";
+import makeSound, {SoundEffect} from "./sound";
 
 export interface IGameFunctions {
 	updateGameData: (gameData: IGameData) => Promise<void>;
@@ -151,7 +152,14 @@ function createGameFunctions(navigator: Navigator): IGameFunctions {
 		if (newGameData.selectedTile) {
 			const x: number = newGameData.selectedTile.x;
 			const y: number = newGameData.selectedTile.y;
-			if (newGameData.grid[x][y].occupied === false) {
+
+			const canAfford: boolean =
+				newGameData.metal >= (newGameData[newGameData.buildModeObject] as IEntityTracking).price.metal &&
+				newGameData.pragma >= (newGameData[newGameData.buildModeObject] as IEntityTracking).price.pragma;
+
+			if (newGameData.grid[x][y].occupied === false && canAfford) {
+				newGameData.metal -= (newGameData[newGameData.buildModeObject] as IEntityTracking).price.metal;
+				newGameData.pragma -= (newGameData[newGameData.buildModeObject] as IEntityTracking).price.pragma;
 				newGameData.grid[x][y].occupied = true;
 				newGameData.grid[x][y].entity = newGameData.buildModeObject;
 				(newGameData[newGameData.buildModeObject] as IEntityTracking).count ++;
