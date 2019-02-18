@@ -2,8 +2,9 @@ import EnhancedComponent, {IEnhancedComponentsProps, IEnhancedComponentsState} f
 import {ReactNode} from "react";
 import {StyleSheet, Text, View, ViewStyle} from "react-native";
 import * as React from "react";
-import DailySummaryInformationRow from "./DailySummaryInformationRow";
+import DailySummaryInformationRow, {IDailySummaryInformationRowProps} from "./DailySummaryInformationRow";
 import CoolYellowButton from "./CoolYellowButton";
+import {IGameData} from "../services/GameData";
 
 export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySummaryPopUpContentProps, IDailySummaryPopUpContentState> {
 
@@ -25,6 +26,7 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 		};
 
 		this.handleClose = this.handleClose.bind(this);
+		this.generateRows = this.generateRows.bind(this);
 	}
 
 	private handleClose(): void {
@@ -34,17 +36,26 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 		this.props.closeModal();
 	}
 
+	public generateRows(): ReactNode[] {
+		const gameData: IGameData = this.props.gameData;
+		const output: ReactNode[] = [];
+
+		let i: number;
+		for (i = 0; i < gameData.summaryData.length; i++) {
+			 const data: IDailySummaryInformationRowProps = gameData.summaryData[i];
+			 output.push(<DailySummaryInformationRow image={data.image} text={data.text}/>);
+		}
+
+		return output;
+	}
+
 	public render(): ReactNode {
+		const generatedRows: ReactNode[] = this.generateRows();
+
 		return (
 			<View style={DailySummaryPopUpContent.style.mainContainer}>
 				<View>
-					<DailySummaryInformationRow/>
-					<DailySummaryInformationRow/>
-					<DailySummaryInformationRow/>
-					<DailySummaryInformationRow/>
-					<DailySummaryInformationRow/>
-					<DailySummaryInformationRow/>
-					<DailySummaryInformationRow/>
+					{generatedRows}
 				</View>
 
 				<View style={{marginTop: 15}}>
@@ -60,6 +71,7 @@ export default class DailySummaryPopUpContent extends EnhancedComponent<IDailySu
 
 export interface IDailySummaryPopUpContentProps {
 	closeModal: () => void;
+	gameData?: IGameData;
 }
 
 export interface IDailySummaryPopUpContentState extends IEnhancedComponentsState {

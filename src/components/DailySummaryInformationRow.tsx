@@ -51,7 +51,7 @@ export default class DailySummaryInformationRow extends EnhancedComponent<IDaily
 				<View style={DailySummaryInformationRow.style.imageContainerA}>
 					<View style={DailySummaryInformationRow.style.imageContainerB}>
 						<Image
-							source={require("../../assets/images/Resource-Icons/pragma.png")}
+							source={this.props.image}
 							style={DailySummaryInformationRow.style.imageStyle}
 							resizeMode={"contain"}
 						/>
