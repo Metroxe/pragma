@@ -2842,6 +2842,10 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+keymirror@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/keymirror/-/keymirror-0.1.1.tgz#918889ea13f8d0a42e7c557250eee713adc95c35"
+
 kind-of@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-1.1.0.tgz#140a3d2d41a36d2efcfa9377b62c24f8495a5c44"
@@ -3895,7 +3899,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-prop-types@^15.5.8, prop-types@^15.6.2:
+prop-types@^15.5.10, prop-types@^15.5.8, prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   dependencies:
@@ -3969,6 +3973,22 @@ react-devtools-core@^3.4.2:
 react-is@^16.6.3, react-is@^16.8.1:
   version "16.8.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.2.tgz#09891d324cad1cb0c1f2d91f70a71a4bee34df0f"
+
+react-native-linear-gradient@^2.5.3:
+  version "2.5.3"
+  resolved "https://registry.yarnpkg.com/react-native-linear-gradient/-/react-native-linear-gradient-2.5.3.tgz#d90cf19a13fcccfa8bb32025ac40a15ae1b49e99"
+
+react-native-sound@^0.10.12:
+  version "0.10.12"
+  resolved "https://registry.yarnpkg.com/react-native-sound/-/react-native-sound-0.10.12.tgz#f912d6f9d6e9e2b42b391e0226787628d940f01a"
+
+react-native-video@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-video/-/react-native-video-4.3.1.tgz#dd5cd7feeba1068dffb36ca0406214fe6ffc01aa"
+  dependencies:
+    keymirror "^0.1.1"
+    prop-types "^15.5.10"
+    shaka-player "^2.4.4"
 
 react-native@0.58.4:
   version "0.58.4"
@@ -4399,6 +4419,10 @@ setimmediate@^1.0.5:
 setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
+
+shaka-player@^2.4.4:
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/shaka-player/-/shaka-player-2.4.6.tgz#2a373cfa7f2867d7ba78a53fcdb25fa19cdaf5c0"
 
 shebang-command@^1.2.0:
   version "1.2.0"
