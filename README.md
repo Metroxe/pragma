@@ -1,10 +1,6 @@
-## Game Jam running game concept:
+![Logo](https://github.com/AliceHsieh/baymax/blob/develop/assets/images/pragmaTitle.png)
 
-- A ship crash lands on an alien planet with limited resources because of a looming black hole
-- The crew of the ship only has limited resources
-- Objective: Gather resources in the surrounding area to repair the ship and raise a population large enough to leave the planet before the planet and black hole destroys them. 
+You're stuck on a remote alien planet, and had found a new energy resource called pragma. You have 100 years to eascape the planet before a black whole destroys your settlement. Harvest the new energy resouce of pragma and escape the planet. This game is a proof of concept for mobile game development in React Native, and was built in 48 hours for BC Game Jam 2019.
 
-## Summary
-- Obstacles: Aliens come periodically to come attack the planet and requires defence by the population. 
-- Game type: Turn based strategy gameplay
-- Development Stack : React Native
+## Trailer
+[![Trailer](https://img.youtube.com/vi/ByuNEww0-aQ/0.jpg)](https://www.youtube.com/watch?v=ByuNEww0-aQ)
